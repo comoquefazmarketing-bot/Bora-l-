@@ -1,10 +1,10 @@
 ﻿import React, { useState, useEffect, useRef } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { Button } from "../components/ui/button";
+import { Input } from "../components/ui/input";
 import { Send, Loader2, Sparkles, ArrowLeft } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import { N8N_WEBHOOKS } from "@/constants/n8nConfig";
+import { N8N_WEBHOOKS } from "../constants/n8nConfig";
 import MessageBubble from "../components/chat/MessageBubble";
 import axios from "axios";
 

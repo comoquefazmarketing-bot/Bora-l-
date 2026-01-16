@@ -6,7 +6,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import SpaceCard from "../components/spaces/SpaceCard";
 import EnhancedSearch from "../components/home/EnhancedSearch";
 import QuickFilters from "../components/home/QuickFilters";
-import { Skeleton } from "@/components/ui/skeleton";
+import { Skeleton } from "../components/ui/skeleton";
 import LiaFloatingButton from "../components/home/LiaFloatingButton";
 
 export default function Home() {
