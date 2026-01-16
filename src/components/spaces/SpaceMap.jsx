@@ -1,0 +1,52 @@
+﻿import React from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { MapPin, AlertCircle } from "lucide-react";
+
+// Chave configurada pelo Felipe Makarios
+const GOOGLE_MAPS_API_KEY = "AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8";
+
+export default function SpaceMap({ latitude, longitude, spaceName }) {
+  const hasCoordinates = latitude && longitude;
+
+  return (
+    <Card className="border-none shadow-lg rounded-[32px] overflow-hidden bg-white">
+      <CardHeader className="px-8 pt-8">
+        <CardTitle className="text-2xl font-black text-gray-900 tracking-tighter flex items-center gap-2">
+          <MapPin className="w-6 h-6 text-teal-500" />
+          Localização
+        </CardTitle>
+      </CardHeader>
+      <CardContent className="p-0">
+        {hasCoordinates ? (
+          <div className="w-full h-[300px] relative">
+            <iframe
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              loading="lazy"
+              allowFullScreen
+              referrerPolicy="no-referrer-when-downgrade"
+              src={"https://www.google.com/maps/embed/v1/place?key=\&q=\,\&zoom=15}
+              title={Mapa de "}
+            />
+            {/* Overlay sutil para manter o estilo do app */}
+            <div className="absolute inset-0 pointer-events-none border-[12px] border-white/10 rounded-[32px]"></div>
+          </div>
+        ) : (
+          <div className="p-16 text-center bg-gray-50/50">
+            <div className="bg-gray-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+              <AlertCircle className="w-8 h-8 text-gray-300" />
+            </div>
+            <p className="text-gray-900 font-bold text-lg">
+              Localização em breve
+            </p>
+            <p className="text-gray-400 text-sm mt-2 max-w-[250px] mx-auto">
+              O proprietário ainda está ajustando os detalhes do mapa para este espaço.
+            </p>
+          </div>
+        )}
+      </CardContent>
+    </Card>
+  );
+}
+

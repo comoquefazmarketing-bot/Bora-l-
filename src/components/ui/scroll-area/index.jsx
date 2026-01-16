@@ -1,0 +1,2 @@
+﻿import React from 'react'; export const Scroll-Area = ({ children, className, ...props }) => <div className={className} {...props}>{children}</div>;
+

@@ -1,0 +1,150 @@
+﻿import React, { useState } from "react";
+import { base44 } from "@/api/base44Client";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Plus, Building, Loader2 } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import SpaceForm from "../components/spaces/SpaceForm";
+import MySpaceCard from "../components/spaces/MySpaceCard";
+import BlockDatesModal from "../components/spaces/BlockDatesModal";
+
+export default function MySpaces() {
+  const [showForm, setShowForm] = useState(false);
+  const [editingSpace, setEditingSpace] = useState(null);
+  const [user, setUser] = useState(null);
+  const [showBlockModal, setShowBlockModal] = useState(false);
+  const [selectedSpace, setSelectedSpace] = useState(null);
+  const queryClient = useQueryClient();
+
+  React.useEffect(() => {
+    const loadUser = async () => {
+      try {
+        const currentUser = await base44.auth.me();
+        setUser(currentUser);
+      } catch (error) {
+        base44.auth.redirectToLogin();
+      }
+    };
+    loadUser();
+  }, []);
+
+  const { data: spaces = [], isLoading } = useQuery({
+    queryKey: ['my-spaces', user?.id],
+    queryFn: () => base44.entities.Space.filter({ proprietario: user.id }, '-created_date'),
+    enabled: !!user,
+  });
+
+  const createSpaceMutation = useMutation({
+    mutationFn: (spaceData) => base44.entities.Space.create({
+      ...spaceData,
+      proprietario: user.id
+    }),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['my-spaces'] });
+      setShowForm(false);
+    },
+  });
+
+  const updateSpaceMutation = useMutation({
+    mutationFn: ({ id, spaceData }) => base44.entities.Space.update(id, spaceData),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['my-spaces'] });
+      setShowForm(false);
+      setEditingSpace(null);
+    },
+  });
+
+  const deleteSpaceMutation = useMutation({
+    mutationFn: (id) => base44.entities.Space.delete(id),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['my-spaces'] });
+    },
+  });
+
+  const handleSubmit = async (spaceData) => {
+    if (editingSpace) {
+      updateSpaceMutation.mutate({ id: editingSpace.id, spaceData });
+    } else {
+      createSpaceMutation.mutate(spaceData);
+    }
+  };
+
+  const handleBlockDates = (space) => {
+    setSelectedSpace(space);
+    setShowBlockModal(true);
+  };
+
+  if (!user) return null;
+
+  return (
+    <div className="min-h-screen p-6 md:p-12 bg-[#FAFAF9]">
+      <div className="max-w-6xl mx-auto">
+        {/* Header Section */}
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 gap-6">
+          <div className="flex items-center gap-4">
+            <div className="w-16 h-16 rounded-[24px] bg-black flex items-center justify-center shadow-2xl">
+              <Building className="w-8 h-8 text-teal-500" />
+            </div>
+            <div>
+              <h1 className="text-4xl font-black text-gray-900 tracking-tighter">Meus Espaços</h1>
+              <p className="text-gray-500 font-medium">Você tem {spaces.length} propriedades cadastradas.</p>
+            </div>
+          </div>
+          <Button
+            onClick={() => { setEditingSpace(null); setShowForm(true); }}
+            className="h-14 px-8 rounded-2xl bg-teal-500 hover:bg-teal-600 text-white font-black shadow-lg shadow-teal-100 transition-all"
+          >
+            <Plus className="w-5 h-5 mr-2" /> Adicionar Espaço
+          </Button>
+        </div>
+
+        {/* Form Overlay */}
+        <AnimatePresence>
+          {showForm && (
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, scale: 0.95 }} className="mb-12">
+              <Card className="border-none shadow-2xl rounded-[40px] overflow-hidden">
+                <CardContent className="p-8">
+                  <h2 className="text-2xl font-black mb-6">{editingSpace ? "Editar Espaço" : "Novo Espaço"}</h2>
+                  <SpaceForm
+                    space={editingSpace}
+                    onSubmit={handleSubmit}
+                    onCancel={() => { setShowForm(false); setEditingSpace(null); }}
+                    isProcessing={createSpaceMutation.isPending || updateSpaceMutation.isPending}
+                  />
+                </CardContent>
+              </Card>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* Spaces Grid */}
+        {isLoading ? (
+          <div className="flex justify-center py-20"><Loader2 className="animate-spin text-teal-500" size={40} /></div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {spaces.map((space) => (
+              <MySpaceCard 
+                key={space.id} 
+                space={space} 
+                onEdit={() => { setEditingSpace(space); setShowForm(true); }}
+                onDelete={() => { if(confirm("Excluir espaço?")) deleteSpaceMutation.mutate(space.id) }}
+                onBlockDates={() => handleBlockDates(space)}
+              />
+            ))}
+          </div>
+        )}
+
+        {/* Modal de Bloqueio */}
+        {selectedSpace && (
+          <BlockDatesModal 
+            space={selectedSpace} 
+            isOpen={showBlockModal} 
+            onClose={() => { setShowBlockModal(false); setSelectedSpace(null); }} 
+          />
+        )}
+      </div>
+    </div>
+  );
+}
+
