@@ -1,2 +1,1 @@
-﻿import React from 'react'; export const Badge = ({ children, className, ...props }) => <div className={className} {...props}>{children}</div>;
-
+import React from 'react'; export const Badge = ({ children, className, ...props }) => <div className={className} {...props}>{children}</div>; 

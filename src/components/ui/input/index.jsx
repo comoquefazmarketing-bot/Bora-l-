@@ -1,5 +1,1 @@
-﻿import React from 'react';
-export const Input = ({ className, ...props }) => (
-  <input className={order p-2 rounded \} {...props} />
-);
-export default Input;
+import React from 'react'; export const Input = ({ className, ...props }) => (   <input className={order p-2 rounded \} {...props} /> ); export default Input;
