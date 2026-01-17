@@ -1,0 +1,1 @@
+import React from 'react'; export const Label = ({ children, className = '', ...props }) => <label className={	ext-sm font-medium text-slate-700 \} {...props}>{children}</label>;

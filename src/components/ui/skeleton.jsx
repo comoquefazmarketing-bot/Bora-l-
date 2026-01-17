@@ -1,0 +1,1 @@
+import React from 'react'; export const Skeleton = ({ className = '' }) => <div className={nimate-pulse bg-slate-200 rounded-md \} />;
