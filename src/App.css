@@ -40,3 +40,44 @@
 .read-the-docs {
   color: #888;
 }
+
+/* --- LIMPEZA MOBILE BY FELIPE MAKARIOS --- */
+@media (max-width: 768px) {
+    /* Esconde a Sidebar monstra */
+    aside, .sidebar, [class*="sidebar"] {
+        display: none !important;
+    }
+
+    /* Conteúdo ocupa 100% da tela */
+    main, .main-content, #root > div {
+        margin-left: 0 !important;
+        padding: 15px !important;
+        width: 100% !important;
+    }
+
+    /* Transforma botão da calculadora em ícone flutuante discreto */
+    .calculadora-btn, button[aria-label*="calculadora"], [class*="calculadora"] button {
+        position: fixed !important;
+        bottom: 20px !important;
+        right: 20px !important;
+        width: 55px !important;
+        height: 55px !important;
+        border-radius: 50% !important;
+        font-size: 0 !important;
+        background: #007bff url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24"><path d="M19 2H5c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 14H7v-2h10v2zm0-4H7v-2h10v2zm0-4H7V6h10v2z"/></svg>') no-repeat center !important;
+        background-size: 25px !important;
+        z-index: 9999 !important;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.4) !important;
+        border: none !important;
+    }
+
+    /* Ajusta os cards para ficarem um abaixo do outro */
+    .grid, .container {
+        display: block !important;
+    }
+    
+    .card, [class*="card"] {
+        width: 100% !important;
+        margin-bottom: 20px !important;
+    }
+}
