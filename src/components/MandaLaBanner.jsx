@@ -51,7 +51,7 @@ export default function MandaLaBanner() {
                 <span className="text-[#00BFA6] font-black uppercase text-[10px] tracking-[0.4em]">Planeje agora</span>
               </div>
               <h4 className="text-white text-lg md:text-3xl font-black uppercase italic tracking-tighter leading-none">
-                Calc <span className="text-[#00BFA6]">Churrasco</span>
+                Calculadora <span className="text-[#00BFA6]">Churrasco</span>
               </h4>
               <p className="text-white/40 text-[11px] font-bold uppercase mt-2 tracking-widest">Gere sua lista completa em 5 segundos!</p>
             </div>
