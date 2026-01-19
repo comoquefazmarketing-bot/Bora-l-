@@ -1,0 +1,16 @@
+﻿==================================================
+CHECK-POINT BORA LÁ - 18/01/2026 23:38
+==================================================
+ESTADO ATUAL:
+- Branch ativa: oficial (Conectada ao Netlify)
+- Responsividade: Injetado CSS para esconder Sidebar e encolher Calculadora no mobile.
+- Segurança: Token Airtable liberado no Secret Scanning do GitHub.
+- Deploy: Automatizado via 'git push origin oficial'.
+
+TAREFAS PARA AMANHÃ:
+1. Validar visual final no celular (Aba Anônima).
+2. Refinar transições da 'Experiência Sensorial'.
+3. Ajustar o Dashboard.jsx (limpeza de código morto).
+
+Criado por: Felipe Makarios
+==================================================
