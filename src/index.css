@@ -1,13 +1,7 @@
-﻿@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 body {
   margin: 0;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-.scrollbar-hide::-webkit-scrollbar {
-    display: none;
+  background-color: #F8F9FA;
+  font-family: sans-serif;
 }

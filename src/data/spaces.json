@@ -1,0 +1,14 @@
+﻿[
+  {
+    "id": "recanto-top-burguer",
+    "nome": "Recanto Top Burguer",
+    "endereco": "Rua Manoel Neves, 969",
+    "bairro": "Parque dos Ipês",
+    "cidade": "Novo Horizonte",
+    "preco": "330,00",
+    "referencia": "Atrás clube usina estiva",
+    "comodidades": ["Piscina Aquecida", "10 Mesas", "TV Smart", "Wi-Fi"],
+    "fotos": ["foto1.jpg", "foto2.jpg"],
+    "video": "video1.mp4"
+  }
+]
