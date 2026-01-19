@@ -5,7 +5,7 @@ export const translateInventory = (mesas, cadeiras, temPiscina) => {
   
   return {
     titulo: (capacidade > 30) ? 'Sítio para Grandes Festas' : 'Área de Lazer Acolhedora',
-    descricao: Espaço estruturado para  pessoas com ambiente de .,
+    descricao: "Cálculo técnico de capacidade",
     infra: 'Completa (Cozinha, TV e Internet)'
   };
 };
