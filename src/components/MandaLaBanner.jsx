@@ -1,4 +1,4 @@
-/* @author Felipe Makarios | Creator & Lead Architect - Bora Lá / Manda Lá */
+/* @author Felipe Makarios | Creator & Lead Architect - Bora LÃ¡ / Manda LÃ¡ */
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { 
@@ -27,9 +27,9 @@ export default function MandaLaBanner() {
   };
 
   const suppliers = [
-    { name: "Adega do Marcão", type: "Gelada & Gelo", icon: "🍺", color: "bg-yellow-400" },
-    { name: "Casa de Carnes Boi de Ouro", type: "Churrasco Premium", icon: "🥩", color: "bg-red-500" },
-    { name: "Empório da Vila", type: "Tudo para Festa", icon: "🥳", color: "bg-purple-500" }
+    { name: "Adega do MarcÃ£o", type: "Gelada & Gelo", icon: "ðŸº", color: "bg-yellow-400" },
+    { name: "Casa de Carnes Boi de Ouro", type: "Churrasco Premium", icon: "ðŸ¥©", color: "bg-red-500" },
+    { name: "EmpÃ³rio da Vila", type: "Tudo para Festa", icon: "ðŸ¥³", color: "bg-purple-500" }
   ];
 
   return (
@@ -50,16 +50,16 @@ export default function MandaLaBanner() {
                 <PartyPopper size={16} className="text-[#FF4500]" />
                 <span className="text-[#00BFA6] font-black uppercase text-[10px] tracking-[0.4em]">Planeje agora</span>
               </div>
-              <h4 className="text-white text-3xl font-black uppercase italic tracking-tighter leading-none">
-                Calculadora <span className="text-[#00BFA6]">de Festa</span>
+              <h4 className="text-white text-lg md:text-3xl font-black uppercase italic tracking-tighter leading-none">
+                Calc <span className="text-[#00BFA6]">Churrasco</span>
               </h4>
               <p className="text-white/40 text-[11px] font-bold uppercase mt-2 tracking-widest">Gere sua lista completa em 5 segundos!</p>
             </div>
           </div>
 
-          <div className="flex items-center gap-8 pr-4">
+          <div className="hidden md:flex items-center gap-8 pr-4">
              <div className="hidden lg:flex flex-col items-end">
-                <span className="text-[#FF4500] font-black text-[11px] uppercase tracking-widest italic">Venda no Manda Lá</span>
+                <span className="text-[#FF4500] font-black text-[11px] uppercase tracking-widest italic">Venda no Manda LÃ¡</span>
                 <p className="text-white/30 text-[9px] font-bold uppercase mt-1">Sua empresa em destaque</p>
              </div>
              <button 
@@ -84,14 +84,14 @@ export default function MandaLaBanner() {
               </button>
               
               <h2 className="text-4xl md:text-6xl font-black uppercase italic tracking-tighter leading-[0.9] text-[#1A1A1A] mb-12">
-                A festa <br/><span className="text-[#00BFA6]">começa aqui.</span>
+                A festa <br/><span className="text-[#00BFA6]">comeÃ§a aqui.</span>
               </h2>
 
               <div className="space-y-5">
                 {[
                   { label: 'Homens', key: 'men', icon: <User size={28}/> },
                   { label: 'Mulheres', key: 'women', icon: <UserPlus size={28}/> },
-                  { label: 'Crianças', key: 'kids', icon: <Baby size={28}/> }
+                  { label: 'CrianÃ§as', key: 'kids', icon: <Baby size={28}/> }
                 ].map((item) => (
                   <div key={item.key} className="bg-white p-8 rounded-[40px] border-2 border-[#F0EFEA] flex items-center justify-between shadow-xl">
                     <div className="flex items-center gap-5 text-[#1A1A1A]">
@@ -100,7 +100,7 @@ export default function MandaLaBanner() {
                     </div>
                     <div className="flex items-center gap-6">
                       <button onClick={() => updateCount(item.key, -1)} className="w-12 h-12 rounded-2xl bg-[#F0EFEA] flex items-center justify-center font-black text-2xl hover:bg-red-500 hover:text-white transition-all">-</button>
-                      <span className="text-3xl font-black italic w-10 text-center">{counts[item.key]}</span>
+                      <span className="text-lg md:text-3xl font-black italic w-10 text-center">{counts[item.key]}</span>
                       <button onClick={() => updateCount(item.key, 1)} className="w-12 h-12 rounded-2xl bg-[#F0EFEA] flex items-center justify-center font-black text-2xl hover:bg-[#00BFA6] hover:text-white transition-all">+</button>
                     </div>
                   </div>
@@ -111,8 +111,8 @@ export default function MandaLaBanner() {
             {/* LADO B: LISTA + FORNECEDORES AGORA */}
             <div className="p-12 w-full md:w-[58%] overflow-y-auto bg-white">
               <div className="mb-10">
-                <span className="text-[#FF4500] font-black uppercase text-[11px] tracking-[0.5em]">Checklist Bora Lá</span>
-                <h3 className="text-4xl font-black uppercase italic tracking-tighter mt-2 leading-none">Sua lista está <span className="text-[#FF4500]">PRONTA!</span></h3>
+                <span className="text-[#FF4500] font-black uppercase text-[11px] tracking-[0.5em]">Checklist Bora LÃ¡</span>
+                <h3 className="text-4xl font-black uppercase italic tracking-tighter mt-2 leading-none">Sua lista estÃ¡ <span className="text-[#FF4500]">PRONTA!</span></h3>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12">
@@ -121,8 +121,8 @@ export default function MandaLaBanner() {
                   { l: 'Cervejas', v: `${calc.cerveja}un`, i: <Beer size={24}/>, c: 'bg-yellow-50' },
                   { l: 'Bebidas', v: `${calc.refriAgua}L`, i: <Droplets size={24}/>, c: 'bg-blue-50' },
                   { l: 'Gelo', v: `${calc.gelo}kg`, i: <Flame size={24}/>, c: 'bg-cyan-50' },
-                  { l: 'Carvão', v: `${calc.carvao}kg`, i: <Flame size={24}/>, c: 'bg-orange-50' },
-                  { l: 'Descartáveis', v: `${calc.descartaveis}un`, i: <Package size={24}/>, c: 'bg-purple-50' }
+                  { l: 'CarvÃ£o', v: `${calc.carvao}kg`, i: <Flame size={24}/>, c: 'bg-orange-50' },
+                  { l: 'DescartÃ¡veis', v: `${calc.descartaveis}un`, i: <Package size={24}/>, c: 'bg-purple-50' }
                 ].map((item, i) => (
                   <div key={i} className={`${item.c} p-6 rounded-[35px] border border-black/5 flex items-center gap-6`}>
                     <div className="text-[#1A1A1A]">{item.i}</div>
@@ -136,7 +136,7 @@ export default function MandaLaBanner() {
 
               {/* VITRINE IMEDIATA */}
               <div className="space-y-4">
-                <h4 className="text-[12px] font-black uppercase tracking-[0.4em] text-[#1A1A1A] mb-6 border-l-4 border-[#FF4500] pl-4">Pedir Agora (Manda Lá)</h4>
+                <h4 className="text-[12px] font-black uppercase tracking-[0.4em] text-[#1A1A1A] mb-6 border-l-4 border-[#FF4500] pl-4">Pedir Agora (Manda LÃ¡)</h4>
                 {suppliers.map((s, idx) => (
                   <div key={idx} className="bg-[#FDFCFB] p-6 rounded-[40px] border-2 border-[#F0EFEA] flex items-center justify-between hover:border-[#FF4500] hover:translate-x-2 transition-all cursor-pointer shadow-sm">
                     <div className="flex items-center gap-6">
