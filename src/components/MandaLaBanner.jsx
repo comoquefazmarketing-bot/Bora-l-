@@ -1,4 +1,4 @@
-﻿/* @author Felipe Makarios | Creator & Lead Architect - Bora Lá / Manda Lá */
+/* @author Felipe Makarios | Creator & Lead Architect - Bora Lá / Manda Lá */
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { 
@@ -35,8 +35,8 @@ export default function MandaLaBanner() {
   return (
     <>
       {/* BARRA ROBUSTA E ALEGRE */}
-      <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-[100] w-full max-w-6xl px-6">
-        <div className="bg-[#1A1A1A] rounded-[45px] p-4 shadow-[0_40px_100px_rgba(0,0,0,0.7)] border-4 border-[#00BFA6] flex flex-col md:flex-row items-center justify-between gap-6 overflow-hidden relative">
+      <div className="fixed bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 z-[100] w-full max-w-6xl px-6">
+        <div className="bg-[#1A1A1A] rounded-[45px] p-3 md:p-4 shadow-[0_40px_100px_rgba(0,0,0,0.7)] border-4 border-[#00BFA6] flex flex-col md:flex-row items-center justify-between gap-6 overflow-hidden relative">
           
           {/* Brilho de Fundo Decorativo */}
           <div className="absolute top-0 right-0 w-32 h-32 bg-[#FF4500] blur-[80px] opacity-20"></div>
@@ -75,15 +75,15 @@ export default function MandaLaBanner() {
       {/* MODAL SENSORIAL ROBUSTO */}
       {showCalc && (
         <div className="fixed inset-0 z-[200] flex items-center justify-center p-4 backdrop-blur-3xl bg-black/90 animate-in fade-in duration-300">
-          <div className="bg-white w-full max-w-6xl rounded-[70px] relative shadow-2xl flex flex-col md:flex-row overflow-hidden border-[15px] border-white max-h-[95vh]">
+          <div className="bg-white w-full max-w-6xl rounded-[70px] relative shadow-2xl flex flex-col md:flex-row overflow-y-auto md:overflow-hidden border-[15px] border-white max-h-[95vh]">
             
             {/* LADO A: CONVIDADOS */}
-            <div className="bg-[#FDFCFB] p-12 md:w-[42%] border-r-4 border-[#F0EFEA] overflow-y-auto">
+            <div className="bg-[#FDFCFB] p-12 w-full md:w-[42%] border-r-4 border-[#F0EFEA] overflow-y-auto">
               <button onClick={() => setShowCalc(false)} className="text-[#B2B0AB] hover:text-[#1A1A1A] flex items-center gap-2 font-black text-[11px] uppercase tracking-[0.3em] mb-12">
                 <X size={24}/> Fechar
               </button>
               
-              <h2 className="text-6xl font-black uppercase italic tracking-tighter leading-[0.9] text-[#1A1A1A] mb-12">
+              <h2 className="text-4xl md:text-6xl font-black uppercase italic tracking-tighter leading-[0.9] text-[#1A1A1A] mb-12">
                 A festa <br/><span className="text-[#00BFA6]">começa aqui.</span>
               </h2>
 
@@ -109,13 +109,13 @@ export default function MandaLaBanner() {
             </div>
 
             {/* LADO B: LISTA + FORNECEDORES AGORA */}
-            <div className="p-12 md:w-[58%] overflow-y-auto bg-white">
+            <div className="p-12 w-full md:w-[58%] overflow-y-auto bg-white">
               <div className="mb-10">
                 <span className="text-[#FF4500] font-black uppercase text-[11px] tracking-[0.5em]">Checklist Bora Lá</span>
                 <h3 className="text-4xl font-black uppercase italic tracking-tighter mt-2 leading-none">Sua lista está <span className="text-[#FF4500]">PRONTA!</span></h3>
               </div>
 
-              <div className="grid grid-cols-2 gap-4 mb-12">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12">
                 {[
                   { l: 'Carnes', v: `${calc.carne}kg`, i: <Utensils size={24}/>, c: 'bg-red-50' },
                   { l: 'Cervejas', v: `${calc.cerveja}un`, i: <Beer size={24}/>, c: 'bg-yellow-50' },
