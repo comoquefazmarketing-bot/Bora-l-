@@ -1,62 +1,20 @@
-/* Reset de conflitos para o Dashboard do Felipe */
-body { margin: 0; padding: 0; overflow-x: hidden; }
-* { box-sizing: border-box; }
+/* Reset Global - Bora LÃ¡ */
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
-/* Garante que o container root nÃ£o trave o layout */
-#root { width: 100%; min-height: 100vh; }
-
-@media (max-width: 768px) {
-    /* Ajuste para o header mobile nÃ£o esconder conteÃºdo */
-    main { padding-top: 20px !important; }
-    
-    /* Garante que as imagens dos cards nÃ£o estourem */
-    .group { max-width: 100%; }
+body { 
+  margin: 0; 
+  padding: 0; 
+  overflow-x: hidden; 
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
-/* --- CORREÇÃO FINAL DE RESPONSIVIDADE --- */
+
+#root { width: 100%; }
+
+/* Ajuste fino para o Mobile nÃ£o colar no topo */
 @media (max-width: 768px) {
-    /* 1. Mata a Sidebar e o espaço que ela reserva na esquerda */
-    aside, .sidebar, [class*="sidebar"], [class*="layout-sidebar"] {
-        display: none !important;
-        width: 0 !important;
-        position: absolute !important;
-    }
-
-    /* 2. Força o conteúdo principal a centralizar e ocupar a tela toda */
-    main, #root > div, [class*="main-content"] {
-        margin-left: 0 !important;
-        padding: 5px !important;
-        width: 100vw !important;
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-    }
-
-    /* 3. DOMANDO A CALCULADORA: Ela não pode ser maior que a tela */
-    /* Ajusta o container da calculadora que aparece nas fotos */
-    [class*="Calculadora"], .calculadora-container, [class*="banner"] {
-        width: 95% !important;
-        max-width: 380px !important; /* Limite para não ficar gigante */
-        margin: 10px auto !important;
-        left: 0 !important;
-        right: 0 !important;
-        position: relative !important;
-    }
-
-    /* Ajusta os textos internos da calculadora para não quebrarem */
-    [class*="Calculadora"] h2, [class*="Calculadora"] p {
-        font-size: 14px !important;
-    }
-
-    /* 4. Ajusta os Cards (Recanto Top, Área de Lazer) para não ficarem cortados */
-    .grid, [class*="grid"] {
-        display: flex !important;
-        flex-direction: column !important;
-        width: 100% !important;
-        align-items: center !important;
-    }
-
-    [class*="card"] {
-        width: 90% !important;
-        margin-bottom: 20px !important;
+    main {
+        padding-top: 10px !important;
     }
 }
