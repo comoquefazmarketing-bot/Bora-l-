@@ -81,3 +81,43 @@
         margin-bottom: 20px !important;
     }
 }
+
+/* ESTRATÉGIA WEB MOBILE - BORA LÁ */
+@media (max-width: 768px) {
+    /* Esconde elementos que só fazem sentido no PC (Sidebar) */
+    aside, .sidebar, nav[class*="sidebar"] {
+        display: none !important;
+    }
+
+    /* O conteúdo agora respira na tela inteira do celular */
+    main, .main-content, #root > div {
+        margin: 0 !important;
+        padding: 15px !important;
+        width: 100vw !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Botão da Calculadora: De "Monstro" para "Círculo Flutuante" (Estilo WhatsApp) */
+    .calculadora-btn, button:has(svg[class*="calc"]), [class*="calc"] button {
+        position: fixed !important;
+        bottom: 25px !important;
+        right: 25px !important;
+        width: 65px !important;
+        height: 65px !important;
+        border-radius: 50% !important;
+        padding: 0 !important;
+        font-size: 0 !important; /* Esconde o texto */
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        z-index: 1000 !important;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.5) !important;
+    }
+
+    /* Garante que os cards das áreas fiquem em uma coluna só */
+    .grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 20px !important;
+    }
+}
