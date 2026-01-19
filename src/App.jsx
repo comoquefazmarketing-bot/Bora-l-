@@ -1,13 +1,11 @@
-﻿/* @author Felipe Makarios | Creator - Bora Lá */
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-
-import Home from './pages/Home';
-import SpaceDetails from './pages/SpaceDetails';
-import MySpaces from './pages/MySpaces';
-import RegisterSupplier from './pages/RegisterSupplier';
-import MandaLaBanner from './components/MandaLaBanner';
-
+﻿import React from "react";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import Home from "./domains/commercial/Home";
+import SpaceDetails from "./pages/SpaceDetails";
+import MySpaces from "./pages/MySpaces";
+import Dashboard from "./domains/backoffice/Dashboard";
+import Admin from "./domains/backoffice/Admin";
+import ChatWithLia from "./domains/support/ChatWithLia";
 function App() {
   return (
     <Router>
