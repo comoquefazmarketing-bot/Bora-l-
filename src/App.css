@@ -160,3 +160,32 @@
         gap: 20px !important;
     }
 }
+
+/* --- CONTROLE DE GAVETAS E SIDEBAR MOBILE --- */
+@media (max-width: 768px) {
+    /* 1. Esconde a gaveta da calculadora e qualquer painel lateral */
+    .drawer, .sidebar, aside, [class*="drawer"], [class*="sidebar"], [class*="SheetContent"] {
+        display: none !important;
+        visibility: hidden !important;
+        width: 0 !important;
+        height: 0 !important;
+        position: absolute !important;
+        left: -9999px !important; /* Joga para fora da tela */
+    }
+
+    /* 2. Garante que o corpo do site não tenha rolagem lateral (o branco do lado) */
+    html, body {
+        overflow-x: hidden !important;
+        position: relative !important;
+        width: 100% !important;
+    }
+
+    /* 3. Ajuste do container principal para ocupar o vácuo deixado pela sidebar */
+    main, #root > div, .main-content {
+        margin: 0 !important;
+        padding: 10px !important;
+        width: 100vw !important;
+        min-height: 100vh !important;
+        display: block !important;
+    }
+}
