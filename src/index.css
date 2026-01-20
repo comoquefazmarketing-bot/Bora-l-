@@ -1,7 +1,5 @@
-/* Reset Global - Bora Lá (Arquitetura Sensorial) */
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+/* Arquitetura Sensorial - Tailwind v4 */
+@import "tailwindcss";
 
 :root {
   --sidebar-closed: 80px;
@@ -19,21 +17,18 @@ body {
 
 #root { width: 100%; }
 
-/* Suaviza a transição do conteúdo principal quando a sidebar abre */
 main {
   transition: margin-left 0.3s ease-in-out;
 }
 
-/* Ajuste para Mobile - No celular a sidebar geralmente vira menu superior ou flutuante */
 @media (max-width: 768px) {
     main {
         margin-left: 0 !important;
         padding-top: 20px !important;
-        padding-bottom: 80px; /* Espaço para não cobrir o conteúdo */
+        padding-bottom: 80px;
     }
 }
 
-/* Esconde a barra de rolagem mas mantém a funcionalidade */
 .no-scrollbar::-webkit-scrollbar {
     display: none;
 }
