@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { 
   Home, Truck, Menu, X, Calculator, MapPin, ChevronRight
 } from "lucide-react";
-import { spacesData } from "../data/spaces";
+import { spacesData } from "../../data/spaces";
 
 export default function Dashboard() {
   const navigate = useNavigate();

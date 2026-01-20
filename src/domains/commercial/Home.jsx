@@ -5,8 +5,8 @@ import {
   Search, Home as HomeIcon, Calendar, Heart, MapPin, 
   Wifi, Star, Sparkles, Waves, Tv, Truck, Menu, ChevronLeft 
 } from "lucide-react";
-import { spacesData } from "../data/spaces";
-import MandaLaBanner from "../components/MandaLaBanner";
+import { spacesData } from "../../data/spaces";
+import MandaLaBanner from "../../components/MandaLaBanner";
 
 export default function Home() {
   const navigate = useNavigate();
