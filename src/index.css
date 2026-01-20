@@ -1,7 +1,43 @@
-@import "tailwindcss";
+﻿/* Reset Global - Bora Lá (Arquitetura Sensorial) */
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
-body {
-  margin: 0;
-  background-color: #F8F9FA;
-  font-family: sans-serif;
+:root {
+  --sidebar-closed: 80px;
+  --sidebar-open: 256px;
+}
+
+body { 
+  margin: 0; 
+  padding: 0; 
+  overflow-x: hidden; 
+  background-color: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root { width: 100%; }
+
+/* Suaviza a transição do conteúdo principal quando a sidebar abre */
+main {
+  transition: margin-left 0.3s ease-in-out;
+}
+
+/* Ajuste para Mobile - No celular a sidebar geralmente vira menu superior ou flutuante */
+@media (max-width: 768px) {
+    main {
+        margin-left: 0 !important;
+        padding-top: 20px !important;
+        padding-bottom: 80px; /* Espaço para não cobrir o conteúdo */
+    }
+}
+
+/* Esconde a barra de rolagem mas mantém a funcionalidade */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
