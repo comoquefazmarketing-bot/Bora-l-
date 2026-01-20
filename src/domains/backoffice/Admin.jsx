@@ -1,7 +1,7 @@
 ﻿import React, { useState } from "react";
 import { Save, Phone, User, DollarSign, MapPin, ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { spacesData as initialData } from "../../../data/spaces";
+import { spacesData as initialData } from "../../data/spaces";
 
 export default function Admin() {
   const navigate = useNavigate();
