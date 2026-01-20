@@ -1,4 +1,4 @@
-/* @author Felipe Makarios | Creator & Lead Architect - Bora LÃ¡ / Manda LÃ¡ */
+﻿/* @author Felipe Makarios | Creator & Lead Architect - Bora LÃƒÂ¡ / Manda LÃƒÂ¡ */
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { 
@@ -27,15 +27,15 @@ export default function MandaLaBanner() {
   };
 
   const suppliers = [
-    { name: "Adega do MarcÃ£o", type: "Gelada & Gelo", icon: "ðŸº", color: "bg-yellow-400" },
-    { name: "Casa de Carnes Boi de Ouro", type: "Churrasco Premium", icon: "ðŸ¥©", color: "bg-red-500" },
-    { name: "EmpÃ³rio da Vila", type: "Tudo para Festa", icon: "ðŸ¥³", color: "bg-purple-500" }
+    { name: "Adega do MarcÃƒÂ£o", type: "Gelada & Gelo", icon: "Ã°Å¸ÂÂº", color: "bg-yellow-400" },
+    { name: "Casa de Carnes Boi de Ouro", type: "Churrasco Premium", icon: "Ã°Å¸Â¥Â©", color: "bg-red-500" },
+    { name: "EmpÃƒÂ³rio da Vila", type: "Tudo para Festa", icon: "Ã°Å¸Â¥Â³", color: "bg-purple-500" }
   ];
 
   return (
     <>
       {/* BARRA ROBUSTA E ALEGRE */}
-      <div className="fixed bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 z-[100] w-full max-w-6xl px-6">
+      <div className="relative mx-auto w-full my-12 px-6 max-w-6xl px-6">
         <div className="bg-[#1A1A1A] rounded-[45px] p-3 md:p-4 shadow-[0_40px_100px_rgba(0,0,0,0.7)] border-4 border-[#00BFA6] flex flex-col md:flex-row items-center justify-between gap-6 overflow-hidden relative">
           
           {/* Brilho de Fundo Decorativo */}
@@ -59,7 +59,7 @@ export default function MandaLaBanner() {
 
           <div className="hidden md:flex items-center gap-8 pr-4">
              <div className="hidden lg:flex flex-col items-end">
-                <span className="text-[#FF4500] font-black text-[11px] uppercase tracking-widest italic">Venda no Manda LÃ¡</span>
+                <span className="text-[#FF4500] font-black text-[11px] uppercase tracking-widest italic">Venda no Manda LÃƒÂ¡</span>
                 <p className="text-white/30 text-[9px] font-bold uppercase mt-1">Sua empresa em destaque</p>
              </div>
              <button 
@@ -84,14 +84,14 @@ export default function MandaLaBanner() {
               </button>
               
               <h2 className="text-4xl md:text-6xl font-black uppercase italic tracking-tighter leading-[0.9] text-[#1A1A1A] mb-12">
-                A festa <br/><span className="text-[#00BFA6]">comeÃ§a aqui.</span>
+                A festa <br/><span className="text-[#00BFA6]">comeÃƒÂ§a aqui.</span>
               </h2>
 
               <div className="space-y-5">
                 {[
                   { label: 'Homens', key: 'men', icon: <User size={28}/> },
                   { label: 'Mulheres', key: 'women', icon: <UserPlus size={28}/> },
-                  { label: 'CrianÃ§as', key: 'kids', icon: <Baby size={28}/> }
+                  { label: 'CrianÃƒÂ§as', key: 'kids', icon: <Baby size={28}/> }
                 ].map((item) => (
                   <div key={item.key} className="bg-white p-8 rounded-[40px] border-2 border-[#F0EFEA] flex items-center justify-between shadow-xl">
                     <div className="flex items-center gap-5 text-[#1A1A1A]">
@@ -111,8 +111,8 @@ export default function MandaLaBanner() {
             {/* LADO B: LISTA + FORNECEDORES AGORA */}
             <div className="p-12 w-full md:w-[58%] overflow-y-auto bg-white">
               <div className="mb-10">
-                <span className="text-[#FF4500] font-black uppercase text-[11px] tracking-[0.5em]">Checklist Bora LÃ¡</span>
-                <h3 className="text-4xl font-black uppercase italic tracking-tighter mt-2 leading-none">Sua lista estÃ¡ <span className="text-[#FF4500]">PRONTA!</span></h3>
+                <span className="text-[#FF4500] font-black uppercase text-[11px] tracking-[0.5em]">Checklist Bora LÃƒÂ¡</span>
+                <h3 className="text-4xl font-black uppercase italic tracking-tighter mt-2 leading-none">Sua lista estÃƒÂ¡ <span className="text-[#FF4500]">PRONTA!</span></h3>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12">
@@ -121,8 +121,8 @@ export default function MandaLaBanner() {
                   { l: 'Cervejas', v: `${calc.cerveja}un`, i: <Beer size={24}/>, c: 'bg-yellow-50' },
                   { l: 'Bebidas', v: `${calc.refriAgua}L`, i: <Droplets size={24}/>, c: 'bg-blue-50' },
                   { l: 'Gelo', v: `${calc.gelo}kg`, i: <Flame size={24}/>, c: 'bg-cyan-50' },
-                  { l: 'CarvÃ£o', v: `${calc.carvao}kg`, i: <Flame size={24}/>, c: 'bg-orange-50' },
-                  { l: 'DescartÃ¡veis', v: `${calc.descartaveis}un`, i: <Package size={24}/>, c: 'bg-purple-50' }
+                  { l: 'CarvÃƒÂ£o', v: `${calc.carvao}kg`, i: <Flame size={24}/>, c: 'bg-orange-50' },
+                  { l: 'DescartÃƒÂ¡veis', v: `${calc.descartaveis}un`, i: <Package size={24}/>, c: 'bg-purple-50' }
                 ].map((item, i) => (
                   <div key={i} className={`${item.c} p-6 rounded-[35px] border border-black/5 flex items-center gap-6`}>
                     <div className="text-[#1A1A1A]">{item.i}</div>
@@ -136,7 +136,7 @@ export default function MandaLaBanner() {
 
               {/* VITRINE IMEDIATA */}
               <div className="space-y-4">
-                <h4 className="text-[12px] font-black uppercase tracking-[0.4em] text-[#1A1A1A] mb-6 border-l-4 border-[#FF4500] pl-4">Pedir Agora (Manda LÃ¡)</h4>
+                <h4 className="text-[12px] font-black uppercase tracking-[0.4em] text-[#1A1A1A] mb-6 border-l-4 border-[#FF4500] pl-4">Pedir Agora (Manda LÃƒÂ¡)</h4>
                 {suppliers.map((s, idx) => (
                   <div key={idx} className="bg-[#FDFCFB] p-6 rounded-[40px] border-2 border-[#F0EFEA] flex items-center justify-between hover:border-[#FF4500] hover:translate-x-2 transition-all cursor-pointer shadow-sm">
                     <div className="flex items-center gap-6">
