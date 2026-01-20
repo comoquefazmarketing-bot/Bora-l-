@@ -1,14 +1,24 @@
 ﻿[
   {
-    "id": "recanto-top-burguer",
-    "nome": "Recanto Top Burguer",
-    "endereco": "Rua Manoel Neves, 969",
-    "bairro": "Parque dos Ipês",
-    "cidade": "Novo Horizonte",
-    "preco": "330,00",
-    "referencia": "Atrás clube usina estiva",
-    "comodidades": ["Piscina Aquecida", "10 Mesas", "TV Smart", "Wi-Fi"],
-    "fotos": ["foto1.jpg", "foto2.jpg"],
-    "video": "video1.mp4"
+    "id": 1,
+    "title": "Refúgio das Palmeiras",
+    "location": "Novo Horizonte, SP",
+    "price": "450",
+    "capacity": 25,
+    "hasPool": true,
+    "hasGrill": true,
+    "category": "Lazer Completo",
+    "image": "https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    "id": 2,
+    "title": "Espaço Sunset",
+    "location": "Uchoa, SP",
+    "price": "380",
+    "capacity": 15,
+    "hasPool": true,
+    "hasGrill": false,
+    "category": "Pôr do Sol",
+    "image": "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&q=80&w=800"
   }
 ]
