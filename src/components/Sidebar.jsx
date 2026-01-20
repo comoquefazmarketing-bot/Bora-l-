@@ -1,37 +1,29 @@
 ﻿import React, { useState } from 'react';
-import { Calculator, Store, Menu, X, Home, Search, Heart } from 'lucide-react';
+import { Calculator, Store, Menu, X, Home, Search, Heart, User } from 'lucide-react';
 
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
 
   const menuItems = [
-    { icon: <Home size={28} />, label: 'Início', action: () => window.location.href='/' },
-    { icon: <Calculator size={28} />, label: 'Calculadora Tum Dum', action: () => window.dispatchEvent(new CustomEvent('openCalc')) },
-    { icon: <Store size={28} />, label: 'Seja Parceiro', action: () => window.location.href='/register-supplier' },
+    { icon: <Home size={24} />, label: 'Início', action: () => window.location.href='/' },
+    { icon: <Calculator size={24} />, label: 'Calculadora Tum Dum', action: () => window.dispatchEvent(new CustomEvent('openCalc')) },
+    { icon: <Store size={24} />, label: 'Seja Parceiro', action: () => window.location.href='/register-supplier' },
+    { icon: <Search size={24} />, label: 'Explorar', action: () => window.location.href='/explore' },
+    { icon: <Heart size={24} />, label: 'Favoritos', action: () => window.location.href='/favorites' },
   ];
 
   return (
-    <div 
-      className={`fixed left-0 top-0 h-full bg-[#1A1A1A] text-white transition-all duration-500 z-[200] shadow-[10px_0_30px_rgba(0,0,0,0.3)] ${isOpen ? 'w-72' : 'w-20'}`}
-      onMouseEnter={() => setIsOpen(true)}
-      onMouseLeave={() => setIsOpen(false)}
-    >
-      <div className="flex flex-col h-full py-8 items-center">
-        <div className="mb-12 text-[#00BFA6]">
-          {isOpen ? <span className="font-black italic text-xl">BORA LÁ</span> : <Menu size={32} />}
-        </div>
+    <div className={`fixed left-0 top-0 h-full bg-[#1A1A1A] text-white transition-all duration-300 z-[150] ${isOpen ? 'w-64' : 'w-20'}`}>
+      <div className="p-6 flex flex-col h-full">
+        <button onClick={() => setIsOpen(!isOpen)} className="mb-12 hover:text-[#00BFA6] transition-colors self-center">
+          {isOpen ? <X size={32} /> : <Menu size={32} />}
+        </button>
 
-        <nav className="flex-1 space-y-10 w-full px-6">
+        <nav className="flex-1 space-y-8">
           {menuItems.map((item, idx) => (
-            <button key={idx} onClick={item.action} className="flex items-center gap-6 group w-full transition-all">
-              <div className="group-hover:text-[#00BFA6] group-hover:scale-110 transition-all text-[#B2B0AB]">
-                {item.icon}
-              </div>
-              {isOpen && (
-                <span className="font-black uppercase text-[10px] tracking-[0.3em] whitespace-nowrap animate-in fade-in slide-in-from-left-4">
-                  {item.label}
-                </span>
-              )}
+            <button key={idx} onClick={item.action} className="flex items-center gap-4 group w-full text-left p-2">
+              <div className="group-hover:text-[#00BFA6] transition-colors">{item.icon}</div>
+              {isOpen && <span className="font-bold uppercase text-[10px] tracking-widest animate-in fade-in duration-300">{item.label}</span>}
             </button>
           ))}
         </nav>
