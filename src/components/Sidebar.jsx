@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { Calculator, Store, Menu, X, Home } from 'lucide-react';
 
 export default function Sidebar() {
