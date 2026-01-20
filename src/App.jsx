@@ -25,7 +25,6 @@ export default function App() {
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </main>
-        {/* O Banner agora só abre via evento da Sidebar */}
         <MandaLaBanner />
       </div>
     </Router>
