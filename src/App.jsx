@@ -30,7 +30,7 @@ export default function App() {
         </Routes>
         
         {/* Banner Único e Conectado - Sensorial Tum Dum */}
-        <MandaLaBanner />
+        
       </div>
     </Router>
   );

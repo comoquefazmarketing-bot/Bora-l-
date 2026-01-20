@@ -1,35 +1,32 @@
-﻿import React from "react";
-import { Truck, Home, Search, Heart, User } from "lucide-react";
+﻿import React, { useState } from 'react';
+import { Calculator, Store, Menu, X, Home, Search, Heart, User } from 'lucide-react';
 
 export default function Sidebar() {
-  
-  // Função que faz a mágica: Avisa o app para abrir a calculadora
-  const handleMandaLa = () => {
-    const event = new CustomEvent("openCalc");
-    window.dispatchEvent(event);
-  };
+  const [isOpen, setIsOpen] = useState(false);
+
+  const menuItems = [
+    { icon: <Home size={24} />, label: 'Início', action: () => window.location.href='/' },
+    { icon: <Calculator size={24} />, label: 'Calculadora Tum Dum', action: () => window.dispatchEvent(new CustomEvent('openCalc')) },
+    { icon: <Store size={24} />, label: 'Seja Parceiro', action: () => window.location.href='/register-supplier' },
+  ];
 
   return (
-    <aside className="fixed left-0 top-0 h-full w-24 bg-white border-r border-slate-100 flex flex-col items-center py-10 z-[200]">
-      <div className="flex flex-col gap-12">
-        {/* Outros botões... */}
-        <button onClick={() => window.location.href = "/"} className="text-slate-300 hover:text-[#00BFA6] transition-all">
-          <Home size={28} />
+    <div className={`fixed left-0 top-0 h-full bg-[#1A1A1A] text-white transition-all duration-300 z-[150] ${isOpen ? 'w-64' : 'w-20'}`}>
+      <div className="p-6 flex flex-col h-full">
+        {/* Botão de Abrir/Fechar */}
+        <button onClick={() => setIsOpen(!isOpen)} className="mb-12 hover:text-[#00BFA6] transition-colors">
+          {isOpen ? <X size={32} /> : <Menu size={32} />}
         </button>
 
-        {/* BOTÃO MANDA LÁ (O CAMINHÃO) */}
-        <button 
-          onClick={handleMandaLa} 
-          className="flex flex-col items-center gap-2 group"
-        >
-          <div className="p-3 rounded-2xl bg-slate-50 group-hover:bg-[#00BFA6] group-hover:text-white transition-all shadow-sm">
-            <Truck size={28} />
-          </div>
-          <span className="text-[9px] font-black uppercase tracking-tighter text-slate-400 group-hover:text-[#00BFA6]">Manda Lá</span>
-        </button>
-
-        {/* Outros botões... */}
+        <nav className="flex-1 space-y-8">
+          {menuItems.map((item, idx) => (
+            <button key={idx} onClick={item.action} className="flex items-center gap-4 group w-full text-left">
+              <div className="group-hover:text-[#00BFA6] transition-colors">{item.icon}</div>
+              {isOpen && <span className="font-bold uppercase text-xs tracking-widest animate-in fade-in slide-in-from-left-2">{item.label}</span>}
+            </button>
+          ))}
+        </nav>
       </div>
-    </aside>
+    </div>
   );
 }
