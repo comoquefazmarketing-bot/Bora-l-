@@ -1,45 +1,29 @@
-﻿import React from 'react';
-import { Star, MapPin, Users } from 'lucide-react';
+import React from 'react';
+import { Star, MapPin } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 export default function SpaceCard({ space }) {
   const navigate = useNavigate();
-
-  // Mapeamento Coringa: Aceita os nomes que você cadastrou
-  const title = space.title || space.nome || space.name || "Espaço Sem Nome";
-  const price = space.price || space.valor || space.diaria || "0";
-  const location = space.location || space.cidade || space.endereco || "Consultar Local";
-  const image = space.image || space.imagem || space.img || "https://images.unsplash.com/photo-1519046904884-53103b34b206";
-  const id = space.id || space._id;
-
   return (
-    <div 
-      onClick={() => navigate(`/space/${id}`)}
-      className="group cursor-pointer bg-white rounded-[32px] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-[#8D7B68]/10"
-    >
-      <div className="relative h-72 overflow-hidden">
-        <img src={image} alt={title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-        <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full flex items-center gap-1 shadow-sm">
-          <Star size={14} className="fill-yellow-400 text-yellow-400" />
-          <span className="text-[10px] font-black">4.9</span>
+    <div onClick={() => navigate(`/space/${space.id}`)} className="group cursor-pointer bg-white rounded-[40px] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-700 border border-[#F0EFEA]">
+      <div className="relative h-80 overflow-hidden bg-[#F4F1EA]">
+        <img src={space.image} alt={space.title} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" 
+             onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1519046904884-53103b34b206'; }} />
+        <div className="absolute top-6 right-6 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full flex items-center gap-1">
+          <Star size={14} className="fill-[#00BFA6] text-[#00BFA6]" />
+          <span className="text-[10px] font-black italic">4.9</span>
         </div>
       </div>
-
-      <div className="p-6">
-        <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#00BFA6] mb-1">Área Disponível</p>
-        <h3 className="text-xl font-bold text-[#1A1A1A] leading-tight mb-2 uppercase">{title}</h3>
-        <div className="flex items-center gap-2 text-[#8D7B68] opacity-70 mb-4">
-          <MapPin size={14} />
-          <span className="text-xs font-medium">{location}</span>
+      <div className="p-10">
+        <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#00BFA6] mb-3">Experiência Selecionada</p>
+        <h3 className="text-3xl font-black italic uppercase tracking-tighter leading-none mb-4">{space.title}</h3>
+        <div className="flex items-center gap-2 text-[#B2B0AB]">
+          <MapPin size={14} className="text-[#00BFA6]" />
+          <span className="text-[11px] font-bold uppercase tracking-widest">{space.location}</span>
         </div>
-        <div className="flex justify-between items-center pt-4 border-t border-[#F4F1EA]">
-          <div className="flex flex-col">
-            <span className="text-[10px] font-bold text-[#8D7B68] uppercase">A partir de</span>
-            <span className="text-lg font-black text-[#1A1A1A]">R$ {price} <small className="text-[10px]">/dia</small></span>
-          </div>
-          <button className="bg-[#8D7B68] text-white px-6 py-3 rounded-2xl font-black text-[10px] uppercase tracking-widest hover:bg-[#00BFA6] transition-all">
-            Reservar
-          </button>
+        <div className="mt-8 pt-8 border-t border-[#F0EFEA] flex justify-between items-center">
+            <span className="text-2xl font-black">R$ {space.price} <small className="text-[10px] opacity-30 italic">/dia</small></span>
+            <button className="bg-[#00BFA6] text-white px-6 py-3 rounded-2xl font-black text-[10px] uppercase tracking-widest">Detalhes</button>
         </div>
       </div>
     </div>

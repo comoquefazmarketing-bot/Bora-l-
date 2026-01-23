@@ -1,0 +1,1 @@
+﻿import React from 'react'; export default function ChatWithLia() { return <div className='p-8'><h1 className='text-2xl font-bold'>Chat com Lia</h1><p className='text-gray-500'>Sua assistente sensorial.</p></div>; }
