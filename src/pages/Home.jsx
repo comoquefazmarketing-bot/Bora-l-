@@ -8,7 +8,7 @@ const spaces = [
   { id: "carlos-zara", title: "ÁREA DE LAZER CARLOS ZARA", location: "Av. Cônego Alfredo Reith, 1363", price: "600", image: "/spaces/Área de lazer Carlos Zara/foto1.jpg" },
   { id: "recanto-do-sol", title: "RECANTO DO SOL", location: "R. Alexandre Baraldo, 433", price: "Consultar", image: "/spaces/Recanto do Sol/foto1.jpg" },
   { id: "assolini", title: "ÁREA DE LAZER ASSOLINI", location: "R. Mário Benedicto da Silva, 1305", price: "Consultar", image: "/spaces/ÁREA DE LAZER ASSOLINI/foto1.jpg" },
-  { id: "rancho-paradise", title: "RANCHO PARADISE BORBOREMA", location: "Borborema - SP", price: "Consultar", image: "/spaces/Rancho Paradise Borborema/foto1.jpg" }
+  { id: "rancho-paradise", title: "RANCHO PARADISE BORBOREMA", location: "Borborema - SP", price: "380", image: "/spaces/Rancho Paradise Borborema/foto1.jpg" }
 ];
 
 export default function Home() {
@@ -22,12 +22,11 @@ export default function Home() {
   ];
 
   useEffect(() => {
-    // Tempo aumentado para 5 segundos (5000ms)
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % frases.length);
     }, 5000);
     return () => clearInterval(interval);
-  }, [frases.length]);
+  }, []);
 
   return (
     <div className="min-h-screen bg-[#FDFCFB] pb-20 pt-16 md:pt-24">
@@ -35,7 +34,6 @@ export default function Home() {
         
         {/* BRANDING BORA LÁ */}
         <div className="mb-20 flex flex-col items-center md:items-start">
-          {/* Logo rotacionada 90 graus sentido horário */}
           <img 
             src="/logo.png" 
             alt="Bora Lá" 
@@ -47,7 +45,6 @@ export default function Home() {
             <p className="text-slate-800 text-2xl md:text-4xl font-bold italic transition-opacity duration-700">
               {frases[index]}
             </p>
-            {/* mt-8 para dar mais espaçamento entre a frase e o nome */}
             <h1 className="text-[#00BFA6] text-6xl md:text-[120px] font-black italic uppercase tracking-tighter leading-[0.85] mt-8">
               Bora Lá.
             </h1>

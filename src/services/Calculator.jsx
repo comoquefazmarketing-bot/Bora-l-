@@ -1,22 +1,20 @@
-/* @author Felipe Makarios | Lead Architect */
+/* @author Felipe Makarios | Creator & Lead Architect */
 import React, { useState, useEffect } from "react";
-import { ArrowRight, Wallet, Flame } from "lucide-react";
+import { Flame } from "lucide-react";
 
 export default function Calculator() {
   const [isOpen, setIsOpen] = useState(false);
   const [counts, setCounts] = useState({ homens: 10, mulheres: 10, criancas: 5 });
 
-  const suppliers = [
-    { name: "Adega Culere", icon: "🍺", phone: "5517996163845" },
-    { name: "Zero Grau", icon: "❄️", phone: "5517997432279" },
-    { name: "Quality Bull", icon: "🥩", phone: "5517996488662" },
-    { name: "Piovani", icon: "🛒", phone: "551735429999" }
-  ];
-
   useEffect(() => {
     const handleOpen = () => setIsOpen(true);
     window.addEventListener("openCalc", handleOpen);
-    return () => window.removeEventListener("openCalc", handleOpen);
+    const handleEsc = (e) => { if (e.key === 'Escape') setIsOpen(false); };
+    window.addEventListener('keydown', handleEsc);
+    return () => {
+      window.removeEventListener("openCalc", handleOpen);
+      window.removeEventListener('keydown', handleEsc);
+    };
   }, []);
 
   const totalPessoas = (Number(counts.homens) || 0) + (Number(counts.mulheres) || 0) + (Number(counts.criancas) || 0);
@@ -27,7 +25,6 @@ export default function Calculator() {
     refri: Math.ceil((counts.homens * 0.5) + (counts.mulheres * 0.7) + (counts.criancas * 1)),
     carvao: Math.ceil(((counts.homens + counts.mulheres) * 0.4) / 4),
     gelo: Math.ceil(totalPessoas / 8),
-    descartaveis: totalPessoas
   };
 
   const handleInputChange = (key, value) => {
@@ -35,84 +32,109 @@ export default function Calculator() {
     setCounts({ ...counts, [key]: val });
   };
 
-  const sendWhats = (s) => {
-    const msg = `Ola ${s.name}! Vi meu calculo no portal Bora La e gostaria de um orcamento:\n\n🥩 Carne: ${res.carne}kg\n🍺 Cerveja: ${res.cerveja}un\n🥤 Bebida: ${res.refri}L\n🔥 Carvao: ${res.carvao}sc\n❄️ Gelo: ${res.gelo}sc\n🍽️ Descartaveis: ${res.descartaveis}un`;
-    window.open(`https://wa.me/${s.phone}?text=${encodeURIComponent(msg)}`, '_blank');
-  };
-
   return (
-    <div className={`fixed top-0 left-1/2 -translate-x-1/2 z-[999] w-full max-w-5xl transition-all duration-700 ${isOpen ? 'translate-y-0' : '-translate-y-[calc(100%-48px)]'}`}>
-      <div className="bg-[#1A1A1A] rounded-b-[70px] border-x-[8px] border-b-[8px] border-white p-10 pt-16 relative text-white shadow-2xl">
-        
-        {/* FRASE SENSORIAL */}
-        <div className="flex items-center justify-center gap-3 mb-8 pb-4 border-b border-white/5">
-          <Flame size={16} className="text-[#00BFA6] animate-pulse" />
-          <p className="text-[11px] font-black uppercase italic tracking-[2px] text-white/60">
-            Reúna a galera, prepare o braseiro e garanta o essencial com um toque.
-          </p>
-        </div>
+    <>
+      <style>{`
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      `}</style>
 
-        <div className="flex flex-col lg:flex-row gap-10 items-start">
-          <div className="w-full lg:w-[35%] space-y-4">
-             <h2 className="text-3xl font-black italic uppercase underline decoration-[#00BFA6] decoration-4 mb-6">Convidados</h2>
-             {Object.keys(counts).map(k => (
-               <div key={k} className="flex justify-between items-center bg-white/5 p-4 rounded-3xl border border-white/5">
-                 <span className="font-black uppercase text-xs tracking-widest text-white/50">{k === 'criancas' ? 'Crianças' : k}</span>
-                 <div className="flex gap-2 items-center">
-                   <button onClick={() => handleInputChange(k, (Number(counts[k]) || 0) - 1)} className="w-10 h-10 bg-white/10 rounded-xl font-black text-xl hover:bg-red-500">-</button>
-                   <input 
-                    type="number" 
-                    value={counts[k]} 
-                    onChange={(e) => handleInputChange(k, e.target.value)}
-                    className="w-16 bg-transparent border-b-2 border-[#00BFA6] text-center font-black italic text-2xl text-[#00BFA6] focus:outline-none"
-                   />
-                   <button onClick={() => handleInputChange(k, (Number(counts[k]) || 0) + 1)} className="w-10 h-10 bg-white/10 rounded-xl font-black text-xl hover:bg-[#00BFA6] transition-all">+</button>
+      {/* BACKDROP */}
+      <div 
+        onClick={() => setIsOpen(false)}
+        style={{ 
+          position: 'fixed', inset: 0, backgroundColor: 'rgba(0,0,0,0.85)', 
+          backdropFilter: 'blur(8px)', zIndex: 9999998,
+          opacity: isOpen ? 1 : 0, pointerEvents: isOpen ? 'auto' : 'none',
+          transition: 'opacity 0.5s ease'
+        }}
+      />
+
+      {/* CONTAINER PRINCIPAL */}
+      <div 
+        style={{ 
+          position: 'fixed', left: '50%', top: 0, width: '96%', maxWidth: '1000px',
+          zIndex: 9999999, transition: 'transform 0.8s cubic-bezier(0.19, 1, 0.22, 1)',
+          transform: isOpen ? 'translate(-50%, 0)' : 'translate(-50%, -100%)',
+        }}
+      >
+        <div 
+          onClick={(e) => e.stopPropagation()} 
+          className="bg-[#1A1A1A] rounded-b-[50px] md:rounded-b-[80px] border-x-[5px] md:border-x-[10px] border-b-[5px] md:border-b-[10px] border-white p-6 pt-12 relative text-white shadow-2xl"
+          style={{ maxHeight: '90vh', overflowY: 'auto' }}
+        >
+          {/* FRASES EDUCATIVAS ATUALIZADAS */}
+          <div className="text-center mb-8 space-y-2">
+            <div className="flex items-center justify-center gap-2">
+              <Flame size={26} className="text-[#00BFA6]" />
+              <h2 className="font-black italic uppercase text-xl tracking-tighter">Bora pro Churrasco!</h2>
+            </div>
+            <p className="text-[#00BFA6] font-bold text-[11px] md:text-sm uppercase tracking-[1px] px-4 leading-tight">
+              Aqui você calcula seu churrasco e ja tem acesso aos melhores fornecedores
+            </p>
+          </div>
+
+          <div className="flex flex-col lg:flex-row gap-8 mb-6">
+            {/* ETAPA 1 */}
+            <div className="w-full lg:w-1/3 space-y-4">
+               <p className="font-black uppercase text-[10px] text-white/40 border-l-4 border-[#00BFA6] pl-2 tracking-widest">1. Quem vai colar?</p>
+               {['homens', 'mulheres', 'criancas'].map(k => (
+                 <div key={k} className="flex justify-between items-center bg-white/5 p-4 rounded-[25px] border border-white/10">
+                   <span className="font-black uppercase text-sm text-white/60">{k}</span>
+                   <div className="flex gap-4 items-center">
+                     <button onClick={() => handleInputChange(k, (Number(counts[k]) || 0) - 1)} className="w-10 h-10 bg-white/10 rounded-xl font-black text-xl active:bg-[#00BFA6]">-</button>
+                     <span className="text-2xl font-black text-[#00BFA6] min-w-[30px] text-center">{counts[k]}</span>
+                     <button onClick={() => handleInputChange(k, (Number(counts[k]) || 0) + 1)} className="w-10 h-10 bg-white/10 rounded-xl font-black text-xl active:bg-[#00BFA6]">+</button>
+                   </div>
                  </div>
-               </div>
-             ))}
-          </div>
-
-          <div className="w-full lg:w-[65%] space-y-6">
-            <div className="bg-[#00BFA6] rounded-[40px] p-8 text-slate-900 grid grid-cols-3 md:grid-cols-6 gap-3 font-black italic text-center shadow-lg">
-              <div><p className="text-[10px] uppercase opacity-70 mb-1">Carne</p><span className="text-2xl">{res.carne}k</span></div>
-              <div><p className="text-[10px] uppercase opacity-70 mb-1">Cerva</p><span className="text-2xl">{res.cerveja}u</span></div>
-              <div><p className="text-[10px] uppercase opacity-70 mb-1">Refri</p><span className="text-2xl">{res.refri}L</span></div>
-              <div><p className="text-[10px] uppercase opacity-70 mb-1">Carvao</p><span className="text-2xl">{res.carvao}s</span></div>
-              <div><p className="text-[10px] uppercase opacity-70 mb-1">Gelo</p><span className="text-2xl">{res.gelo}s</span></div>
-              <div><p className="text-[10px] uppercase opacity-70 mb-1">Descart.</p><span className="text-2xl">{res.descartaveis}</span></div>
+               ))}
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-              {suppliers.map((s, i) => (
-                <div key={i} onClick={() => sendWhats(s)} className="bg-white/5 p-5 rounded-[35px] text-center cursor-pointer hover:bg-[#25D366] transition-all group border border-white/5 flex flex-col items-center justify-center min-h-[120px]">
-                  <span className="text-4xl block mb-2">{s.icon}</span>
-                  <p className="text-[10px] font-black uppercase tracking-tight leading-none text-white group-hover:text-black mb-2">{s.name}</p>
-                  <ArrowRight size={14} className="opacity-0 group-hover:opacity-100 -rotate-45 transition-all text-black" />
-                </div>
-              ))}
-            </div>
+            {/* ETAPA 2 */}
+            <div className="w-full lg:w-2/3 space-y-6">
+              <p className="font-black uppercase text-[10px] text-white/40 border-l-4 border-[#00BFA6] pl-2 tracking-widest">2. O que garantir:</p>
+              <div className="bg-[#00BFA6] rounded-[35px] p-6 text-black grid grid-cols-3 gap-y-6 gap-x-2 font-black italic text-center shadow-xl">
+                <div><p className="text-[10px] uppercase opacity-70">Carne</p><span className="text-2xl">{res.carne}kg</span></div>
+                <div><p className="text-[10px] uppercase opacity-70">Cerva</p><span className="text-2xl">{res.cerveja}u</span></div>
+                <div><p className="text-[10px] uppercase opacity-70">Refri</p><span className="text-2xl">{res.refri}L</span></div>
+                <div><p className="text-[10px] uppercase opacity-70">Carvão</p><span className="text-2xl">{res.carvao}s</span></div>
+                <div><p className="text-[10px] uppercase opacity-70">Gelo</p><span className="text-2xl">{res.gelo}s</span></div>
+                <div><p className="text-[10px] uppercase opacity-70">Galera</p><span className="text-2xl">{totalPessoas}</span></div>
+              </div>
 
-            <div className="p-6 bg-[#00BFA6]/10 border border-[#00BFA6]/20 rounded-[40px] flex gap-5 items-center">
-               <div className="bg-[#00BFA6] p-3 rounded-2xl text-black">
-                 <Wallet size={24} />
-               </div>
-               <div>
-                 <p className="text-sm font-black uppercase tracking-widest text-[#00BFA6] mb-1 italic">
-                   GANHE TEMPO, saiba quanto vai gastar!
-                 </p>
-                 <p className="text-[12px] leading-snug text-white/90 font-bold uppercase italic">
-                   Use esse cálculo e gere um orçamento automaticamente.
-                 </p>
-               </div>
+              {/* FORNECEDORES EMOJIS */}
+              <div className="grid grid-cols-4 gap-3 pt-2">
+                {[ 
+                  {n:"Adega", i:"🍺"}, 
+                  {n:"Zero Grau", i:"❄️"}, 
+                  {n:"Quality", i:"🥩"}, 
+                  {n:"Piovani", i:"🛒"} 
+                ].map((s, idx) => (
+                  <div key={idx} className="bg-white/5 p-4 rounded-[25px] text-center border border-white/5 shadow-md">
+                    <span className="text-3xl mb-1 block">{s.i}</span>
+                    <p className="text-[9px] font-black uppercase text-white/50 tracking-tighter">{s.n}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
-        
-        {/* ABA ORIGINAL RESTAURADA */}
-        <button onClick={() => setIsOpen(!isOpen)} className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-full bg-white px-16 py-5 rounded-b-[45px] font-black text-xs uppercase text-black shadow-2xl border-x-[8px] border-b-[8px] border-white hover:bg-[#00BFA6] transition-all cursor-pointer">
-          {isOpen ? "FECHAR" : "CALCULADORA DE CHURRASCO"}
-        </button>
+
+        {/* ABA BRANCA EXTERNA (ETIQUETA) */}
+        <div style={{ position: 'absolute', top: '100%', left: '50%', transform: 'translateX(-50%)', marginTop: '-2px' }}>
+            <button 
+              onClick={(e) => { e.stopPropagation(); setIsOpen(!isOpen); }} 
+              style={{
+                backgroundColor: 'white', color: 'black', fontWeight: '900', fontSize: '12px',
+                padding: '16px 36px', borderRadius: '0 0 32px 32px', border: 'none',
+                boxShadow: '0 15px 40px rgba(0,0,0,0.7)', textTransform: 'uppercase',
+                whiteSpace: 'nowrap', cursor: 'pointer'
+              }}
+            >
+              {isOpen ? "FECHAR" : "CALCULADORA DE CHURRASCO"}
+            </button>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
