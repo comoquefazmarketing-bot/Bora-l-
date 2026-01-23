@@ -14,49 +14,39 @@ export default function HeroBanner() {
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % frases.length);
-    }, 3500);
+    }, 3000);
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <div className="relative py-10 md:py-16 px-6 overflow-hidden bg-[#1A1A1A]">
-      <div className="max-w-7xl mx-auto relative z-10">
+    <div className="relative py-16 md:py-24 px-6 bg-white">
+      <div className="max-w-7xl mx-auto flex flex-col items-center md:items-start text-center md:text-left">
         
-        {/* LOGO E BRANDING */}
-        <div className="flex flex-col md:flex-row items-center md:items-end gap-6 mb-10">
+        {/* LOGO OFICIAL */}
+        <div className="mb-8">
           <img 
-            src="/logo/logo.png" 
-            alt="Bora Lá Logo" 
-            className="w-24 md:w-32 h-auto drop-shadow-[0_0_10px_rgba(0,191,166,0.5)]"
-            onError={(e) => e.target.style.display = 'none'} 
+            src="/logo.png" 
+            alt="Bora Lá" 
+            className="w-32 md:w-56 h-auto drop-shadow-sm"
           />
-          <div className="flex flex-col">
-            <p className="text-[#00BFA6] font-black uppercase tracking-[4px] text-[10px] md:text-xs italic mb-2 text-center md:text-left">
-              Portal Manda Lá apresenta:
-            </p>
-            <div className="flex flex-col md:flex-row items-center md:items-baseline gap-2 md:gap-4">
-              <h2 className="text-white text-xl md:text-3xl font-bold italic text-center md:text-left min-h-[40px]">
-                {frases[index]}
-              </h2>
-              <span className="text-[#00BFA6] text-4xl md:text-6xl font-black italic uppercase tracking-tighter animate-pulse">
-                Bora Lá.
-              </span>
-            </div>
-          </div>
         </div>
 
-        {/* TÍTULO PRINCIPAL DE IMPACTO */}
-        <div className="mt-4">
-          <h2 className="text-5xl md:text-8xl font-black italic uppercase leading-none text-center md:text-left">
-            <span className="text-white">LUGARES </span>
-            <span className="text-[#00BFA6] drop-shadow-[0_0_20px_rgba(0,191,166,0.4)]">INCRÍVEIS.</span>
+        {/* MENSAGEM DINÂMICA E BRANDING */}
+        <div className="min-h-[160px] md:min-h-[220px] flex flex-col justify-center">
+          <h2 className="text-slate-800 text-2xl md:text-4xl font-bold italic transition-opacity duration-500 mb-2">
+            {frases[index]}
           </h2>
+          <h1 className="text-[#00BFA6] text-7xl md:text-[150px] font-black italic uppercase tracking-tighter leading-[0.8]">
+            Bora Lá.
+          </h1>
         </div>
+
+        {/* SUBTEXTO SENSORIAL (OPCIONAL) */}
+        <p className="mt-8 text-slate-400 font-black uppercase tracking-[3px] text-xs md:text-sm italic">
+          Experiências únicas começam aqui.
+        </p>
 
       </div>
-      
-      {/* ELEMENTO SENSORIAL DE FUNDO */}
-      <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-[#00BFA6]/10 to-transparent pointer-events-none" />
     </div>
   );
 }
