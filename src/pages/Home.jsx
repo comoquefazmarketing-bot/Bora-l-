@@ -1,5 +1,5 @@
-/* @author Felipe Makarios | Lead Architect */
-import React from 'react';
+/* @author Felipe Makarios | Creator */
+import React, { useState, useEffect } from 'react';
 import SpaceCard from '../components/SpaceCard';
 
 const spaces = [
@@ -12,20 +12,60 @@ const spaces = [
 ];
 
 export default function Home() {
+  const [index, setIndex] = useState(0);
+  const frases = [
+    "Fazer um churrasco memorável?",
+    "Passar um momento com a família?",
+    "Celebrar com os amigos?",
+    "Sair da rotina e descansar?",
+    "Criar memórias incríveis?"
+  ];
+
+  useEffect(() => {
+    // Tempo aumentado para 5 segundos (5000ms)
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % frases.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [frases.length]);
+
   return (
-    <div className="min-h-screen bg-[#FDFCFB] pb-20 pt-32">
+    <div className="min-h-screen bg-[#FDFCFB] pb-20 pt-16 md:pt-24">
       <div className="max-w-[1400px] mx-auto px-10">
-        <div className="mb-20">
-          <p className="text-[#00BFA6] font-black uppercase tracking-[0.5em] text-[10px] mb-4 italic">Portal Manda Lá</p>
-          <h2 className="text-[50px] md:text-[80px] font-black uppercase italic tracking-tighter leading-none">
-            LUGARES <span className="text-[#00BFA6]">INCRÍVEIS.</span>
-          </h2>
+        
+        {/* BRANDING BORA LÁ */}
+        <div className="mb-20 flex flex-col items-center md:items-start">
+          {/* Logo rotacionada 90 graus sentido horário */}
+          <img 
+            src="/logo.png" 
+            alt="Bora Lá" 
+            className="w-32 md:w-48 h-auto mb-10 rotate-90"
+            onError={(e) => e.target.style.display = 'none'} 
+          />
+          
+          <div className="min-h-[140px] md:min-h-[180px]">
+            <p className="text-slate-800 text-2xl md:text-4xl font-bold italic transition-opacity duration-700">
+              {frases[index]}
+            </p>
+            {/* mt-8 para dar mais espaçamento entre a frase e o nome */}
+            <h1 className="text-[#00BFA6] text-6xl md:text-[120px] font-black italic uppercase tracking-tighter leading-[0.85] mt-8">
+              Bora Lá.
+            </h1>
+          </div>
         </div>
 
+        {/* LISTA DE ESPAÇOS */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
           {spaces.map(space => (
             <SpaceCard key={space.id} space={space} />
           ))}
+        </div>
+
+        {/* RODAPÉ */}
+        <div className="mt-24 border-t border-slate-100 pt-10 text-center md:text-left">
+           <h2 className="text-3xl md:text-5xl font-black italic uppercase text-slate-200">
+             LUGARES <span className="opacity-50">INCRÍVEIS.</span>
+           </h2>
         </div>
       </div>
     </div>
