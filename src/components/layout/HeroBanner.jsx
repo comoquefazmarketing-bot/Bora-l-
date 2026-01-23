@@ -1,35 +1,62 @@
-﻿import React from 'react';
-import { Calculator, Handshake, Sparkles } from 'lucide-react';
+/* @author Felipe Makarios | Lead Architect */
+import React, { useState, useEffect } from 'react';
 
 export default function HeroBanner() {
+  const [index, setIndex] = useState(0);
+  const frases = [
+    "Fazer um churrasco memorável?",
+    "Passar um momento com a família?",
+    "Celebrar com os amigos?",
+    "Sair da rotina e descansar?",
+    "Criar memórias incríveis?"
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % frases.length);
+    }, 3500);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <section className="relative h-[700px] flex items-center justify-center overflow-hidden bg-[#1A1A1A] rounded-b-[60px] shadow-2xl">
-      {/* Background com Overlay para destacar o texto */}
-      <div className="absolute inset-0 z-0">
-        <img src="/spaces/area de lazer top burguer/capa.jpg" className="w-full h-full object-cover opacity-30" alt="Bora Lá" />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#1A1A1A]/80"></div>
+    <div className="relative py-10 md:py-16 px-6 overflow-hidden bg-[#1A1A1A]">
+      <div className="max-w-7xl mx-auto relative z-10">
+        
+        {/* LOGO E BRANDING */}
+        <div className="flex flex-col md:flex-row items-center md:items-end gap-6 mb-10">
+          <img 
+            src="/logo/logo.png" 
+            alt="Bora Lá Logo" 
+            className="w-24 md:w-32 h-auto drop-shadow-[0_0_10px_rgba(0,191,166,0.5)]"
+            onError={(e) => e.target.style.display = 'none'} 
+          />
+          <div className="flex flex-col">
+            <p className="text-[#00BFA6] font-black uppercase tracking-[4px] text-[10px] md:text-xs italic mb-2 text-center md:text-left">
+              Portal Manda Lá apresenta:
+            </p>
+            <div className="flex flex-col md:flex-row items-center md:items-baseline gap-2 md:gap-4">
+              <h2 className="text-white text-xl md:text-3xl font-bold italic text-center md:text-left min-h-[40px]">
+                {frases[index]}
+              </h2>
+              <span className="text-[#00BFA6] text-4xl md:text-6xl font-black italic uppercase tracking-tighter animate-pulse">
+                Bora Lá.
+              </span>
+            </div>
+          </div>
+        </div>
+
+        {/* TÍTULO PRINCIPAL DE IMPACTO */}
+        <div className="mt-4">
+          <h2 className="text-5xl md:text-8xl font-black italic uppercase leading-none text-center md:text-left">
+            <span className="text-white">LUGARES </span>
+            <span className="text-[#00BFA6] drop-shadow-[0_0_20px_rgba(0,191,166,0.4)]">INCRÍVEIS.</span>
+          </h2>
+        </div>
+
       </div>
       
-      <div className="relative z-10 text-center px-6 max-w-5xl">
-        <div className="inline-flex items-center gap-2 bg-[#00BFA6] px-4 py-2 rounded-full text-white text-[10px] font-black uppercase tracking-[0.3em] mb-8 animate-bounce">
-          <Sparkles size={14} /> Marketplace de Experiências
-        </div>
-        
-        <h1 className="text-6xl md:text-8xl font-black text-white uppercase tracking-tighter leading-[0.85] mb-12">
-          TUDO O QUE VOCÊ <br/> <span className="text-[#00BFA6]">MERECE ESTÁ AQUI.</span>
-        </h1>
-        
-        <div className="flex flex-wrap justify-center gap-6">
-          <button className="group bg-[#00BFA6] text-white px-10 py-6 rounded-[24px] font-black uppercase tracking-widest hover:bg-white hover:text-[#1A1A1A] transition-all flex items-center gap-3 shadow-xl">
-            <Calculator className="group-hover:rotate-12 transition-transform" /> 
-            Calculadora de Diária
-          </button>
-          <button className="group bg-white/10 backdrop-blur-md border border-white/20 text-white px-10 py-6 rounded-[24px] font-black uppercase tracking-widest hover:bg-white hover:text-[#1A1A1A] transition-all flex items-center gap-3 shadow-xl">
-            <Handshake className="group-hover:-rotate-12 transition-transform" /> 
-            Seja Parceiro
-          </button>
-        </div>
-      </div>
-    </section>
+      {/* ELEMENTO SENSORIAL DE FUNDO */}
+      <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-[#00BFA6]/10 to-transparent pointer-events-none" />
+    </div>
   );
 }
