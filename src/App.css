@@ -1,20 +1,64 @@
-/* Reset Global - Bora LÃ¡ */
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@import "tailwindcss";
 
-body { 
-  margin: 0; 
-  padding: 0; 
-  overflow-x: hidden; 
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+@theme {
+  --color-primary: #00BFA6;
+  --color-sensorial-cream: #FDFCFB;
+  --color-sensorial-deep: #1A1A1A;
+  
+  --animate-tum-dum: heartbeat 1.5s ease-in-out infinite;
 }
 
-#root { width: 100%; }
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.05); opacity: 0.8; }
+}
 
-/* Ajuste fino para o Mobile nÃ£o colar no topo */
+/* ForÃ§ar Reset e Estilos de Base */
+@layer base {
+  body {
+    background-color: var(--color-sensorial-cream);
+    color: var(--color-sensorial-deep);
+    margin: 0;
+    font-family: sans-serif;
+  }
+}
+
+/* Garante que o Grid do Admin e da Home funcione */
+@layer components {
+  .grid { display: grid; }
+  .flex { display: flex; }
+}
+/* --- UX/UI MOBILE BY FELIPE MAKARIOS --- */
 @media (max-width: 768px) {
-    main {
-        padding-top: 10px !important;
-    }
+  /* Impede que títulos estourem a lateral */
+  h1, h2, h3 {
+    word-break: break-word;
+    font-size: clamp(2.5rem, 10vw, 4rem) !important;
+    line-height: 0.9 !important;
+  }
+
+  /* Ajuste da Calculadora Global no Mobile */
+  .fixed.inset-0.z-50 > div {
+    height: 90vh !important; /* Não deixa ocupar 100% para o usuário ver o fundo */
+    margin-top: auto !important;
+  }
+
+  /* Melhora o espaçamento dos cards na Home */
+  .grid-cols-1 {
+    gap: 1.5rem !important;
+    padding: 0 10px !important;
+  }
+  
+  /* Garante que o mapa não quebre o scroll */
+  iframe {
+    pointer-events: auto;
+    touch-action: pan-y;
+  }
+}
+@media (max-width: 768px) {
+  /* Alvo: O container da calculadora original */
+  .fixed.inset-x-0.top-0 > div {
+    transform: scale(0.8);
+    transform-origin: top center;
+  }
 }

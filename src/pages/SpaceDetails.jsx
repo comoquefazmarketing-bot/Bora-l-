@@ -37,7 +37,7 @@ export default function SpaceDetails() {
       window.open("https://www.facebook.com/marketplace/item/1607967393943786/", "_blank");
       return;
     }
-    const msg = `Olá! Vi o anúncio do *${space.title}* no Portal Bora Lá e gostaria de consultar a disponibilidade para a data ${selectedDate || '[não informada]'}.`;
+    const msg = `Olá! Vi o anúncio do *${space.title}* no App Bora Lá e gostaria de consultar a disponibilidade para a data ${selectedDate || '[não informada]'}.`;
     window.open(`https://wa.me/${space.phone}?text=${encodeURIComponent(msg)}`, '_blank');
   };
 

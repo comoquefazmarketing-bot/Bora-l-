@@ -1,36 +1,32 @@
-import React, { useState } from 'react';
+/* @author Felipe Makarios | Lead Architect - Bora LÃ¡ */
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
-import SpaceDetails from './pages/SpaceDetails';
-import RegisterSpace from './pages/RegisterSpace';
-import RegisterSupplier from './pages/RegisterSupplier';
-import Sidebar from './components/Sidebar';
-import Header from './components/Header';
-import Calculator from './services/Calculator';
 
-export default function App() {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+// ImportaÃ§Ã£o das PÃ¡ginas que vocÃª enviou
+import Home from "./pages/Home";
+import Register from "./pages/Register";
+import RegisterArea from "./pages/RegisterSpace"; // Usando seu RegisterSpace.jsx
+import RegisterSupplier from "./pages/RegisterSupplier";
+import SpaceDetails from "./pages/SpaceDetails";
+import Admin from "./pages/Admin";
+import PartnersSelection from "./pages/PartnersSelection";
 
+function App() {
   return (
     <Router>
-      <div className="flex min-h-screen bg-[#FDFCFB]">
-        <Sidebar isOpen={isSidebarOpen} setIsOpen={setIsSidebarOpen} />
-        
-        <div className="flex-1 flex flex-col">
-          <Header onOpenMenu={() => setIsSidebarOpen(true)} />
-          
-          <main className="flex-1">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/space/:id" element={<SpaceDetails />} />
-              <Route path="/register-area" element={<RegisterSpace />} />
-              <Route path="/register-supplier" element={<RegisterSupplier />} />
-            </Routes>
-          </main>
-        </div>
-
-        <Calculator />
+      <div className="relative min-h-screen bg-white">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/register-area" element={<RegisterArea />} />
+          <Route path="/register-supplier" element={<RegisterSupplier />} />
+          <Route path="/space/:id" element={<SpaceDetails />} />
+          <Route path="/admin" element={<Admin />} />
+          <Route path="/partners-selection" element={<PartnersSelection />} />
+        </Routes>
       </div>
     </Router>
   );
 }
+
+export default App;

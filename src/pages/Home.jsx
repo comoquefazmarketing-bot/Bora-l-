@@ -1,364 +1,97 @@
-
-/* @author Felipe Makarios | Lead Architect - Bora Lá */
-
+/* @author Bora Lá | High Performance Events */
 import React, { useState, useEffect } from 'react';
-
 import { useNavigate } from 'react-router-dom';
-
-import { MapPin, ArrowUpRight, Star, Sparkles } from 'lucide-react';
-
-
+import { Calculator, Flame, Menu, CheckCircle2 } from 'lucide-react';
+import Sidebar from '../components/Sidebar';
+import HPCalculator from '../components/HPCalculator';
 
 const areasReais = [
-
   { id: "top-burguer", nome: "RECANTO TOP BURGUER", cidade: "Novo Horizonte - SP", preco: "330", folder: "area de lazer top burguer" },
-
   { id: "rancho-paradise", nome: "RANCHO PARADISE BORBOREMA", cidade: "Borborema - SP", preco: "380", folder: "Rancho Paradise Borborema" },
-
   { id: "sao-sebastiao", nome: "CHÁCARA SÃO SEBASTIÃO", cidade: "Novo Horizonte - SP", preco: "300", folder: "Chácara São Sebastião" },
-
   { id: "carlos-zara", nome: "ÁREA DE LAZER CARLOS ZARA", cidade: "Novo Horizonte - SP", preco: "600", folder: "Área de lazer Carlos Zara" },
-
   { id: "recanto-do-sol", nome: "RECANTO PÔR DO SOL", cidade: "Novo Horizonte - SP", preco: "Consultar", folder: "Recanto do Sol" },
-
   { id: "assolini", nome: "ÁREA DE LAZER ASSOLINI", cidade: "Novo Horizonte - SP", preco: "Consultar", folder: "ÁREA DE LAZER ASSOLINI" }
-
 ];
 
-
-
-const slidesB2B = [
-
-  {
-
-    dor: "Cansado de gente que só pergunta e não fecha nada?",
-
-    solucao: "Aqui você fala com quem já está com a festa marcada.",
-
-    img: "https://images.unsplash.com/photo-1542435503-956c469947f6?q=80&w=1200&auto=format&fit=crop", 
-
-    tag: "CLIENTE DE VERDADE"
-
-  },
-
-  {
-
-    dor: "Seu brinquedo parado no galpão é dinheiro perdido.",
-
-    solucao: "A gente te mostra para quem está organizando o evento agora.",
-
-    img: "https://babyherois.com.br/wp-content/uploads/2021/02/2021-02-2-como-escolher-o-brinquedo-inflavel-ideal.jpg",
-
-    tag: "AGENDA CHEIA"
-
-  },
-
-  {
-
-    dor: "Gasta com propaganda e o telefone não toca?",
-
-    solucao: "Esteja no lugar certo, na hora que a festa está saindo.",
-
-    img: "https://jobcontent.com.br/wp-content/uploads/2025/09/marketing-que-nao-vende.webp",
-
-    tag: "NEGÓCIO FECHADO"
-
-  },
-
-  {
-
-    dor: "Sua decoração é linda, mas o estoque vive guardado?",
-
-    solucao: "Transforme festas simples em eventos de alto padrão.",
-
-    img: "https://curitifestas.com.br/wp-content/uploads/2023/12/Tema-de-Aniversario-Adulto-10.jpeg",
-
-    tag: "DECORAÇÃO"
-
-  },
-
-  {
-
-    dor: "É DJ ou músico e quer tocar todo final de semana?",
-
-    solucao: "Seja a primeira opção de entretenimento dos nossos usuários.",
-
-    img: "https://centerdebutantes.com.br/wp-content/uploads/2024/02/banda-ou-dj.jpg",
-
-    tag: "SOM & ILUMINAÇÃO"
-
-  },
-
-  {
-
-    dor: "Faz a melhor comida da região mas ninguém te acha?",
-
-    solucao: "Apareça no cardápio de quem acabou de alugar a área.",
-
-    img: "https://static.wixstatic.com/media/83cfc1_149a62893c7244c791c1d7c7f1f7da47~mv2.jpeg",
-
-    tag: "BUFFET & CHURRASCO"
-
-  }
-
+const frasesSensoriais = [
+  "Passar um momento com a família?",
+  "Celebrar com os amigos?",
+  "Criar memórias incríveis?",
+  "Fazer um churrasco memorável?",
+  "Sair da rotina e descansar?"
 ];
-
-
-
-const frasesImpacto = [
-
-  "Quer descansar?",
-
-  "Aquele momento com a família...",
-
-  "Bora fazer aquele churrasco?",
-
-  "O cenário perfeito para o seu fim de semana.",
-
-  "E aí, quem leva a carne?",
-
-  "O lugar ideal para criar memórias reais."
-
-];
-
-
 
 export default function Home() {
-
   const navigate = useNavigate();
-
   const [indexFrase, setIndexFrase] = useState(0);
 
-  const [currentSlide, setCurrentSlide] = useState(0);
-
-  const [fade, setFade] = useState(true);
-
-
-
   useEffect(() => {
-
-    const fraseTimer = setInterval(() => {
-
-      setFade(false);
-
-      setTimeout(() => {
-
-        setIndexFrase((prev) => (prev + 1) % frasesImpacto.length);
-
-        setFade(true);
-
-      }, 500);
-
-    }, 8000);
-
-
-
-    const slideTimer = setInterval(() => {
-
-      setCurrentSlide((prev) => (prev + 1) % slidesB2B.length);
-
-    }, 10000);
-
-
-
-    return () => {
-
-      clearInterval(fraseTimer);
-
-      clearInterval(slideTimer);
-
-    };
-
+    const timer = setInterval(() => {
+      setIndexFrase((prev) => (prev + 1) % frasesSensoriais.length);
+    }, 4000);
+    return () => clearInterval(timer);
   }, []);
 
-
-
   return (
+    <div className="min-h-screen bg-[#FDFCFB] font-sans text-black">
+      <Sidebar />
+      <HPCalculator />
 
-    <div className="min-h-screen bg-[#FDFCFB] selection:bg-[#00BFA6] pb-0 font-sans text-left">
-
-      <section className="hidden lg:grid grid-cols-12 gap-12 max-w-[1440px] mx-auto px-10 pt-16 mb-20 items-center">
-
-        <div className="col-span-5 text-left">
-
-          <h1 className="text-[120px] font-black uppercase italic tracking-tighter leading-[0.75] text-slate-900">
-
-            BORA<br/><span className="text-[#00BFA6]">LÁ.</span>
-
-          </h1>
-
-          <div className="h-16 mt-10"> 
-
-            <p className={`text-slate-400 font-bold uppercase text-[13px] tracking-[0.3em] max-w-sm transition-all duration-700 ${fade ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-2'}`}>
-
-              {frasesImpacto[indexFrase]}
-
-            </p>
-
+      <header className="fixed top-0 w-full bg-white z-[100] border-b border-black/5 py-4 px-6 lg:px-12 flex items-center justify-between shadow-sm">
+        <div className="flex items-center gap-4">
+          <button onClick={() => window.dispatchEvent(new CustomEvent('openSidebar'))} className="p-2 hover:bg-black/5 rounded-full"><Menu size={24} /></button>
+          <div className="flex items-center gap-2 cursor-pointer" onClick={() => navigate('/')}>
+            <div className="w-8 h-8 bg-[#00BFA6] rounded-lg flex items-center justify-center shadow-lg"><Flame size={18} fill="white" stroke="none" /></div>
+            <span className="font-black text-xl italic uppercase tracking-tighter">BORA LÁ</span>
           </div>
-
         </div>
 
-        <div className="col-span-7 grid grid-cols-3 gap-4 h-[400px]">
+        <div className="absolute left-1/2 -translate-x-1/2">
+          <button onClick={() => window.dispatchEvent(new CustomEvent('openCalc'))} className="bg-white border border-black/10 shadow-lg px-8 py-3 rounded-full flex items-center gap-4 hover:shadow-xl transition-all group">
+            <span className="text-[11px] font-black uppercase italic tracking-widest text-slate-400 group-hover:text-black">Calculadora de Churrasco</span>
+            <div className="bg-[#1A1A1A] p-2 rounded-full text-white group-hover:bg-[#00BFA6] transition-colors"><Calculator size={14} /></div>
+          </button>
+        </div>
+        <div className="w-10"></div>
+      </header>
 
-          {areasReais.slice(0, 3).map((area) => (
-
-            <div key={area.id} onClick={() => navigate(`/space/${area.id}`)} className="relative group overflow-hidden rounded-[50px] cursor-pointer shadow-2xl bg-slate-100">
-
-              <img src={`/spaces/${area.folder}/foto1.jpg`} className="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-125" alt={area.nome} />
-
-              <div className="absolute inset-0 bg-[#00BFA6]/40 opacity-0 group-hover:opacity-100 backdrop-blur-md transition-all duration-500 flex items-center justify-center">
-
-                <ArrowUpRight className="text-white" size={40} />
-
-              </div>
-
-            </div>
-
-          ))}
-
+      <main className="pt-32 px-6 max-w-[1440px] mx-auto pb-20">
+        <div className="text-center mb-16 h-24 flex flex-col items-center justify-center">
+          <p className="text-2xl lg:text-4xl font-black italic uppercase tracking-tighter text-slate-300 mb-2">{frasesSensoriais[indexFrase]}</p>
+          <h1 className="text-5xl lg:text-9xl font-black italic uppercase tracking-tighter leading-none text-slate-900">BORA <span className="text-[#00BFA6]">LÁ.</span></h1>
         </div>
 
-      </section>
-
-
-
-      <div className="max-w-[1440px] mx-auto px-6 lg:px-10 mb-20 lg:mb-32">
-
-        <h2 className="text-4xl lg:text-8xl font-black uppercase italic tracking-tighter mb-10 lg:mb-16 text-slate-900 text-left">
-
-          LUGARES <span className="text-[#00BFA6]">INCRÍVEIS.</span>
-
-        </h2>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
-
-          {areasReais.map((area) => (
-
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-24">
+          {areasReais.map(area => (
             <div key={area.id} onClick={() => navigate(`/space/${area.id}`)} className="group cursor-pointer">
-
-              <div className="h-[350px] lg:h-[450px] rounded-[40px] lg:rounded-[60px] overflow-hidden relative shadow-sm border border-black/5 bg-white text-left">
-
-                <img src={`/spaces/${area.folder}/foto1.jpg`} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" alt={area.nome} />
-
-                <div className="absolute top-6 left-6 bg-white/90 backdrop-blur px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest flex items-center gap-2">
-
-                  <MapPin size={10} className="text-[#00BFA6]" /> {area.cidade}
-
-                </div>
-
+              <div className="relative aspect-[4/5] rounded-[50px] overflow-hidden mb-5 border border-black/5 shadow-sm group-hover:shadow-2xl transition-all duration-700">
+                <img src={`/spaces/${area.folder}/foto1.jpg`} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[2s]" />
               </div>
-
-              <div className="mt-6 px-2 text-left">
-
-                <h3 className="text-xl lg:text-2xl font-black uppercase italic tracking-tighter text-slate-900">{area.nome}</h3>
-
-                <div className="mt-4 flex items-center justify-between">
-
-                  <span className="text-lg lg:text-xl font-black text-[#00BFA6]">{area.preco === "Consultar" ? "Consultar" : `R$ ${area.preco}`}<small className="text-[10px] text-slate-400 tracking-normal ml-2">/ dia</small></span>
-
-                  <div className="flex items-center gap-1 text-yellow-500"><Star size={14} fill="currentColor" /><span className="text-slate-900 text-xs font-black">4.9</span></div>
-
-                </div>
-
-              </div>
-
+              <h3 className="text-xl font-black uppercase italic tracking-tighter mb-1">{area.nome}</h3>
+              <span className="font-black text-2xl text-[#00BFA6] italic">R$ {area.preco}</span>
             </div>
-
           ))}
-
         </div>
 
-      </div>
-
-
-
-      <section className="relative w-full min-h-[500px] lg:h-[550px] overflow-hidden bg-black mt-10">
-
-        {slidesB2B.map((slide, i) => (
-
-          <div 
-
-            key={i}
-
-            className={`absolute inset-0 transition-all duration-[1500ms] ease-in-out flex items-center ${
-
-              currentSlide === i ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-full'
-
-            }`}
-
-          >
-
-            <div className="absolute inset-0 z-0">
-
-              <img src={slide.img} className="w-full h-full object-cover opacity-70 lg:opacity-60" alt="" />
-
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 lg:bg-gradient-to-r lg:from-black lg:via-black/20 to-transparent"></div>
-
-            </div>
-
-            <div className="relative z-10 max-w-[1440px] mx-auto w-full px-6 lg:px-10 flex flex-col lg:flex-row justify-center lg:justify-between items-center gap-8 lg:gap-12 text-left py-12 lg:py-0">
-
-              <div className="max-w-2xl text-center lg:text-left">
-
-                <div className="inline-flex items-center gap-2 bg-[#00BFA6] text-black px-4 py-1 rounded-full mb-6 lg:mb-8 shadow-xl">
-
-                  <span className="font-black uppercase text-[10px] tracking-[0.2em] flex items-center gap-2">
-
-                    <Sparkles size={14} fill="black" /> {slide.tag}
-
-                  </span>
-
+        <section className="bg-black rounded-[60px] p-12 lg:p-20 text-white relative overflow-hidden shadow-2xl group flex flex-col lg:flex-row items-center justify-between gap-12">
+          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=2000')] bg-cover bg-center grayscale group-hover:grayscale-0 opacity-30 transition-all duration-[1.5s]"></div>
+          <div className="relative z-10 max-w-2xl text-center lg:text-left">
+            <h2 className="text-4xl lg:text-7xl font-black uppercase italic tracking-tighter leading-[0.85] mb-8">O TIME <span className="text-[#00BFA6]">COMPLETO</span> PARA O SEU EVENTO.</h2>
+            <div className="flex flex-col gap-4 mb-10">
+                <div className="flex items-center gap-3 justify-center lg:justify-start">
+                    <CheckCircle2 size={20} className="text-[#00BFA6]" />
+                    <p className="font-bold uppercase italic text-lg tracking-wider">Apoio total no planejamento.</p>
                 </div>
-
-                <h3 className="text-white text-3xl md:text-5xl lg:text-7xl font-black uppercase italic tracking-tighter leading-none mb-4 lg:mb-6 [text-shadow:_0_4px_8px_rgb(0_0_0_/_40%)]">
-
-                  {slide.dor}
-
-                </h3>
-
-                <p className="text-[#00BFA6] font-bold uppercase text-base lg:text-lg italic tracking-wider bg-black/40 inline-block px-2 rounded">
-
-                  {slide.solucao}
-
-                </p>
-
-              </div>
-
-              <button 
-
-                onClick={() => navigate('/register-supplier')}
-
-                className="w-full lg:w-auto bg-white text-black px-8 lg:px-12 py-6 lg:py-10 rounded-2xl font-black uppercase italic tracking-tighter text-xl lg:text-2xl hover:bg-[#00BFA6] hover:text-white transition-all shadow-2xl active:scale-95 whitespace-nowrap"
-
-              >
-
-                QUERO TRABALHAR MAIS
-
-              </button>
-
             </div>
-
+            <button onClick={() => navigate('/register-supplier')} className="bg-white text-black px-12 py-7 rounded-[30px] font-black uppercase italic text-xl hover:bg-[#00BFA6] hover:text-white transition-all shadow-xl active:scale-95">VER PARCEIROS</button>
           </div>
+        </section>
 
-        ))}
-
-      </section>
-
-
-
-      <footer className="py-16 lg:py-20 text-center bg-white border-t border-black/5">
-
-        <p className="text-slate-300 font-black uppercase text-[10px] tracking-[0.5em]">
-
-          BORA LÁ © 2026 | DEUS SEJA LOUVADO
-
-        </p>
-
-      </footer>
-
+        <footer className="mt-20 py-10 text-center border-t border-black/5">
+            <p className="text-slate-300 font-black uppercase text-[10px] tracking-[0.5em]">BORA LÁ © 2026 | CONECTANDO EXPERIÊNCIAS</p>
+        </footer>
+      </main>
     </div>
-
   );
-
 }
