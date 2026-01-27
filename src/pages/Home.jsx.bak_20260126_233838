@@ -1,0 +1,156 @@
+﻿/* @author Felipe Makarios | Lead Architect - Bora Lá v2 */
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { 
+  MapPin, Star, Calculator, Flame, Menu, 
+  Camera, Cake, Music, PartyPopper, Utensils, Wine, Sparkles, Shield 
+} from 'lucide-react';
+import Sidebar from '../components/Sidebar';
+import HPCalculator from '../components/HPCalculator';
+
+const areasReais = [
+  { id: "santa-clara", nome: "ESPAÇO SANTA CLARA", cidade: "Novo Horizonte - SP", preco: "300", folder: "espaco santa clara" },
+  { id: "recanto-america", nome: "RECANTO AMÉRICA (Sandra)", cidade: "Novo Horizonte - SP", preco: "300", folder: "recanto america" },
+  { id: "top-burguer", nome: "RECANTO TOP BURGUER", cidade: "Novo Horizonte - SP", preco: "330", folder: "area de lazer top burguer" },
+  { id: "rancho-paradise", nome: "RANCHO PARADISE BORBOREMA", cidade: "Borborema - SP", preco: "380", folder: "Rancho Paradise Borborema" },
+  { id: "sao-sebastiao", nome: "CHÁCARA SÃO SEBASTIÃO", cidade: "Novo Horizonte - SP", preco: "300", folder: "Chácara São Sebastião" },
+  { id: "carlos-zara", nome: "ÁREA DE LAZER CARLOS ZARA", cidade: "Novo Horizonte - SP", preco: "600", folder: "Área de lazer Carlos Zara" },
+  { id: "recanto-do-sol", nome: "RECANTO PÔR DO SOL", cidade: "Novo Horizonte - SP", preco: "Consultar", folder: "Recanto do Sol" },
+  { id: "assolini", nome: "ÁREA DE LAZER ASSOLINI", cidade: "Novo Horizonte - SP", preco: "Consultar", folder: "ÁREA DE LAZER ASSOLINI" }
+];
+
+export default function Home() {
+  const navigate = useNavigate();
+  const [currentBanner, setCurrentBanner] = useState(0);
+
+  const banners = [
+    { prof: "DECORADORA", dor: "ESTOQUE PARADO É PREJUÍZO.", sol: "TRANSFORME FESTAS EM EVENTOS PREMIUM.", img: "https://curitifestas.com.br/wp-content/uploads/2023/12/Tema-de-Aniversario-Adulto-10.jpeg", icon: <Sparkles size={18} /> },
+    { prof: "MENINA DO BOLO", dor: "NINGUÉM TE ACHA?", sol: "APAREÇA PARA QUEM ACABOU DE ALUGAR.", img: "https://static.wixstatic.com/media/83cfc1_149a62893c7244c791c1d7c7f1f7da47~mv2.jpeg", icon: <Cake size={18} /> },
+    { prof: "DJ E MÚSICO", dor: "QUER TOCAR TODO FIM DE SEMANA?", sol: "SEJA A PRIMEIRA OPÇÃO DE QUEM ALUGOU.", img: "https://centerdebutantes.com.br/wp-content/uploads/2024/02/banda-ou-dj.jpg", icon: <Music size={18} /> },
+    { prof: "BRINQUEDOS", dor: "BRINQUEDO PARADO É DINHEIRO PERDIDO.", sol: "AGENDA CHEIA E DINHEIRO NO BOLSO.", img: "https://babyherois.com.br/wp-content/uploads/2021/02/2021-02-2-como-escolher-o-brinquedo-inflavel-ideal.jpg", icon: <PartyPopper size={18} /> },
+    { prof: "FOTÓGRAFO", dor: "SÓ RECEBE PERGUNTA E NADA DE FECHAR?", sol: "FALE COM CLIENTES DE VERDADE AQUI.", img: "https://images.unsplash.com/photo-1542038784456-1ea8e935640e?q=80&w=2000", icon: <Camera size={18} /> },
+    { prof: "BUFFET", dor: "CANSADO DE SÓ DAR ORÇAMENTO?", sol: "VENDA SEU MENU DIRETO NO CHECKLIST.", img: "https://images.unsplash.com/photo-1555244162-803834f70033?q=80&w=2000", icon: <Utensils size={18} /> },
+    { prof: "BARTENDER", dor: "QUER PARAR DE PERDER TEMPO?", sol: "ESTEJA NO LUGAR CERTO, NA HORA CERTA.", img: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=2000", icon: <Wine size={18} /> },
+    { prof: "LIMPEZA", dor: "PRECISA DE DIÁRIA TODO FIM DE SEMANA?", sol: "SEJA O PARCEIRO FIXO DOS ESPAÇOS.", img: "https://images.unsplash.com/photo-1582139329536-e7284fece509?q=80&w=2000", icon: <Shield size={18} /> }
+  ];
+
+  useEffect(() => {
+    const timer = setInterval(() => setCurrentBanner((p) => (p + 1) % banners.length), 15000);
+    return () => clearInterval(timer);
+  }, [banners.length]);
+
+  return (
+    <div className="min-h-screen bg-[#FDFCFB] font-sans text-left">
+      <Sidebar />
+      <HPCalculator />
+
+      <style>{`
+        @keyframes shake {
+          0%, 100% { transform: translateX(0); }
+          25% { transform: translateX(-4px) rotate(-1deg); }
+          75% { transform: translateX(4px) rotate(1deg); }
+        }
+        .vibrate-trigger { animation: shake 0.4s ease-in-out infinite; }
+      `}</style>
+      
+      <header className="fixed top-0 w-full bg-white z-[100] border-b border-black/5 py-4 px-6 lg:px-12 flex items-center justify-between shadow-sm">
+        <div className="flex items-center gap-4">
+          <button onClick={() => window.dispatchEvent(new CustomEvent('openSidebar'))} className="p-2 hover:bg-black/5 rounded-full">
+            <Menu size={24} className="text-black" />
+          </button>
+          <div className="flex items-center gap-2 cursor-pointer" onClick={() => navigate('/')}>
+            <div className="w-8 h-8 bg-[#00BFA6] rounded-lg flex items-center justify-center shadow-lg text-white">
+              <Flame size={18} fill="white" stroke="none" />
+            </div>
+            <span className="font-black text-xl italic uppercase tracking-tighter hidden sm:block">BORA LÁ</span>
+          </div>
+        </div>
+
+        <button 
+          onClick={() => window.dispatchEvent(new CustomEvent('openCalc'))} 
+          className="bg-[#E11D48] text-white px-6 lg:px-10 py-3 rounded-full flex items-center gap-4 hover:bg-black transition-all shadow-[0_10px_20_rgba(225,29,72,0.3)] group vibrate-trigger"
+          style={{ animationDuration: '5s' }}
+        >
+          <span className="text-[11px] font-black uppercase italic tracking-widest text-white">Calculadora de Churrasco</span>
+          <div className="bg-white/20 p-2 rounded-full text-white group-hover:bg-white/40 transition-colors">
+            <Calculator size={14} />
+          </div>
+        </button>
+      </header>
+
+      <main className="pt-32 px-6 max-w-[1440px] mx-auto pb-20">
+        <div className="text-center mb-16">
+          <div className="w-full flex justify-center mb-6">
+            <p className="text-[#00BFA6] font-black uppercase text-sm sm:text-base tracking-[0.4em] italic animate-pulse min-h-[24px]">
+              {frasesHype[indexFrase]}
+            </p>
+          </div>
+          <h1 className="text-6xl lg:text-[120px] font-black italic uppercase tracking-tighter leading-[0.8] text-slate-900">
+            BORA <span className="text-[#00BFA6]">LÁ.</span>
+          </h1>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-20">
+          {areasReais.map(area => (
+            <div key={area.id} onClick={() => navigate('/space/' + area.id)} className="group cursor-pointer">
+              <div className="relative aspect-[4/5] rounded-[40px] overflow-hidden mb-5 bg-gray-100 border border-black/5 shadow-sm group-hover:shadow-2xl transition-all duration-700">
+                <img src={`/spaces/${area.folder}/foto1.jpg`} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[2s]" alt={area.nome} />
+                <div className="absolute top-6 left-6 bg-white/90 px-4 py-1.5 rounded-2xl flex items-center gap-2 shadow-sm">
+                  <MapPin size={12} className="text-[#00BFA6]" />
+                  <span className="text-[10px] font-black uppercase tracking-tighter text-slate-500">{area.cidade}</span>
+                </div>
+              </div>
+              <div className="px-2 text-left">
+                <h3 className="text-xl font-black uppercase italic tracking-tighter mb-1 group-hover:text-[#00BFA6] transition-colors">{area.nome}</h3>
+                <div className="flex items-center justify-between pr-4 leading-none">
+                  <span className="font-black text-2xl text-[#00BFA6] italic">
+                    {area.preco === "Consultar" ? area.preco : `R$ ${area.preco}`}
+                  </span>
+                  <div className="flex items-center gap-1 bg-yellow-400/10 px-2 py-1 rounded-lg">
+                    <Star size={12} fill="#EAB308" className="text-yellow-500" />
+                    <span className="text-xs font-black text-black">4.9</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <section className="relative w-full h-[550px] rounded-[50px] overflow-hidden bg-black flex items-center shadow-2xl group">
+          <div className="absolute inset-0 z-0">
+             <img key={currentBanner} src={banners[currentBanner].img} className="w-full h-full object-cover opacity-60 grayscale group-hover:grayscale-0 transition-all duration-[3s]" alt="" />
+             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+          </div>
+          
+          <div className="relative z-10 px-8 lg:px-20 w-full text-left">
+            <div className="flex items-center gap-2 text-[#00BFA6] font-black uppercase text-[10px] tracking-[0.4em] mb-4 bg-black/40 w-fit px-4 py-1.5 rounded-full border border-white/10">
+              {banners[currentBanner].icon} PARCEIRO BORA LÁ
+            </div>
+            <h2 className="text-5xl lg:text-[140px] font-black uppercase italic tracking-tighter leading-[0.75] mb-6 text-white">
+              {banners[currentBanner].prof}
+            </h2>
+            <p className="text-[#00BFA6] font-black uppercase text-2xl lg:text-4xl italic tracking-tighter mb-10 max-w-3xl leading-[0.9]">
+              {banners[currentBanner].dor}<br/>
+              <span className="text-white text-lg lg:text-xl font-bold tracking-normal italic opacity-60">{banners[currentBanner].sol}</span>
+            </p>
+            <button onClick={() => window.open('https://wa.me/5517992376515', '_blank')} className="bg-[#00BFA6] text-black px-12 py-6 rounded-2xl font-black uppercase italic text-xl hover:bg-white transition-all shadow-xl active:scale-95">
+              QUERO TRABALHAR MAIS
+            </button>
+          </div>
+          
+          <div className="absolute bottom-10 right-12 flex gap-3 z-20">
+            {banners.map((_, i) => (
+              <div key={i} className="h-1 bg-white/10 rounded-full overflow-hidden w-16">
+                <div className={`h-full bg-[#00BFA6] transition-all duration-[15000ms] ease-linear ${currentBanner === i ? 'w-full' : 'w-0'}`}></div>
+              </div>
+            ))}
+          </div>
+        </section>
+      </main>
+
+      <footer className="py-16 text-center bg-white border-t border-black/5">
+        <p className="text-slate-300 font-black uppercase text-[10px] tracking-[0.5em]">BORA LÁ © 2026 | DESIGN BY FELIPE MAKARIOS</p>
+      </footer>
+    </div>
+  );
+}

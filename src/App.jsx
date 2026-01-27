@@ -1,30 +1,26 @@
-/* @author Felipe Makarios | Lead Architect - Bora LÃ¡ */
+﻿/* @author Felipe Makarios | Creator - Bora Lá */
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
-// ImportaÃ§Ã£o das PÃ¡ginas que vocÃª enviou
-import Home from "./pages/Home";
-import Register from "./pages/Register";
-import RegisterArea from "./pages/RegisterSpace"; // Usando seu RegisterSpace.jsx
-import RegisterSupplier from "./pages/RegisterSupplier";
-import SpaceDetails from "./pages/SpaceDetails";
-import Admin from "./pages/Admin";
-import PartnersSelection from "./pages/PartnersSelection";
+import Home from './pages/Home';
+import SpaceDetails from './pages/SpaceDetails';
+import Sidebar from './components/Sidebar';
+import HPCalculator from './components/HPCalculator';
+import GlobalB2BBanner from './components/GlobalB2BBanner';
 
 function App() {
   return (
     <Router>
-      <div className="relative min-h-screen bg-white">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/register-area" element={<RegisterArea />} />
-          <Route path="/register-supplier" element={<RegisterSupplier />} />
-          <Route path="/space/:id" element={<SpaceDetails />} />
-          <Route path="/admin" element={<Admin />} />
-          <Route path="/partners-selection" element={<PartnersSelection />} />
-        </Routes>
-      </div>
+      {/* COMPONENTES GLOBAIS */}
+      <Sidebar />
+      <HPCalculator />
+      
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/space/:id" element={<SpaceDetails />} />
+      </Routes>
+
+      {/* BANNER GLOBAL B2B - APARECE NO FIM DE TODAS AS PAGINAS */}
+      <GlobalB2BBanner />
     </Router>
   );
 }
