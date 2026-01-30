@@ -1,177 +1,151 @@
-﻿/* @author Felipe Makarios | Lead Architect - Bora Lá v2 */
-import React, { useState, useRef } from 'react';
+/* @author Felipe Makarios | Lead Architect - Bora Lá v2 */
+import React, { useState, useEffect, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { MapPin, Calendar as CalendarIcon, Flame, Menu, Calculator, ArrowLeft, X } from 'lucide-react';
+import { MapPin, ArrowLeft, Calendar, MessageCircle, X, ChevronRight, ChevronLeft, User, Clock, Waves, ShieldCheck } from 'lucide-react';
 
 const spacesData = {
-  "santa-clara": { nome: "ESPAÇO SANTA CLARA", rua: "Avenida Domingos Baraldo", numero: "875", bairro: "Santa Clara", cidade: "Novo Horizonte - SP", preco: "300", descricao: "Área de lazer ideal para festas familiares e confraternizações.", comodidades: ["Ar Condicionado", "Freezer", "Churrasqueira", "Piscina Aquecida"], folder: "espaco santa clara" },
-  "recanto-america": { nome: "RECANTO AMÉRICA", rua: "Rua América", numero: "455", bairro: "Jardim América", cidade: "Novo Horizonte - SP", preco: "300", descricao: "Ambiente reservado e aconchegante para reunir amigos e família.", comodidades: ["Piscina", "Churrasqueira", "Wi-Fi"], folder: "recanto america" },
-  "top-burguer": { nome: "RECANTO TOP BURGUER", rua: "Rua Carvalho Leme", numero: "615", bairro: "Centro", cidade: "Novo Horizonte - SP", preco: "330", descricao: "Localização central e lazer completo para seu evento.", comodidades: ["Piscina", "Churrasqueira", "Freezer Vertical"], folder: "area de lazer top burguer" },
-  "rancho-paradise": { nome: "RANCHO PARADISE BORBOREMA", rua: "Caminho Turístico", numero: "S/N", bairro: "Orla", cidade: "Borborema - SP", preco: "380", descricao: "Experiência pé na água às margens do Rio Tietê.", comodidades: ["Acesso ao Rio", "Piscina", "Campo de Futebol"], folder: "Rancho Paradise Borborema" },
-  "sao-sebastiao": { nome: "CHÁCARA SÃO SEBASTIÃO", rua: "Estrada Municipal", numero: "S/N", bairro: "Rural", cidade: "Novo Horizonte - SP", preco: "300", descricao: "Amplo espaço em meio à natureza.", comodidades: ["Natureza", "Piscina", "Campo de Futebol"], folder: "Chácara São Sebatião" },
-  "carlos-zara": { nome: "ÁREA DE LAZER CARLOS ZARA", rua: "Rua Carlos Zara", numero: "100", bairro: "Residencial", cidade: "Novo Horizonte - SP", preco: "600", descricao: "Estrutura premium para eventos exclusivos.", comodidades: ["Premium", "Piscina", "Suítes"], folder: "Área de lazer Carlos Zara" },
-  "recanto-do-sol": { nome: "RECANTO PÔR DO SOL", rua: "Avenida Principal", numero: "50", bairro: "Alto", cidade: "Novo Horizonte - SP", preco: "Consultar", descricao: "A melhor vista da cidade para o seu evento.", comodidades: ["Vista Panorâmica", "Piscina", "Deck Gourmet"], folder: "Recanto do Sol" },
-  "assolini": { nome: "ÁREA DE LAZER ASSOLINI", rua: "Rua Assolini", numero: "200", bairro: "Centro", cidade: "Novo Horizonte - SP", preco: "Consultar", descricao: "Espaço moderno e funcional no coração da cidade.", comodidades: ["Moderno", "Piscina", "Som Integrado"], folder: "ÁREA DE LAZER ASSOLINI" }
+  "top-burguer": { nome: "RECANTO TOP BURGUER", folder: "area de lazer top burguer", preco: "330", rua: "Rua Manoel Neves, 969, Novo Horizonte - SP", whats: "5517991178961", capacidade: "50", checkin: "08:00", checkout: "22:00" },
+  "rancho-paradise": { nome: "RANCHO PARADISE BORBOREMA", folder: "Rancho Paradise Borborema", preco: "380", rua: "Condomínio Village Tietê, Borborema - SP", whats: "5517992376515", capacidade: "25", checkin: "07:00", checkout: "22:00" },
+  "sao-sebastiao": { nome: "CHÁCARA SÃO SEBASTIÃO", folder: "chacara sao sebastiao", preco: "300", rua: "Zona Rural, Novo Horizonte - SP", whats: "5517992376515", capacidade: "120", checkin: "08:00", checkout: "20:00" },
+  "carlos-zara": { nome: "ÁREA DE LAZER CARLOS ZARA", folder: "Área de lazer Carlos Zara", preco: "600", rua: "Av. Cônego Alfredo Reith, 1363, Novo Horizonte - SP", whats: "5517997179203", capacidade: "60", checkin: "09:00", checkout: "02:00" },
+  "santa-clara": { nome: "ESPAÇO SANTA CLARA", folder: "espaco santa clara", preco: "300", rua: "Avenida Domingos Baraldo, 875, Santa Clara", whats: "5517991459046", capacidade: "50", checkin: "08:00", checkout: "22:00" },
+  "recanto-america": { nome: "RECANTO AMÉRICA", folder: "recanto america", preco: "300", rua: "Rua América, 455, Novo Horizonte - SP", whats: "5517996686442", capacidade: "40", checkin: "08:00", checkout: "22:00" },
+  "recanto-do-sol": { nome: "RECANTO PÔR DO SOL", folder: "Recanto do Sol", preco: "Consultar", rua: "R. Alexandre Baraldo, 433, NH", whats: "5517992489873", capacidade: "80", checkin: "08:00", checkout: "23:00" },
+  "assolini": { nome: "ÁREA DE LAZER ASSOLINI", folder: "ÁREA DE LAZER ASSOLINI", preco: "Consultar", rua: "R. Mário Benedicto da Silva, 1305, NH", whats: "5517992119367", capacidade: "40", checkin: "07:00", checkout: "00:00" }
 };
 
 export default function SpaceDetails() {
-  // --- LÓGICA DE COMPARTILHAR E FAVORITOS ---
-  const [isFavorite, setIsFavorite] = useState(() => {
-    try {
-      const favs = JSON.parse(localStorage.getItem('borala_favs') || '[]');
-      return favs.includes(window.location.pathname);
-    } catch (e) { return false; }
-  });
-
-  const handleShare = async () => {
-    if (navigator.share) {
-      try {
-        await navigator.share({
-          title: 'Bora Lá - App Oficial',
-          text: 'Confira esse espaço incrível!',
-          url: window.location.href,
-        });
-      } catch (err) { console.log('Erro ao compartilhar'); }
-    } else {
-      navigator.clipboard.writeText(window.location.href);
-      alert('Link copiado!');
-    }
-  };
-
-  const toggleFavorite = () => {
-    let favs = JSON.parse(localStorage.getItem('borala_favs') || '[]');
-    if (isFavorite) {
-      favs = favs.filter(id => id !== window.location.pathname);
-    } else {
-      favs.push(window.location.pathname);
-    }
-    localStorage.setItem('borala_favs', JSON.stringify(favs));
-    setIsFavorite(!isFavorite);
-  };
-  // ------------------------------------------
-  const [isFavorite, setIsFavorite] = useState(() => {
-    const favs = JSON.parse(localStorage.getItem('borala_favs') || '[]');
-    return favs.includes(window.location.pathname);
-  });
-
-  const toggleFavorite = () => {
-    let favs = JSON.parse(localStorage.getItem('borala_favs') || '[]');
-    if (isFavorite) {
-      favs = favs.filter(id => id !== window.location.pathname);
-    } else {
-      favs.push(window.location.pathname);
-    }
-    localStorage.setItem('borala_favs', JSON.stringify(favs));
-    setIsFavorite(!isFavorite);
-  };
   const { id } = useParams();
   const navigate = useNavigate();
   const dateInputRef = useRef(null);
-  const [dataSelecionada, setDataSelecionada] = useState('');
-  const [zoomImg, setZoomImg] = useState(null);
-  const space = spacesData[id];
+  const space = spacesData[id] || spacesData["top-burguer"];
+  
+  const [dataSelecionada, setDataSelecionada] = useState("");
+  const [isGalleryOpen, setIsGalleryOpen] = useState(false);
+  const [photoIndex, setPhotoIndex] = useState(0);
 
-  if (!space) return null;
+  useEffect(() => { window.scrollTo(0, 0); }, [id]);
+
+  const fotos = Array.from({ length: 5 }, (_, i) => `/spaces/${space.folder}/foto${i + 1}.jpg`);
+
+  const handleReserve = () => {
+    if (!dataSelecionada) return;
+    const dataF = new Date(dataSelecionada).toLocaleDateString('pt-BR');
+    const msg = encodeURIComponent(`Olá! Vi o ${space.nome} no App Bora Lá e quero ver a disponibilidade para o dia ${dataF} 🚀`);
+    window.open(`https://wa.me/${space.whats}?text=${msg}`, '_blank');
+  };
 
   return (
-    <div className="min-h-screen bg-[#FDFCFB] text-left">
-      {/* HEADER GLOBAL */}
-      <header className="fixed top-0 w-full bg-white/95 backdrop-blur-md z-[100] border-b border-black/5 py-4 px-6 lg:px-12 flex items-center justify-between">
-        <div className="flex items-center gap-4">
-          <button onClick={() => navigate('/')} className="p-3 bg-black text-white rounded-full hover:scale-110 transition-all"><ArrowLeft size={24} /></button>
-          <div className="flex items-center gap-2 cursor-pointer" onClick={() => navigate('/')}>
-            <div className="w-8 h-8 bg-[#00BFA6] rounded-lg flex items-center justify-center shadow-lg"><Flame size={18} fill="white" stroke="none" /></div>
-            <span className="font-black text-xl italic uppercase tracking-tighter">BORA LÁ</span>
+    <div className="min-h-screen bg-white">
+      {/* MODAL LIGHTBOX */}
+      {isGalleryOpen && (
+        <div className="fixed inset-0 z-[2000] bg-black/95 flex items-center justify-center p-4">
+          <button onClick={() => setIsGalleryOpen(false)} className="absolute top-8 right-8 text-white"><X size={48}/></button>
+          <img src={fotos[photoIndex]} className="max-w-full max-h-[85vh] rounded-2xl" />
+          <div className="absolute bottom-10 flex gap-8">
+            <button onClick={() => setPhotoIndex(p => p > 0 ? p-1 : fotos.length-1)} className="text-white p-4 bg-white/10 rounded-full"><ChevronLeft size={32}/></button>
+            <button onClick={() => setPhotoIndex(p => p < fotos.length-1 ? p+1 : 0)} className="text-white p-4 bg-white/10 rounded-full"><ChevronRight size={32}/></button>
           </div>
-        </div>
-        <div className="absolute left-1/2 -translate-x-1/2 flex justify-center w-full pointer-events-none">
-            <button onClick={() => window.dispatchEvent(new CustomEvent('openCalc'))} className="pointer-events-auto bg-[#E31C5F] text-white px-8 py-2.5 rounded-full flex items-center gap-3 shadow-lg">
-              <span className="text-[10px] font-black uppercase italic tracking-widest">Calculadora de Churrasco</span>
-              <div className="bg-white/20 p-1 rounded-md"><Calculator size={14} /></div>
-            </button>
-        </div>
-      </header>
-
-      {/* LIGHTBOX / ZOOM */}
-      {zoomImg && (
-        <div className="fixed inset-0 z-[10000] bg-black/95 flex items-center justify-center p-4 md:p-10" onClick={() => setZoomImg(null)}>
-          <button className="absolute top-10 right-10 text-white"><X size={40} /></button>
-          <img src={zoomImg} className="max-w-full max-h-full rounded-2xl shadow-2xl animate-in zoom-in-95 duration-300" />
         </div>
       )}
 
-      {/* GALERIA CLICÁVEL */}
-      <div className="pt-28 grid grid-cols-4 grid-rows-2 gap-2 h-[60vh] w-full px-2">
-        <div className="col-span-2 row-span-2 overflow-hidden rounded-[40px] border-4 border-white shadow-xl cursor-zoom-in" onClick={() => setZoomImg(`/spaces/${space.folder}/foto1.jpg`)}>
-          <img src={`/spaces/${space.folder}/foto1.jpg`} className="w-full h-full object-cover hover:scale-105 transition-all duration-700" />
+      <main className="pt-20 max-w-[1500px] mx-auto px-6 lg:px-12 pb-24">
+        {/* HEADER LIMPO */}
+        <div className="mb-10">
+          <button onClick={() => navigate(-1)} className="p-4 bg-black text-white rounded-full hover:scale-110 transition-transform shadow-xl">
+            <ArrowLeft size={24} />
+          </button>
         </div>
-        {[2, 3, 4, 5].map((n) => (
-          <div key={n} className="overflow-hidden rounded-[30px] border-4 border-white shadow-lg cursor-zoom-in" onClick={() => setZoomImg(`/spaces/${space.folder}/foto${n}.jpg`)}>
-            <img src={`/spaces/${space.folder}/foto${n}.jpg`} className="w-full h-full object-cover hover:scale-110 transition-all duration-700" />
-          </div>
-        ))}
-      </div>
 
-      <main className="max-w-[1440px] mx-auto px-6 lg:px-20 py-16 flex flex-col lg:flex-row gap-20">
-        <div className="flex-1">
-          <h1 className="text-6xl lg:text-9xl font-black italic uppercase tracking-tighter leading-[0.75] text-slate-900 mb-8">{space.nome}</h1>
-          <div className="flex items-center gap-3 text-slate-400 font-bold mb-12 text-xl italic uppercase"><MapPin size={26} className="text-[#00BFA6]" /> {space.rua}, {space.numero} - {space.cidade}</div>
-          <div className="bg-white border border-black/5 p-10 rounded-[40px] mb-12 shadow-sm italic text-xl text-slate-600 font-medium leading-relaxed">"{space.descricao}"</div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {space.comodidades.map((c, i) => (
-              <div key={i} className="bg-white border border-black/5 p-6 rounded-[30px] font-black uppercase italic text-sm flex items-center gap-4">
-                <div className="w-3 h-3 bg-[#00BFA6] rounded-full" /> {c}
+        {/* GRID DE FOTOS REPLICADO DO PRINT */}
+        <section className="flex flex-col md:flex-row gap-4 h-auto md:h-[550px] mb-16">
+          <div className="w-full md:w-1/2 h-[350px] md:h-full rounded-[60px] overflow-hidden cursor-pointer" onClick={() => {setPhotoIndex(0); setIsGalleryOpen(true);}}>
+            <img src={fotos[0]} className="w-full h-full object-cover" alt="Principal" />
+          </div>
+          <div className="w-full md:w-1/2 grid grid-cols-2 grid-rows-2 gap-4 h-[350px] md:h-full">
+            {[1, 2, 3, 4].map((idx) => (
+              <div key={idx} className="rounded-[40px] overflow-hidden cursor-pointer" onClick={() => {setPhotoIndex(idx); setIsGalleryOpen(true);}}>
+                <img src={fotos[idx]} className="w-full h-full object-cover" alt={`Foto ${idx}`} />
               </div>
             ))}
           </div>
-        </div>
+        </section>
 
-        <div className="w-full lg:w-[450px]">
-          <div className="bg-slate-950 text-white p-10 rounded-[50px] shadow-2xl sticky top-32 border border-white/10">
-            <div className="flex items-baseline justify-between mb-8 border-b border-white/5 pb-8">
-              <span className="text-6xl font-black italic text-[#00BFA6] tracking-tighter">{space.preco === 'Consultar' ? 'CONSULTAR' : `R$ ${space.preco}`}</span>
-              <span className="text-white/30 font-bold uppercase text-[10px] ml-2">/ Diária</span>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+          <div className="lg:col-span-7">
+            <h1 className="text-7xl md:text-[110px] font-black italic tracking-tighter uppercase leading-[0.8] mb-8 text-slate-900">
+                {space.nome}
+            </h1>
+            <div className="flex items-center gap-2 text-slate-400 font-bold uppercase text-xs tracking-widest mb-16">
+              <MapPin size={18} className="text-[#00BFA6]" /> {space.rua}
             </div>
-            
-            <div className="mb-8 cursor-pointer bg-white/5 p-6 rounded-[30px] border border-white/10 relative" onClick={() => dateInputRef.current.showPicker()}>
-              <label className="text-[9px] uppercase font-black tracking-[0.3em] text-[#00BFA6] block mb-2">QUANDO É O BORA LÁ?</label>
-              <div className="flex items-center justify-between font-black text-xl italic uppercase">
-                {dataSelecionada ? dataSelecionada.split('-').reverse().join('/') : 'SELECIONE A DATA'} <CalendarIcon size={20} className="text-[#00BFA6]" />
+
+            <div className="grid grid-cols-4 gap-6">
+                <div className="bg-slate-50 p-8 rounded-[40px] text-center border border-slate-100">
+                    <User className="mx-auto mb-3 text-slate-300" size={24}/>
+                    <p className="font-black italic text-xl uppercase italic">{space.capacidade}</p>
+                </div>
+                <div className="bg-slate-50 p-8 rounded-[40px] text-center border border-slate-100">
+                    <Clock className="mx-auto mb-3 text-slate-300" size={24}/>
+                    <p className="font-black italic text-xl uppercase italic">{space.checkin}</p>
+                </div>
+                <div className="bg-[#00BFA6]/5 p-8 rounded-[40px] text-center border border-[#00BFA6]/10">
+                    <Waves className="mx-auto mb-3 text-[#00BFA6]" size={24}/>
+                    <p className="font-black italic text-xl text-[#00BFA6] uppercase italic text-[14px]">PISCINA</p>
+                </div>
+                <div className="bg-slate-50 p-8 rounded-[40px] text-center border border-slate-100">
+                    <ShieldCheck className="mx-auto mb-3 text-slate-300" size={24}/>
+                    <p className="font-black italic text-xl uppercase italic">OK</p>
+                </div>
+            </div>
+          </div>
+
+          {/* CARD DARK DE RESERVA */}
+          <div className="lg:col-span-5">
+            <div className="bg-[#080d14] rounded-[60px] p-12 lg:p-16 shadow-2xl text-white">
+              <div className="mb-12">
+                <span className="text-8xl font-black italic text-[#00BFA6] tracking-tighter">
+                    {space.preco === "Consultar" ? "CONSULTAR" : `R$ ${space.preco}`}
+                </span>
+                <p className="text-slate-500 font-black uppercase text-[10px] tracking-[4px] mt-2">Valor da Diária</p>
               </div>
-              <input ref={dateInputRef} type="date" onChange={(e) => setDataSelecionada(e.target.value)} className="absolute inset-0 opacity-0 cursor-pointer" style={{ colorScheme: 'dark' }} />
-            </div>
 
-            <button onClick={() => window.open(`https://wa.me/5517992376515?text=Olá! Vi o ${space.nome} no App Bora Lá...`, '_blank')} className="w-full bg-[#00BFA6] text-black py-8 rounded-[30px] font-black uppercase italic text-2xl hover:bg-white transition-all shadow-xl active:scale-95">RESERVAR AGORA</button>
+              {/* SELETOR DE DATA */}
+              <div 
+                className="relative bg-[#121823] rounded-[40px] p-10 mb-8 border border-white/5 cursor-pointer hover:border-[#00BFA6]/30 transition-all"
+                onClick={() => dateInputRef.current && dateInputRef.current.showPicker()}
+              >
+                <p className="text-[11px] font-black text-[#00BFA6] uppercase tracking-[4px] mb-4">QUANDO É O BORA LÁ?</p>
+                <div className="flex justify-between items-center pointer-events-none">
+                  <span className="text-3xl font-black italic uppercase">
+                    {dataSelecionada ? new Date(dataSelecionada).toLocaleDateString('pt-BR') : "SELECIONE A DATA"}
+                  </span>
+                  <Calendar size={32} className="text-slate-500" />
+                </div>
+                <input 
+                  type="date" 
+                  ref={dateInputRef}
+                  onChange={(e) => setDataSelecionada(e.target.value)}
+                  className="absolute inset-0 opacity-0 cursor-pointer w-full h-full"
+                />
+              </div>
+
+              <button 
+                onClick={handleReserve}
+                disabled={!dataSelecionada}
+                className={`w-full py-10 rounded-[45px] font-black uppercase italic text-3xl transition-all flex items-center justify-center gap-4 ${
+                  dataSelecionada 
+                  ? "bg-[#00BFA6] text-black hover:scale-[1.02] shadow-[0_20px_50px_rgba(0,191,166,0.3)]" 
+                  : "bg-slate-800 text-slate-600 cursor-not-allowed"
+                }`}
+              >
+                <MessageCircle size={32} />
+                RESERVAR AGORA
+              </button>
+            </div>
           </div>
         </div>
-      <button onClick={toggleFavorite} className="bg-white text-rose-500 p-2 rounded-full shadow-lg fixed bottom-32 right-6 z-50 border border-rose-100"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill={isFavorite ? "currentColor" : "none"} stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-      {/* Botões Flutuantes de Ação */}
-      <div className="fixed bottom-6 right-6 flex flex-col gap-3 z-50">
-        <button onClick={toggleFavorite} className="bg-white text-rose-500 p-4 rounded-full shadow-2xl border border-rose-100 transition-transform active:scale-95">
-           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill={isFavorite ? "currentColor" : "none"} stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-        </button>
-        <button onClick={handleShare} className="bg-emerald-500 text-white p-4 rounded-full shadow-2xl transition-transform active:scale-95">
-           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
-        </button>
-      </div> 
-       {/* Botões de Ação da Área de Lazer */}
-      <div className="fixed bottom-8 right-6 flex flex-col gap-4 z-50">
-        <button 
-          onClick={toggleFavorite} 
-          className="bg-white text-rose-500 p-4 rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-rose-50 transition-all hover:scale-110 active:scale-90"
-          title="Salvar Área de Lazer"
-        >
-           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill={isFavorite ? "currentColor" : "none"} stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-        </button>
-        <button 
-          onClick={handleShare} 
-          className="bg-emerald-500 text-white p-4 rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.2)] transition-all hover:scale-110 active:scale-90"
-          title="Compartilhar com Amigos"
-        >
-           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
-        </button>
-      </div> 
- </main>
+      </main>
     </div>
   );
 }
