@@ -14,3 +14,12 @@
              refinedGlow 2s ease-in-out infinite;
   animation-delay: 2s;
 }
+
+/* Esconder barra de scroll mas manter funcionalidade */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
