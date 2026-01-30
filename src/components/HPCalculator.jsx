@@ -1,6 +1,7 @@
 /* @author Felipe Makarios | Creator - Bora Lá */
 import React, { useState, useEffect, useRef } from "react";
-import { Flame, X, MessageSquare, Zap, AlertCircle, HelpCircle } from "lucide-react";
+import { Flame, X, Zap, Info, ShoppingCart } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function HPCalculator() {
   const [isOpen, setIsOpen] = useState(false);
@@ -8,19 +9,10 @@ export default function HPCalculator() {
   const modalRef = useRef();
 
   useEffect(() => {
-    const handleOpen = () => {
-      setIsOpen(true);
-      document.body.style.overflow = 'hidden';
-    };
-    const handleClose = () => {
-      setIsOpen(false);
-      document.body.style.overflow = 'unset';
-    };
+    const handleOpen = () => setIsOpen(true);
+    const handleClose = () => setIsOpen(false);
     window.addEventListener("openCalc", handleOpen);
-    return () => {
-      window.removeEventListener("openCalc", handleOpen);
-      handleClose();
-    };
+    return () => { window.removeEventListener("openCalc", handleOpen); handleClose(); };
   }, []);
 
   if (!isOpen) return null;
@@ -40,110 +32,115 @@ export default function HPCalculator() {
   };
 
   const enviarOrcamento = (p) => {
-    const texto = `Olá! Vi seu anúncio no *App Bora Lá* e gostaria de validar os preços para meu churrasco:\n\n` +
-                  `📊 *ESTIMATIVA PARA ${t} PESSOAS*\n` +
-                  `🥩 Carne: ${res.carnes}kg\n` +
-                  `🍺 Cerveja: ${res.cerveja}un\n` +
-                  `🥤 Refri: ${res.refri}L\n` +
-                  `🔥 Carvão: ${res.carvao}sc\n` +
-                  `❄️ Gelo: ${res.gelo}sc\n` +
-                  `🍽️ Descartáveis: ${res.descartaveis}un\n\n` +
-                  `_Podemos confirmar os valores?_`;
-    
+    const texto = `Olá! Vi no *App Bora Lá* e gostaria de validar os preços:\n\n📊 *ESTIMATIVA PARA ${t} PESSOAS*\n🥩 Carne: ${res.carnes}kg\n🍺 Cerveja: ${res.cerveja}un\n🥤 Refri: ${res.refri}L\n🔥 Carvão: ${res.carvao}sc\n❄️ Gelo: ${res.gelo}sc\n🍽️ Descartáveis: ${res.descartaveis}un`;
     window.open(`https://wa.me/${p.t}?text=${encodeURIComponent(texto)}`, '_blank');
   };
 
   return (
-    <div className="fixed inset-0 z-[10000] bg-black/95 backdrop-blur-md flex items-center justify-center p-2 overflow-hidden"
-         ref={modalRef} onClick={(e) => e.target === modalRef.current && setIsOpen(false)}>
-      
-      <div className="bg-[#E2E2D8] w-full max-w-[1060px] max-h-[95vh] rounded-[30px] sm:rounded-[50px] border-[4px] sm:border-[6px] border-[#1A1A1A] flex flex-col shadow-2xl animate-in zoom-in duration-300 overflow-hidden">
-        
-        {/* HEADER */}
-        <div className="bg-[#1A1A1A] p-4 flex justify-between items-center text-white px-6 shrink-0">
-          <div className="flex items-center gap-3">
-            <div className="bg-[#00BFA6] p-1.5 rounded-lg">
-                <Flame size={18} fill="white" stroke="none" />
+    <AnimatePresence>
+      <motion.div 
+        initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+        className="fixed inset-0 z-[10000] bg-black/90 backdrop-blur-md flex items-center justify-center p-2 md:p-4"
+        ref={modalRef} onClick={(e) => e.target === modalRef.current && setIsOpen(false)}
+      >
+        <motion.div 
+          initial={{ scale: 0.95 }} animate={{ scale: 1 }}
+          className="bg-[#D1D5DB] w-full max-w-[1050px] rounded-[40px] border-[6px] border-[#374151] shadow-2xl overflow-hidden"
+        >
+          {/* HEADER */}
+          <div className="bg-[#1F2937] p-5 flex justify-between items-center px-8 border-b-4 border-black/20">
+            <div className="flex items-center gap-3">
+              <div className="bg-[#00BFA6] p-2 rounded-xl">
+                <Flame size={20} className="text-white" fill="white" />
+              </div>
+              <span className="text-white font-mono font-black tracking-[2px] text-xl uppercase italic">Calculadora de Churrasco</span>
             </div>
-            <span className="font-black italic uppercase tracking-tighter text-sm sm:text-xl">Calculadora Bora Lá</span>
+            <button onClick={() => setIsOpen(false)} className="text-white/40 hover:text-white"><X size={30}/></button>
           </div>
-          <button onClick={() => { setIsOpen(false); document.body.style.overflow = 'unset'; }} className="hover:text-[#00BFA6] transition-colors">
-            <X size={24} />
-          </button>
-        </div>
 
-        {/* CONTENT */}
-        <div className="p-4 sm:p-10 grid grid-cols-12 gap-4 sm:gap-8 overflow-y-auto overflow-x-hidden">
-          
-          <div className="col-span-12 lg:col-span-3 flex flex-col gap-4">
-            <div className="bg-white/40 p-5 rounded-[30px] border border-black/5">
-                <div className="flex items-center gap-2 mb-2 text-[#00BFA6]">
-                    <HelpCircle size={16} strokeWidth={3} />
-                    <span className="font-black uppercase italic text-[10px] tracking-widest">Como funciona?</span>
+          <div className="p-8 md:p-10 grid grid-cols-1 md:grid-cols-12 gap-8 bg-[#D1D5DB] items-stretch">
+            
+            {/* LADO ESQUERDO: TEXTO CURTO + INPUTS */}
+            <div className="md:col-span-3 flex flex-col gap-4">
+              <div className="bg-white/70 p-5 rounded-2xl border-l-8 border-[#00BFA6] shadow-sm flex-grow flex flex-col justify-center">
+                <div className="flex items-center gap-2 mb-2 text-[#1F2937]">
+                  <Info size={16} className="text-[#00BFA6]" />
+                  <span className="font-black text-[10px] uppercase tracking-widest">Como Usar</span>
                 </div>
-                <p className="text-[10px] font-bold text-slate-600 uppercase italic leading-tight">
-                    Nossa calculadora estima o consumo ideal para seu evento.
+                <p className="text-[10px] font-black text-slate-500 uppercase italic leading-tight">
+                  Ajuste o número de convidados abaixo para calcular os itens do seu churrasco.
                 </p>
-            </div>
+              </div>
 
-            <div className="grid grid-cols-3 lg:grid-cols-1 gap-2">
+              <div className="flex flex-col gap-3">
                 {['homens', 'mulheres', 'criancas'].map(k => (
-                    <div key={k} className="bg-white p-3 rounded-2xl border-b-4 border-black/10 flex flex-col lg:flex-row justify-between items-center shadow-sm">
-                        <span className="text-[10px] font-black uppercase italic text-slate-400">{k}</span>
-                        <input type="number" value={counts[k]} onChange={(e) => setCounts({...counts, [k]: e.target.value})} className="w-full lg:w-12 text-center lg:text-right font-black text-lg outline-none bg-transparent" />
-                    </div>
+                  <div key={k} className="relative group">
+                    <span className="absolute left-5 top-2 text-[10px] font-black text-[#00BFA6] uppercase italic z-10">{k}</span>
+                    <input 
+                      type="number" value={counts[k]} 
+                      onChange={(e) => setCounts({...counts, [k]: e.target.value})} 
+                      className="w-full bg-[#111827] text-white font-mono text-3xl p-5 pt-8 rounded-2xl border-b-4 border-black/40 text-right outline-none focus:border-[#00BFA6]" 
+                    />
+                  </div>
                 ))}
+              </div>
             </div>
-          </div>
 
-          {/* VISOR VERDE - FONTE AUMENTADA AQUI */}
-          <div className="col-span-12 lg:col-span-6 bg-[#9CA986] rounded-[45px] p-6 sm:p-8 shadow-inner border-b-[8px] border-black/10">
-             <div className="grid grid-cols-2 gap-x-8 gap-y-4 font-mono">
-                {[
-                    { l: 'Carne', v: res.carnes, u: 'kg' }, { l: 'Cerveja', v: res.cerveja, u: 'un' },
-                    { l: 'Refri', v: res.refri, u: 'L' }, { l: 'Carvão', v: res.carvao, u: 'sc' },
-                    { l: 'Gelo', v: res.gelo, u: 'sc' }, { l: 'Descart.', v: res.descartaveis, u: 'un' }
-                ].map(i => (
-                    <div key={i.l} className="flex flex-col items-center border-b border-black/5 pb-2">
-                        {/* Aumentei para text-[14px] e opacity-60 para melhor leitura */}
-                        <p className="text-[14px] font-black opacity-60 uppercase">{i.l}</p>
-                        <p className="text-2xl sm:text-4xl font-black tracking-tighter">{i.v}<span className="text-xs ml-0.5">{i.u}</span></p>
-                    </div>
-                ))}
-             </div>
-          </div>
-
-          <div className="col-span-12 lg:col-span-3 flex flex-col gap-4">
-            <div className="bg-[#1A1A1A] p-4 rounded-3xl border-l-4 border-[#00BFA6]">
-                <div className="flex items-center gap-1.5 mb-1 text-[#00BFA6]">
-                    <Zap size={14} fill="currentColor" />
-                    <span className="font-black uppercase italic text-[9px] text-white">Bora Orçar?</span>
+            {/* CENTRO: VISOR LCD */}
+            <div className="md:col-span-6">
+              <div className="bg-[#9CA986] h-full rounded-[35px] border-[5px] border-[#4B5563] shadow-[inset_0_8px_20px_rgba(0,0,0,0.3)] p-10 flex flex-col justify-center">
+                <div className="grid grid-cols-2 gap-x-10 gap-y-10 font-mono">
+                  {[
+                      { l: 'CARNE', v: res.carnes, u: 'kg' }, { l: 'CERVEJA', v: res.cerveja, u: 'un' },
+                      { l: 'REFRI', v: res.refri, u: 'L' }, { l: 'CARVÃO', v: res.carvao, u: 'sc' },
+                      { l: 'GELO', v: res.gelo, u: 'sc' }, { l: 'DESCART.', v: res.descartaveis, u: 'un' }
+                  ].map(i => (
+                      <div key={i.l} className="border-b-2 border-black/10 pb-2">
+                        <p className="text-[12px] font-black text-[#1F2937] uppercase mb-1">{i.l}</p>
+                        <p className="text-5xl font-black text-[#1F2937] tracking-tighter leading-none">{i.v}<span className="text-[11px] ml-1 uppercase opacity-50">{i.u}</span></p>
+                      </div>
+                  ))}
                 </div>
-                <p className="text-[9px] font-bold text-slate-400 uppercase leading-tight italic">
-                    Escolha um fornecedor para enviar sua lista pronta.
-                </p>
+              </div>
             </div>
 
-            <div className="grid grid-cols-1 gap-2">
+            {/* LADO DIREITO: TEXTO CURTO + PARCEIROS */}
+            <div className="md:col-span-3 flex flex-col gap-4">
+              <div className="bg-[#1F2937] p-5 rounded-2xl border-r-8 border-[#00BFA6] shadow-xl flex-grow flex flex-col justify-center">
+                <div className="flex items-center gap-2 mb-2 text-[#00BFA6]">
+                  <ShoppingCart size={16} />
+                  <span className="font-black text-[10px] uppercase tracking-widest">Bora Orçar?</span>
+                </div>
+                <p className="text-[10px] font-black text-white/70 uppercase italic leading-tight">
+                  Selecione um fornecedor abaixo para cotar sua lista automaticamente via WhatsApp.
+                </p>
+              </div>
+
+              <div className="flex flex-col gap-2">
                 {[
-                    { n: 'Quality Bull', t: '5517996488662', i: '🥩' },
-                    { n: 'Adega Culere', t: '5517996163845', i: '🍺' },
-                    { n: 'P. Piovani', t: '551735429999', i: '🛒' },
-                    { n: 'Zero Grau', t: '5517997432279', i: '❄️' }
+                    { n: 'Quality Bull', t: '5517996488662' },
+                    { n: 'Adega Culere', t: '5517996163845' },
+                    { n: 'Superm. Piovani', t: '5517992714861' },
+                    { n: 'Zero Grau', t: '5517988116106' }
                 ].map(p => (
-                    <button key={p.n} onClick={() => enviarOrcamento(p)} className="w-full flex items-center justify-between bg-white p-3.5 rounded-2xl border-b-4 border-black/10 hover:bg-[#00BFA6] group transition-all active:scale-95 shadow-md">
-                        <div className="flex items-center gap-3">
-                            <span className="text-xl">{p.i}</span>
-                            <span className="text-[10px] font-black uppercase group-hover:text-white tracking-tighter">{p.n}</span>
-                        </div>
-                        <MessageSquare size={16} className="text-[#25D366] group-hover:text-white" fill="currentColor" />
-                    </button>
+                  <motion.button 
+                    whileHover={{ x: 5 }} whileTap={{ scale: 0.98 }}
+                    key={p.n} onClick={() => enviarOrcamento(p)}
+                    className="w-full bg-[#111827] text-white font-mono text-[11px] p-5 rounded-2xl border-b-4 border-black/40 flex justify-between items-center group transition-all"
+                  >
+                    <span className="font-black uppercase tracking-tighter">{p.n}</span>
+                    <Zap size={14} fill="#00BFA6" className="text-[#00BFA6]" />
+                  </motion.button>
                 ))}
+              </div>
             </div>
           </div>
 
-        </div>
-      </div>
-    </div>
+          <div className="bg-[#1F2937] p-3 text-center">
+             <p className="text-[9px] font-mono text-white/20 tracking-[10px] uppercase">Engineering by Felipe Makarios</p>
+          </div>
+        </motion.div>
+      </motion.div>
+    </AnimatePresence>
   );
 }
