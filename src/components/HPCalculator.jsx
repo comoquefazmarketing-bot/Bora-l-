@@ -2,6 +2,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Flame, X, Zap, Info, ShoppingCart } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { track } from "@vercel/analytics"; // Importação para rastreio
 
 export default function HPCalculator() {
   const [isOpen, setIsOpen] = useState(false);
@@ -32,6 +33,13 @@ export default function HPCalculator() {
   };
 
   const enviarOrcamento = (p) => {
+    // DISPARA O EVENTO PARA A VERCEL
+    track('Click_Parceiro', { 
+      parceiro: p.n, 
+      total_pessoas: t,
+      local: 'Novo Horizonte' 
+    });
+
     const texto = `Olá! Vi no *App Bora Lá* e gostaria de validar os preços:\n\n📊 *ESTIMATIVA PARA ${t} PESSOAS*\n🥩 Carne: ${res.carnes}kg\n🍺 Cerveja: ${res.cerveja}un\n🥤 Refri: ${res.refri}L\n🔥 Carvão: ${res.carvao}sc\n❄️ Gelo: ${res.gelo}sc\n🍽️ Descartáveis: ${res.descartaveis}un`;
     window.open(`https://wa.me/${p.t}?text=${encodeURIComponent(texto)}`, '_blank');
   };
@@ -47,7 +55,7 @@ export default function HPCalculator() {
           initial={{ scale: 0.95 }} animate={{ scale: 1 }}
           className="bg-[#D1D5DB] w-full max-w-[1050px] rounded-[40px] border-[6px] border-[#374151] shadow-2xl overflow-hidden"
         >
-          {/* HEADER */}
+          {/* HEADER (Simétrico) */}
           <div className="bg-[#1F2937] p-5 flex justify-between items-center px-8 border-b-4 border-black/20">
             <div className="flex items-center gap-3">
               <div className="bg-[#00BFA6] p-2 rounded-xl">
@@ -55,7 +63,7 @@ export default function HPCalculator() {
               </div>
               <span className="text-white font-mono font-black tracking-[2px] text-xl uppercase italic">Calculadora de Churrasco</span>
             </div>
-            <button onClick={() => setIsOpen(false)} className="text-white/40 hover:text-white"><X size={30}/></button>
+            <button onClick={() => setIsOpen(false)} className="text-white/40 hover:text-white transition-colors"><X size={30}/></button>
           </div>
 
           <div className="p-8 md:p-10 grid grid-cols-1 md:grid-cols-12 gap-8 bg-[#D1D5DB] items-stretch">
@@ -104,7 +112,7 @@ export default function HPCalculator() {
               </div>
             </div>
 
-            {/* LADO DIREITO: TEXTO CURTO + PARCEIROS */}
+            {/* LADO DIREITO: BORA ORÇAR? + PARCEIROS */}
             <div className="md:col-span-3 flex flex-col gap-4">
               <div className="bg-[#1F2937] p-5 rounded-2xl border-r-8 border-[#00BFA6] shadow-xl flex-grow flex flex-col justify-center">
                 <div className="flex items-center gap-2 mb-2 text-[#00BFA6]">
