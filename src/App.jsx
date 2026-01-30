@@ -1,6 +1,7 @@
 /* @author Felipe Makarios | Creator - Bora Lá */
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
+import { Analytics } from '@vercel/analytics/react';
 import Home from './pages/Home';
 import SpaceDetails from './pages/SpaceDetails';
 import PartnersSelection from './pages/PartnersSelection';
@@ -67,6 +68,7 @@ function App() {
         </Routes>
       </main>
       <GlobalB2BBanner />
+      <Analytics />
     </Router>
   );
 }
