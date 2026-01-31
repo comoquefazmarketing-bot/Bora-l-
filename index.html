@@ -4,11 +4,17 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bora Lá | Áreas de Lazer em Novo Horizonte - Aluguel e Festas</title>
-    <meta name="description" content="As melhores áreas de lazer em Novo Horizonte. Encontre chácaras, piscinas e organize seu evento com nossa Calculadora de Churrasco." />
-    <meta name="google-site-verification" content="googlecdc9edef9238e030" />
+    
+    <title>Bora Lá | Melhores Áreas de Lazer em Novo Horizonte</title>
+    <meta name="description" content="A maior lista de Áreas de Lazer em Novo Horizonte. Aluguel de chácaras, piscinas e organizador de churrascos oficial de NH." />
+    <link rel="canonical" href="https://bora-la.vercel.app/" />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+
     <link rel="manifest" href="/manifest.json" />
     <meta name="theme-color" content="#00BFA6" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-YEXZLFEDZN"></script>
     <script>
@@ -16,39 +22,11 @@
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'G-YEXZLFEDZN');
-      
-      window.trackCalculadora = function(acao, detalhe) {
-        gtag('event', 'calculadora_churrasco', { 'acao': acao, 'detalhe': detalhe });
-      };
-      window.trackOrcamento = function(parceiro, total) {
-        gtag('event', 'clique_orcamento', { 'parceiro': parceiro, 'total_pessoas': total });
-      };
     </script>
-      <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [{
-        "@type": "Question",
-        "name": "Onde alugar área de lazer em Novo Horizonte?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "O Bora Lá é a plataforma principal para encontrar as melhores áreas de lazer e chácaras em Novo Horizonte, SP."
-        }
-      }, {
-        "@type": "Question",
-        "name": "Como calcular a quantidade de carne para churrasco?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Você pode usar a Calculadora de Churrasco do Bora Lá para obter quantidades exatas de carne, bebidas e acompanhamentos."
-        }
-      }]
-    }
-    </script>
-
-    <link rel="preconnect" href="https://www.googletagmanager.com">
-</head>
+  </head>
   <body>
+    <h1 style="display:none">Áreas de Lazer em Novo Horizonte - Aluguel e Eventos</h1>
+    
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
