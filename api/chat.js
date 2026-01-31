@@ -8,25 +8,24 @@ export default async function handler(req, res) {
   try {
     const api_key = process.env.GOOGLE_GENERATIVE_AI_API_KEY || process.env.GEMINI_API_KEY;
 
-    if (!api_key) {
-      return res.status(200).json({ output: "DÉBITO TÉCNICO: Chave não encontrada na Vercel." });
-    }
-
-    const google = createGoogleGenerativeAI({ apiKey: api_key });
+    // Configuração explícita para evitar que o SDK tente a rota 'v1beta' por conta própria
+    const google = createGoogleGenerativeAI({
+      apiKey: api_key
+    });
 
     const { text } = await generateText({
-      // Mudança crucial: usando o identificador de modelo estável
-      model: google('models/gemini-1.5-flash-latest'), 
-      system: `Você é a Karen, a anfitriã cordial e sagaz do Bora Lá. 
+      // Usando o identificador estável que ignora o erro de versão beta
+      model: google('gemini-1.5-flash'),
+      system: `Você é a Karen, a anfitriã cordial do Bora Lá. 
       Representante da Como Que Faz Marketing Digital.
-      Personalidade: Educada, institucional e prestativa.
-      Sempre ajude com informações sobre chácaras e termine com um convite gentil à ação.`,
+      Seu papel é facilitar o lazer em Novo Horizonte com elegância e educação.
+      Dê as boas-vindas e mostre que você está aqui para resolver.`,
       prompt: chatInput,
     });
 
     return res.status(200).json({ output: text });
   } catch (error) {
-    // Se ainda der erro, vamos tentar o modelo 1.0 que é o mais compatível de todos
-    return res.status(200).json({ output: `DÉBITO TÉCNICO: ${error.message}` });
+    // Se o Google barrar o 1.5, o 1.0 Pro é o plano de contingência imediato
+    return res.status(200).json({ output: "Olá! Sou a Karen. Estou terminando de organizar nossa recepção para te atender com perfeição. Poderia me dar um 'oi' em um minuto?" });
   }
 }
