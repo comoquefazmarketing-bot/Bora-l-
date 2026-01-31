@@ -1,5 +1,6 @@
+/* @author Felipe Makarios | Creator - Bora Lá */
 import React, { useState, useEffect } from "react";
-import { X, Home, Map, Calculator, Users, ArrowRight } from "lucide-react";
+import { X, Home, Calculator, Users, ArrowRight, BookOpen } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 export default function Sidebar() {
@@ -43,6 +44,12 @@ export default function Sidebar() {
           <button onClick={() => { setIsOpen(false); window.dispatchEvent(new CustomEvent('openCalc')); }} className="w-full flex items-center gap-4 p-4 rounded-2xl hover:bg-black/5 group transition-all">
             <Calculator className="text-slate-400 group-hover:text-black" />
             <span className="font-black uppercase italic tracking-tighter">Calculadora</span>
+          </button>
+
+          {/* NOVA OPÇÃO: BLOG LÁ */}
+          <button onClick={() => { navigate('/blog'); setIsOpen(false); }} className="w-full flex items-center gap-4 p-4 rounded-2xl hover:bg-black/5 group transition-all">
+            <BookOpen className="text-slate-400 group-hover:text-black" />
+            <span className="font-black uppercase italic tracking-tighter">Blog Lá</span>
           </button>
 
           <div className="h-px bg-black/5 my-4" />
