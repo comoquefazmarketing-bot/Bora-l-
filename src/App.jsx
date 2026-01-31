@@ -1,6 +1,7 @@
-import React from 'react';
+﻿import React from 'react';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import Home from './pages/Home';
+import FAQ from './pages/FAQ'; // Importação da FAQ
 import SpaceDetails from './pages/SpaceDetails';
 import PartnersSelection from './pages/PartnersSelection';
 import RegisterSupplier from './pages/RegisterSupplier';
@@ -48,6 +49,7 @@ function App() {
       <main className="relative pt-20">
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/faq" element={<FAQ />} />
           <Route path="/space/:id" element={<SpaceDetails />} />
           <Route path="/partners-selection" element={<PartnersSelection />} />
           <Route path="/register-supplier" element={<RegisterSupplier />} />
