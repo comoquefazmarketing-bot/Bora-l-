@@ -1,0 +1,17 @@
+﻿{
+  "short_name": "Bora Lá",
+  "name": "Bora Lá | Lazer em Novo Horizonte",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#111827",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#00BFA6",
+  "description": "A plataforma definitiva para encontrar chácaras e lazer em Novo Horizonte."
+}
