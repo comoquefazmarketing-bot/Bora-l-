@@ -1,31 +1,43 @@
 ﻿const { OpenAI } = require("openai");
 
-export default async function handler(req, res) {
-  if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
-  const { chatInput } = req.body;
+module.exports = async (req, res) => {
+  // Habilitar CORS para evitar bloqueios de navegador
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end();
+  }
+
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: 'Method not allowed' });
+  }
+
+  const { chatInput } = req.body;
   const apiKey = process.env.OPENAI_API_KEY;
 
   if (!apiKey) {
-    return res.status(200).json({ output: "DÉBITO TÉCNICO: A chave OPENAI_API_KEY não foi detectada no ambiente. Verifique o painel da Vercel." });
+    return res.status(200).json({ output: "Olá! Sou a Karen. Estou em treinamento rápido (chave ausente na Vercel). Felipe, verifique as variáveis de ambiente!" });
   }
 
   const openai = new OpenAI({ apiKey });
 
   try {
-    const response = await openai.chat.completions.create({
+    const completion = await openai.chat.completions.create({
       model: "gpt-4o-mini",
       messages: [
         { 
           role: "system", 
-          content: "Você é a Karen, a anfitriã cordial do Bora Lá. Representante da Como Que Faz Marketing Digital. Ajude com o aluguel de chácaras e explique as funções do app como a Calculadora de Churrasco. Seja elegante e prestativa." 
+          content: "Você é a Karen, a anfitriã cordial e sagaz do Bora Lá. Representante da Como Que Faz Marketing Digital. Ajude com chácaras em Novo Horizonte e ferramentas como a Calculadora de Churrasco. Seu tom é elegante e prestativa." 
         },
         { role: "user", content: chatInput }
       ],
     });
 
-    return res.status(200).json({ output: response.choices[0].message.content });
+    return res.status(200).json({ output: completion.choices[0].message.content });
   } catch (error) {
-    return res.status(200).json({ output: `DÉBITO TÉCNICO: ${error.message}` });
+    console.error(error);
+    return res.status(200).json({ output: `ERRO DE CONEXÃO: ${error.message}` });
   }
-}
+};
