@@ -1,27 +1,21 @@
 ﻿import { GoogleGenerativeAI } from "@google/generative-ai";
 
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
+  
   const { chatInput } = req.body;
+  const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
   try {
-    // Usando o modelo estável sem sufixos
+    // Testando o modelo padrão mais estável
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
-
-    const prompt = `Você é a Karen, anfitriã cordial e sagaz do Bora Lá (Como Que Faz Marketing Digital). 
-    Responda de forma elegante, prestativa e institucional. 
-    Seu objetivo é ajudar com o aluguel de chácaras e uso do app (Calculadora de Churrasco, Guia, etc).
-    Pergunta do usuário: ${chatInput}`;
-
-    const result = await model.generateContent(prompt);
-    const response = await result.response;
-    const text = response.text();
+    
+    const result = await model.generateContent(`Você é a Karen, anfitriã do Bora Lá. Responda: ${chatInput}`);
+    const text = result.response.text();
 
     return res.status(200).json({ output: text });
   } catch (error) {
-    console.error("ERRO_FINAL:", error);
-    return res.status(200).json({ output: "Olá! É um prazer atender você. Estou atualizando minhas informações para te dar a melhor resposta possível. Pode me perguntar novamente em um minutinho?" });
+    // Isso vai nos mostrar o erro real no chat para resolvermos de vez
+    return res.status(200).json({ output: `DEBUG_ERROR: ${error.message}` });
   }
 }
