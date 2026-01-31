@@ -1,4 +1,4 @@
-/* @author Felipe Makarios | Creator - Bora Lá */
+﻿/* @author Felipe Makarios | Creator - Bora LÃ¡ */
 import React, { useState, useEffect, useRef } from "react";
 import { Flame, X, Zap, Info, ShoppingCart } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -11,7 +11,7 @@ export default function HPCalculator() {
 
   useEffect(() => {
     const handleOpen = () => {
-      setIsOpen(true);
+      setIsOpen(true); window.trackCalculadora("abriu", "modal");
       document.body.style.overflow = 'hidden'; 
     };
     const handleClose = () => {
@@ -39,8 +39,8 @@ export default function HPCalculator() {
   };
 
   const enviarOrcamento = (p) => {
-    track('Click_Parceiro', { parceiro: p.n, total: t });
-    const texto = `Olá! Vi no *App Bora Lá* e gostaria de validar os preços:\n\n📊 *ESTIMATIVA PARA ${t} PESSOAS*\n🥩 Carne: ${res.carnes}kg\n🍺 Cerveja: ${res.cerveja}un\n🥤 Refri: ${res.refri}L\n🔥 Carvão: ${res.carvao}sc\n❄️ Gelo: ${res.gelo}sc\n🍽️ Descartáveis: ${res.descartaveis}un`;
+    track('Click_Parceiro', { parceiro: p.n, total: t }); window.trackOrcamento(p.n, t);
+    const texto = `OlÃ¡! Vi no *App Bora LÃ¡* e gostaria de validar os preÃ§os:\n\nðŸ“Š *ESTIMATIVA PARA ${t} PESSOAS*\nðŸ¥© Carne: ${res.carnes}kg\nðŸº Cerveja: ${res.cerveja}un\nðŸ¥¤ Refri: ${res.refri}L\nðŸ”¥ CarvÃ£o: ${res.carvao}sc\nâ„ï¸ Gelo: ${res.gelo}sc\nðŸ½ï¸ DescartÃ¡veis: ${res.descartaveis}un`;
     window.open(`https://wa.me/${p.t}?text=${encodeURIComponent(texto)}`, '_blank');
   };
 
@@ -79,7 +79,7 @@ export default function HPCalculator() {
               {['homens', 'mulheres', 'criancas'].map(k => (
                 <div key={k} className="relative">
                   <span className="absolute left-4 top-2 text-[10px] font-black text-[#00BFA6] uppercase italic z-10">{k}</span>
-                  <input type="number" value={counts[k]} onChange={(e) => setCounts({...counts, [k]: e.target.value})} 
+                  <input type="number" value={counts[k]} onChange={(e) => setCounts({...counts, [k]: e.target.value}); window.trackCalculadora("ajustou_convidados", k);} 
                   className="w-full bg-[#111827] text-white font-mono text-3xl p-5 pt-8 rounded-2xl border-b-4 border-black/50 text-right outline-none"/>
                 </div>
               ))}
@@ -91,7 +91,7 @@ export default function HPCalculator() {
                 <div className="grid grid-cols-2 gap-8 font-mono">
                   {[
                     { l: 'CARNE', v: res.carnes, u: 'kg' }, { l: 'CERVEJA', v: res.cerveja, u: 'un' },
-                    { l: 'REFRI', v: res.refri, u: 'L' }, { l: 'CARVÃO', v: res.carvao, u: 'sc' },
+                    { l: 'REFRI', v: res.refri, u: 'L' }, { l: 'CARVÃƒO', v: res.carvao, u: 'sc' },
                     { l: 'GELO', v: res.gelo, u: 'sc' }, { l: 'DESCART.', v: res.descartaveis, u: 'un' }
                   ].map(i => (
                     <div key={i.l} className="border-b-2 border-black/10 pb-2">

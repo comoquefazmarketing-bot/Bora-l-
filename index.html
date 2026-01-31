@@ -14,17 +14,12 @@
       gtag('js', new Date());
       gtag('config', 'G-YEXZLFEDZN');
 
-      // Funções Globais de Rastreio para o Backoffice
-      window.trackWhatsApp = function(destino) {
-        gtag('event', 'clique_whatsapp', { 'contato_destino': destino });
+      // Sensores de Conversão Bora Lá
+      window.trackCalculadora = function(acao, detalhe) {
+        gtag('event', 'calculadora_churrasco', { 'acao': acao, 'detalhe': detalhe });
       };
-      
-      window.trackCalculadora = function() {
-        gtag('event', 'usou_calculadora_churrasco');
-      };
-      
-      window.trackParceria = function() {
-        gtag('event', 'clique_ser_parceiro');
+      window.trackOrcamento = function(parceiro, total) {
+        gtag('event', 'clique_orcamento', { 'parceiro': parceiro, 'total_pessoas': total });
       };
     </script>
   </head>
