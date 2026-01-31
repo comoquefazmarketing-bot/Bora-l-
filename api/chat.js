@@ -1,21 +1,25 @@
-﻿import { GoogleGenerativeAI } from "@google/generative-ai";
+﻿import { google } from '@ai-sdk/google';
+import { generateText } from 'ai';
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
   
   const { chatInput } = req.body;
-  const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
   try {
-    // Testando o modelo padrão mais estável
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
-    
-    const result = await model.generateContent(`Você é a Karen, anfitriã do Bora Lá. Responda: ${chatInput}`);
-    const text = result.response.text();
+    const { text } = await generateText({
+      model: google('models/gemini-1.5-flash'),
+      system: `Você é a Karen, a anfitriã cordial e sagaz do app Bora Lá, desenvolvido pela 'Como Que Faz Marketing Digital'. 
+      Personalidade: Educada, institucional e prestativa.
+      Objetivo: Ajudar no aluguel de chácaras em Novo Horizonte e explicar o app.
+      Instruções de Reserva: 1. Guia, 2. Detalhes, 3. Disponibilidade, 4. WhatsApp do dono.
+      Sempre termine com um convite cordial à ação.`,
+      prompt: chatInput,
+    });
 
     return res.status(200).json({ output: text });
   } catch (error) {
-    // Isso vai nos mostrar o erro real no chat para resolvermos de vez
-    return res.status(200).json({ output: `DEBUG_ERROR: ${error.message}` });
+    console.error("Erro Vercel AI SDK:", error);
+    return res.status(500).json({ output: "Olá! Como sua consultora, estou refinando nossos sistemas para te atender melhor. Poderia tentar novamente em alguns segundos?" });
   }
 }
