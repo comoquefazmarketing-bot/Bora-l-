@@ -1,18 +1,15 @@
-/* @author Felipe Makarios | Creator - Bora Lá */
-import React from 'react';
-import { Analytics } from '@vercel/analytics/react';
-import Layout from './components/Layout';
-import HomePage from './pages/HomePage';
+﻿import React from 'react';
+import ChatSDR from './components/ChatSDR'; // Importando o novo SDR
+// Importe seus outros componentes aqui (Header, Footer, Home, etc)
 
 function App() {
   return (
-    <>
-      <Layout>
-        <HomePage />
-      </Layout>
-      {/* Este componente ativa o rastreio automático de visitas no Vercel */}
-      <Analytics />
-    </>
+    <div className="App">
+      {/* Seus outros componentes */}
+      
+      {/* Substituímos o componente antigo pela Karen SDR */}
+      <ChatSDR />
+    </div>
   );
 }
 
