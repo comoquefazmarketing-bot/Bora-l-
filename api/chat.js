@@ -6,26 +6,27 @@ export default async function handler(req, res) {
   const { chatInput } = req.body;
 
   try {
-    // Tenta pegar o nome novo OU o antigo (Segurança máxima)
     const api_key = process.env.GOOGLE_GENERATIVE_AI_API_KEY || process.env.GEMINI_API_KEY;
 
     if (!api_key) {
-      return res.status(200).json({ output: "DÉBITO TÉCNICO: Nenhuma chave (GOOGLE ou GEMINI) foi encontrada na Vercel. Verifique o painel Settings." });
+      return res.status(200).json({ output: "DÉBITO TÉCNICO: Chave não encontrada na Vercel." });
     }
 
     const google = createGoogleGenerativeAI({ apiKey: api_key });
 
     const { text } = await generateText({
-      model: google('gemini-1.5-flash'), // Voltando para o Flash que é mais rápido
-      system: `Você é a Karen, a anfitriã cordial e sagaz do Bora Lá.
-      Desenvolvido por: Felipe Makarios (Como Que Faz Marketing Digital).
-      Tom de voz: Educada, institucional e resolutiva.
-      Sempre ajude com o aluguel de chácaras e finalize com um convite gentil.`,
+      // Mudança crucial: usando o identificador de modelo estável
+      model: google('models/gemini-1.5-flash-latest'), 
+      system: `Você é a Karen, a anfitriã cordial e sagaz do Bora Lá. 
+      Representante da Como Que Faz Marketing Digital.
+      Personalidade: Educada, institucional e prestativa.
+      Sempre ajude com informações sobre chácaras e termine com um convite gentil à ação.`,
       prompt: chatInput,
     });
 
     return res.status(200).json({ output: text });
   } catch (error) {
+    // Se ainda der erro, vamos tentar o modelo 1.0 que é o mais compatível de todos
     return res.status(200).json({ output: `DÉBITO TÉCNICO: ${error.message}` });
   }
 }
