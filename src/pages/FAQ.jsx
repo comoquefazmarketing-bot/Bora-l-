@@ -7,52 +7,52 @@ export default function FAQ() {
   const faqs = [
     {
       q: "Como faço para reservar uma área de lazer?",
-      a: "O Bora Lá facilita o contato! Basta escolher a área que você gostou e clicar no botão de WhatsApp do proprietário. Nós ligamos as pontas para você negociar direto com o dono, sem taxas extras de reserva.",
-      cta: "Ver Áreas Disponíveis"
+      a: "É muito simples! O Bora Lá liga as pontas para você. Escolha o espaço que gostou e clique no botão do WhatsApp. Você fala direto com o dono, sem taxas extras de reserva.",
+      cta: "Ver Áreas e Chamar Dono"
     },
     {
-      q: "É seguro alugar pelo app?",
-      a: "Sim! Fazemos uma curadoria rigorosa das áreas de lazer em Novo Horizonte. Nosso criador, Felipe Makarios, garante que apenas espaços reais e de confiança apareçam em nossa vitrine.",
-      cta: "Falar com Consultor"
+      q: "O App é confiável?",
+      a: "Sim! O Bora Lá é uma iniciativa da agência Como Que Faz, do Felipe Makarios. Fazemos a curadoria manual de todas as áreas de lazer de Novo Horizonte para sua segurança.",
+      cta: "Falar com Suporte"
     },
     {
-      q: "A Calculadora de Churrasco é precisa?",
-      a: "Com certeza! Ela foi desenvolvida para que você não gaste dinheiro à toa e nem deixe ninguém com fome. É a ferramenta favorita dos nossos usuários.",
-      cta: "Usar Calculadora"
+      q: "Como funciona a Calculadora de Churrasco?",
+      a: "Ela calcula a quantidade exata de carne, carvão e bebidas para o seu grupo, evitando desperdício e falta de comida. É só clicar no ícone de churrasco no menu!",
+      cta: "Calcular agora"
     }
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 pb-20">
-      <div className="p-4 bg-white shadow-sm flex items-center gap-4">
-        <button onClick={() => navigate(-1)}><ArrowLeft /></button>
-        <h1 className="text-xl font-bold">Dúvidas Frequentes</h1>
+    <div style={{ minHeight: '100vh', backgroundColor: '#f9fafb', paddingBottom: '50px', fontFamily: 'sans-serif' }}>
+      <div style={{ padding: '20px', backgroundColor: 'white', display: 'flex', alignItems: 'center', gap: '15px', borderBottom: '1px solid #eee' }}>
+        <button onClick={() => navigate('/')} style={{ border: 'none', background: 'none', cursor: 'pointer' }}><ArrowLeft /></button>
+        <h1 style={{ fontSize: '1.25rem', fontWeight: 'bold', margin: 0 }}>Dúvidas Frequentes</h1>
       </div>
 
-      <div className="p-4 max-w-2xl mx-auto space-y-6">
+      <div style={{ padding: '20px', maxWidth: '600px', margin: '0 auto' }}>
         {faqs.map((f, i) => (
-          <div key={i} className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
-            <h3 className="text-lg font-bold text-gray-900 mb-2 flex items-center gap-2">
-              <CheckCircle2 className="text-[#00BFA6]" size={20} /> {f.q}
+          <div key={i} style={{ backgroundColor: 'white', padding: '20px', borderRadius: '15px', marginBottom: '20px', boxShadow: '0 2px 10px rgba(0,0,0,0.05)' }}>
+            <h3 style={{ fontSize: '1.1rem', fontWeight: 'bold', color: '#111', display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '10px' }}>
+              <CheckCircle2 color="#00BFA6" size={20} /> {f.q}
             </h3>
-            <p className="text-gray-600 mb-4 leading-relaxed">{f.a}</p>
+            <p style={{ color: '#666', lineHeight: '1.5', marginBottom: '15px' }}>{f.a}</p>
             <button 
               onClick={() => navigate('/')}
-              className="w-full py-3 bg-gray-100 text-gray-800 rounded-xl font-bold hover:bg-[#00BFA6] hover:text-white transition-all"
+              style={{ width: '100%', padding: '12px', borderRadius: '10px', border: 'none', backgroundColor: '#f3f4f6', fontWeight: 'bold', cursor: 'pointer' }}
             >
               {f.cta}
             </button>
           </div>
         ))}
 
-        <div className="mt-10 p-6 bg-gray-900 rounded-3xl text-white text-center">
-          <h2 className="text-2xl font-bold mb-2">Ainda com dúvidas?</h2>
-          <p className="text-gray-400 mb-6">Fale agora com nosso backoffice e reserve seu lazer.</p>
+        <div style={{ marginTop: '40px', padding: '30px', backgroundColor: '#111', borderRadius: '20px', color: 'white', textAlign: 'center' }}>
+          <h2 style={{ fontSize: '1.5rem', marginBottom: '10px' }}>Ainda tem dúvidas?</h2>
+          <p style={{ color: '#aaa', marginBottom: '20px' }}>Fale direto com nosso atendimento no WhatsApp.</p>
           <a 
             href="https://wa.me/5511933515087" 
-            className="inline-flex items-center gap-2 bg-[#25D366] px-8 py-4 rounded-full font-black text-lg hover:scale-105 transition-all"
+            style={{ display: 'inline-block', backgroundColor: '#25D366', color: 'white', padding: '15px 30px', borderRadius: '50px', fontWeight: '900', textDecoration: 'none', fontSize: '1.1rem' }}
           >
-            <MessageCircle /> CHAMAR NO WHATSAPP
+            CHAMAR AGORA
           </a>
         </div>
       </div>
