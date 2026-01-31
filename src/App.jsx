@@ -1,7 +1,7 @@
 ﻿import React from 'react';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import Home from './pages/Home';
-import FAQ from './pages/FAQ';
+import FAQ from './pages/FAQ'; 
 import Treinamento from './pages/Treinamento';
 import SpaceDetails from './pages/SpaceDetails';
 import PartnersSelection from './pages/PartnersSelection';
@@ -51,6 +51,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/faq" element={<FAQ />} />
+          <Route path="/treinamento" element={<Treinamento />} />
           <Route path="/space/:id" element={<SpaceDetails />} />
           <Route path="/partners-selection" element={<PartnersSelection />} />
           <Route path="/register-supplier" element={<RegisterSupplier />} />
