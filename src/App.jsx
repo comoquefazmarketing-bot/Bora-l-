@@ -1,7 +1,7 @@
 ﻿import React from 'react';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import Home from './pages/Home';
-import FAQ from './pages/FAQ'; // Importação da FAQ
+import FAQ from './pages/FAQ';
 import SpaceDetails from './pages/SpaceDetails';
 import PartnersSelection from './pages/PartnersSelection';
 import RegisterSupplier from './pages/RegisterSupplier';

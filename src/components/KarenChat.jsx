@@ -1,5 +1,5 @@
 ﻿import React, { useState } from 'react';
-import { X, Home, Calculator, Star, Handshake, HelpCircle } from 'lucide-react';
+import { X, Home, Star, Handshake, HelpCircle } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 export default function KarenChat() {
@@ -30,6 +30,9 @@ export default function KarenChat() {
             </button>
             <button onClick={() => handleRedirect("Olá! Sou proprietário e quero anunciar meu espaço.")} className="w-full flex items-center gap-3 p-3 bg-white border rounded-xl text-sm font-medium hover:border-[#00BFA6] transition-all">
               <Star size={18} className="text-[#00BFA6]" /> Anunciar minha Área
+            </button>
+            <button onClick={() => handleRedirect("Olá! Tenho interesse em uma parceria comercial com o Bora Lá.")} className="w-full flex items-center gap-3 p-3 bg-white border rounded-xl text-sm font-medium hover:border-[#00BFA6] transition-all">
+              <Handshake size={18} className="text-[#00BFA6]" /> Quero ser Parceiro
             </button>
             <button onClick={() => { navigate('/faq'); setIsOpen(false); }} className="w-full flex items-center gap-3 p-3 bg-blue-600 text-white rounded-xl text-sm font-bold shadow-md">
               <HelpCircle size={18} /> Dúvidas Frequentes (FAQ)

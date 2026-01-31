@@ -1,5 +1,5 @@
 ﻿import React from 'react';
-import { MessageCircle, ArrowLeft, CheckCircle2 } from 'lucide-react';
+import { MessageCircle, ArrowLeft, CheckCircle2, Handshake } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 export default function FAQ() {
@@ -7,52 +7,55 @@ export default function FAQ() {
   const faqs = [
     {
       q: "Como faço para reservar uma área de lazer?",
-      a: "É muito simples! O Bora Lá liga as pontas para você. Escolha o espaço que gostou e clique no botão do WhatsApp. Você fala direto com o dono, sem taxas extras de reserva.",
-      cta: "Ver Áreas e Chamar Dono"
+      a: "Escolha o espaço que gostou e clique no botão do WhatsApp. Você fala direto com o dono, sem taxas extras de reserva. O Bora Lá apenas liga as pontas!",
+      cta: "Ver Áreas"
     },
     {
-      q: "O App é confiável?",
-      a: "Sim! O Bora Lá é uma iniciativa da agência Como Que Faz, do Felipe Makarios. Fazemos a curadoria manual de todas as áreas de lazer de Novo Horizonte para sua segurança.",
+      q: "É seguro alugar pelo app?",
+      a: "Sim! O Bora Lá é uma iniciativa da Como Que Faz, do Felipe Makarios. Fazemos a curadoria manual das áreas de Novo Horizonte para sua total segurança.",
       cta: "Falar com Suporte"
     },
     {
-      q: "Como funciona a Calculadora de Churrasco?",
-      a: "Ela calcula a quantidade exata de carne, carvão e bebidas para o seu grupo, evitando desperdício e falta de comida. É só clicar no ícone de churrasco no menu!",
-      cta: "Calcular agora"
+      q: "Como funcionam as parcerias comerciais?",
+      a: "Buscamos fornecedores de buffet, bebidas, decoração e serviços para eventos. Ser um parceiro Bora Lá significa estar na vitrine da maior plataforma de lazer da região.",
+      cta: "Quero ser Parceiro",
+      isSpecial: true
     }
   ];
 
   return (
-    <div style={{ minHeight: '100vh', backgroundColor: '#f9fafb', paddingBottom: '50px', fontFamily: 'sans-serif' }}>
-      <div style={{ padding: '20px', backgroundColor: 'white', display: 'flex', alignItems: 'center', gap: '15px', borderBottom: '1px solid #eee' }}>
-        <button onClick={() => navigate('/')} style={{ border: 'none', background: 'none', cursor: 'pointer' }}><ArrowLeft /></button>
-        <h1 style={{ fontSize: '1.25rem', fontWeight: 'bold', margin: 0 }}>Dúvidas Frequentes</h1>
-      </div>
+    <div className="min-h-screen bg-gray-50 pt-28 pb-20 font-sans">
+      <div className="max-w-2xl mx-auto px-4">
+        <button onClick={() => navigate('/')} className="flex items-center gap-2 text-gray-500 mb-8 hover:text-black transition-all">
+          <ArrowLeft size={20} /> Voltar ao Início
+        </button>
+        
+        <h1 className="text-3xl font-black text-gray-900 mb-2 italic uppercase">Dúvidas Frequentes</h1>
+        <p className="text-gray-500 mb-10">Tudo o que você precisa saber para celebrar com os amigos.</p>
 
-      <div style={{ padding: '20px', maxWidth: '600px', margin: '0 auto' }}>
-        {faqs.map((f, i) => (
-          <div key={i} style={{ backgroundColor: 'white', padding: '20px', borderRadius: '15px', marginBottom: '20px', boxShadow: '0 2px 10px rgba(0,0,0,0.05)' }}>
-            <h3 style={{ fontSize: '1.1rem', fontWeight: 'bold', color: '#111', display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '10px' }}>
-              <CheckCircle2 color="#00BFA6" size={20} /> {f.q}
-            </h3>
-            <p style={{ color: '#666', lineHeight: '1.5', marginBottom: '15px' }}>{f.a}</p>
-            <button 
-              onClick={() => navigate('/')}
-              style={{ width: '100%', padding: '12px', borderRadius: '10px', border: 'none', backgroundColor: '#f3f4f6', fontWeight: 'bold', cursor: 'pointer' }}
-            >
-              {f.cta}
-            </button>
-          </div>
-        ))}
+        <div className="space-y-6">
+          {faqs.map((f, i) => (
+            <div key={i} className={`p-6 rounded-[25px] shadow-sm border ${f.isSpecial ? 'bg-blue-50 border-blue-100' : 'bg-white border-gray-100'}`}>
+              <h3 className="text-lg font-bold text-gray-900 mb-3 flex items-center gap-2">
+                {f.isSpecial ? <Handshake className="text-blue-600" /> : <CheckCircle2 className="text-[#00BFA6]" />}
+                {f.q}
+              </h3>
+              <p className="text-gray-600 mb-4 leading-relaxed text-sm">{f.a}</p>
+              <button 
+                onClick={() => f.isSpecial ? window.open('https://wa.me/5511933515087?text=Quero+ser+parceiro', '_blank') : navigate('/')}
+                className={`w-full py-3 rounded-xl font-bold text-sm transition-all ${f.isSpecial ? 'bg-blue-600 text-white shadow-lg shadow-blue-200' : 'bg-gray-100 text-gray-800 hover:bg-[#00BFA6] hover:text-white'}`}
+              >
+                {f.cta}
+              </button>
+            </div>
+          ))}
+        </div>
 
-        <div style={{ marginTop: '40px', padding: '30px', backgroundColor: '#111', borderRadius: '20px', color: 'white', textAlign: 'center' }}>
-          <h2 style={{ fontSize: '1.5rem', marginBottom: '10px' }}>Ainda tem dúvidas?</h2>
-          <p style={{ color: '#aaa', marginBottom: '20px' }}>Fale direto com nosso atendimento no WhatsApp.</p>
-          <a 
-            href="https://wa.me/5511933515087" 
-            style={{ display: 'inline-block', backgroundColor: '#25D366', color: 'white', padding: '15px 30px', borderRadius: '50px', fontWeight: '900', textDecoration: 'none', fontSize: '1.1rem' }}
-          >
-            CHAMAR AGORA
+        <div className="mt-12 p-8 bg-gray-900 rounded-[35px] text-white text-center shadow-2xl">
+          <h2 className="text-xl font-bold mb-2">Ainda com dúvidas?</h2>
+          <p className="text-gray-400 text-sm mb-6">Fale agora com nosso atendimento oficial.</p>
+          <a href="https://wa.me/5511933515087" className="inline-flex items-center gap-2 bg-[#25D366] px-10 py-4 rounded-full font-black text-lg hover:scale-105 transition-all">
+            <MessageCircle /> CHAMAR AGORA
           </a>
         </div>
       </div>
