@@ -1,67 +1,68 @@
-﻿import React, { useState, useEffect, useRef } from 'react';
-import { Send, X } from 'lucide-react';
+﻿import React, { useState } from 'react';
+import { X, Home, Calculator, Star, Handshake, MessageCircle } from 'lucide-react';
 
 export default function KarenChat() {
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState([{ role: 'karen', text: 'Olá! Sou a Karen, consultora oficial do Bora Lá.\nComo posso facilitar sua experiência hoje?' }]);
-  const [input, setInput] = useState('');
-  const [isTyping, setIsTyping] = useState(false);
-  const scrollRef = useRef();
+  const whatsappNumber = "5511933515087";
 
-  useEffect(() => { scrollRef.current?.scrollIntoView({ behavior: 'smooth' }); }, [messages]);
+  const options = [
+    { label: "Locação de Chácaras", icon: <Home size={18} />, msg: "Olá Karen! Gostaria de informações sobre locação de chácaras." },
+    { label: "Calculadora de Churrasco", icon: <Calculator size={18} />, msg: "Oi! Preciso de ajuda com a Calculadora de Churrasco." },
+    { label: "Anunciar minha Chácara", icon: <Star size={18} />, msg: "Olá! Sou proprietário e quero anunciar minha chácara no Bora Lá." },
+    { label: "Quero ser Parceiro", icon: <Handshake size={18} />, msg: "Olá! Tenho interesse em uma parceria comercial com o Bora Lá e a Como Que Faz." }
+  ];
 
-  const handleSend = async () => {
-    if (!input.trim()) return;
-    const userText = input;
-    setMessages(prev => [...prev, { role: 'user', text: userText }]);
-    setInput('');
-    setIsTyping(true);
-
-    try {
-      const response = await fetch('/api/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ chatInput: userText })
-      });
-      const data = await response.json();
-      setMessages(prev => [...prev, { role: 'karen', text: data.output }]);
-    } catch (e) {
-      setMessages(prev => [...prev, { role: 'karen', text: 'Karen está temporariamente offline. Tente novamente em instantes!' }]);
-    } finally { setIsTyping(false); }
+  const handleRedirect = (msg) => {
+    window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(msg)}`, '_blank');
   };
 
   return (
     <div className="fixed bottom-8 right-8 z-[9999] flex flex-col items-end font-sans">
       {isOpen && (
-        <div className="mb-4 w-[340px] h-[500px] bg-white rounded-[25px] shadow-2xl flex flex-col overflow-hidden border">
+        <div className="mb-4 w-[320px] bg-white rounded-[25px] shadow-2xl flex flex-col overflow-hidden border border-gray-100 animate-in fade-in slide-in-from-bottom-4 duration-300">
+          {/* Header */}
           <div className="p-4 bg-gray-900 text-white flex justify-between items-center">
             <div className="flex items-center gap-2 font-bold">
               <div className="w-8 h-8 rounded-full border border-[#00BFA6] overflow-hidden bg-gray-700">
-                <img src="/karen.jpeg" className="w-full h-full object-cover" />
+                <img src="/karen.jpeg" className="w-full h-full object-cover" alt="Karen" />
               </div>
-              Karen AI
+              Karen AI | SDR
             </div>
-            <button onClick={() => setIsOpen(false)}><X size={18} /></button>
+            <button onClick={() => setIsOpen(false)} className="hover:rotate-90 transition-all"><X size={18} /></button>
           </div>
-          <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50 text-gray-800">
-            {messages.map((m, i) => (
-              <div key={i} className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                <div className={`p-3 rounded-xl text-sm max-w-[85%] ${m.role === 'user' ? 'bg-gray-800 text-white' : 'bg-white shadow-sm'}`}>
-                  {m.text}
-                </div>
-              </div>
+
+          {/* Opções de SDR */}
+          <div className="p-4 bg-gray-50 space-y-3">
+            <p className="text-[13px] text-gray-500 mb-2 px-1">Olá! Como posso facilitar sua experiência hoje?</p>
+            {options.map((opt, i) => (
+              <button 
+                key={i} 
+                onClick={() => handleRedirect(opt.msg)}
+                className="w-full flex items-center gap-3 p-3 bg-white border border-gray-100 rounded-xl text-sm font-medium text-gray-700 hover:bg-gray-100 hover:border-[#00BFA6] transition-all shadow-sm"
+              >
+                <span className="text-[#00BFA6]">{opt.icon}</span>
+                {opt.label}
+              </button>
             ))}
-            {isTyping && <div className="text-[10px] text-gray-400 animate-pulse">Karen está digitando...</div>}
-            <div ref={scrollRef} />
           </div>
-          <div className="p-3 border-t flex gap-2 bg-white">
-            <input value={input} onChange={(e) => setInput(e.target.value)} onKeyDown={(e) => e.key === 'Enter' && handleSend()} className="flex-1 outline-none text-sm text-gray-800" placeholder="Fale com a Karen..." />
-            <button onClick={handleSend} className="text-[#00BFA6] font-bold">Enviar</button>
+
+          {/* Footer */}
+          <div className="p-3 text-center bg-white border-t">
+             <p className="text-[10px] text-gray-400">Powered by Como Que Faz Marketing Digital</p>
           </div>
         </div>
       )}
-      <button onClick={() => setIsOpen(!isOpen)} className="w-16 h-16 rounded-full bg-white shadow-lg border-2 border-white overflow-hidden hover:scale-105 transition-all">
-        {isOpen ? <X size={24} className="mx-auto text-gray-800" /> : <img src="/karen.jpeg" className="w-full h-full object-cover" />}
+
+      {/* Botão Flutuante */}
+      <button 
+        onClick={() => setIsOpen(!isOpen)} 
+        className="w-16 h-16 rounded-full bg-white shadow-lg border-2 border-white overflow-hidden hover:scale-110 active:scale-95 transition-all flex items-center justify-center"
+      >
+        {isOpen ? (
+          <X size={28} className="text-gray-800" />
+        ) : (
+          <img src="/karen.jpeg" className="w-full h-full object-cover" alt="Open Chat" />
+        )}
       </button>
     </div>
   );
