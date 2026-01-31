@@ -4,29 +4,29 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
     <meta name="google-site-verification" content="googlecdc9edef9238e030" />
+    <title>Bora Lá | Chácaras e Lazer em Novo Horizonte</title>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-YEXZLFEDZN"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
-      // Configuração base
       gtag('config', 'G-YEXZLFEDZN');
 
-      // Sensores para o Backoffice do Bora Lá
-      window.trackWhatsApp = function(quem) {
-        gtag('event', 'clique_whatsapp', { 'contato': quem });
+      // Funções Globais de Rastreio para o Backoffice
+      window.trackWhatsApp = function(destino) {
+        gtag('event', 'clique_whatsapp', { 'contato_destino': destino });
       };
       
       window.trackCalculadora = function() {
         gtag('event', 'usou_calculadora_churrasco');
       };
+      
+      window.trackParceria = function() {
+        gtag('event', 'clique_ser_parceiro');
+      };
     </script>
-
-    <title>Bora Lá | Chácaras e Lazer em Novo Horizonte</title>
   </head>
   <body>
     <div id="root"></div>
