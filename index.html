@@ -12,31 +12,21 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
+
+      // Configuração base
       gtag('config', 'G-YEXZLFEDZN');
 
-      // Função para rastrear cliques no WhatsApp
-      function trackWhatsAppClick(destino) {
-        gtag('event', 'click_whatsapp', {
-          'event_category': 'Conversão',
-          'event_label': destino
-        });
-      }
-
-      // Função para rastrear uso da Calculadora de Churrasco
-      function trackCalculadoraUse() {
-        gtag('event', 'use_calculadora', {
-          'event_category': 'Engajamento',
-          'event_label': 'Calculadora de Churrasco'
-        });
-      }
+      // Sensores para o Backoffice do Bora Lá
+      window.trackWhatsApp = function(quem) {
+        gtag('event', 'clique_whatsapp', { 'contato': quem });
+      };
+      
+      window.trackCalculadora = function() {
+        gtag('event', 'usou_calculadora_churrasco');
+      };
     </script>
 
     <title>Bora Lá | Chácaras e Lazer em Novo Horizonte</title>
-    <meta name="description" content="Plataforma de locação de áreas de lazer em Novo Horizonte. Curadoria Felipe Makarios." />
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
   </head>
   <body>
     <div id="root"></div>
