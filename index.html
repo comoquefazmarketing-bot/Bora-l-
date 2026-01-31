@@ -4,18 +4,11 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
     <title>Bora Lá | Áreas de Lazer em Novo Horizonte - Aluguel e Festas</title>
-    <meta name="description" content="As melhores áreas de lazer em Novo Horizonte para o seu churrasco ou evento. Encontre chácaras, piscinas e use nossa Calculadora de Churrasco." />
-    <meta name="keywords" content="áreas de lazer em novo horizonte, aluguel de área de lazer nh, chácaras novo horizonte, lazer nh, churrasco novo horizonte, bora lá" />
-    
-    <meta property="og:title" content="Bora Lá | Áreas de Lazer em Novo Horizonte" />
-    <meta property="og:description" content="Encontre a área de lazer perfeita para o seu final de semana em NH." />
-    <meta property="og:image" content="https://bora-la.vercel.app/og-image.jpg" />
-
+    <meta name="description" content="As melhores áreas de lazer em Novo Horizonte. Encontre chácaras, piscinas e organize seu evento com nossa Calculadora de Churrasco." />
+    <meta name="google-site-verification" content="googlecdc9edef9238e030" />
     <link rel="manifest" href="/manifest.json" />
     <meta name="theme-color" content="#00BFA6" />
-    <meta name="google-site-verification" content="googlecdc9edef9238e030" />
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-YEXZLFEDZN"></script>
     <script>
@@ -23,6 +16,13 @@
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'G-YEXZLFEDZN');
+      
+      window.trackCalculadora = function(acao, detalhe) {
+        gtag('event', 'calculadora_churrasco', { 'acao': acao, 'detalhe': detalhe });
+      };
+      window.trackOrcamento = function(parceiro, total) {
+        gtag('event', 'clique_orcamento', { 'parceiro': parceiro, 'total_pessoas': total });
+      };
     </script>
   </head>
   <body>
