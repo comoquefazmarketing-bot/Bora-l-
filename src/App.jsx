@@ -1,5 +1,6 @@
 ﻿import React from 'react';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
+import { Analytics } from '@vercel/analytics/react';
 import Home from './pages/Home';
 import FAQ from './pages/FAQ'; 
 import Treinamento from './pages/Treinamento';
@@ -60,6 +61,7 @@ function App() {
         </Routes>
       </main>
       <GlobalB2BBanner />
+      <Analytics />
     </Router>
   );
 }
