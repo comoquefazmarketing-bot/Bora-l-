@@ -1,4 +1,4 @@
-﻿import React from "react";
+import React from "react";
 import { Search, MapPin } from "lucide-react";
 
 export default function EnhancedSearch({ onSearch }) {
@@ -14,7 +14,7 @@ export default function EnhancedSearch({ onSearch }) {
         />
       </div>
       <button className="bg-[#00BFA6] text-white px-10 py-5 rounded-2xl font-black flex items-center gap-2 hover:scale-105 transition-transform">
-        <Search className="w-5 h-5" /> Bora Lá!
+        <Search className="w-5 h-5" /> BORA LÁ!
       </button>
     </div>
   );

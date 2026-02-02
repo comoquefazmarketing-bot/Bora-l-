@@ -1,4 +1,4 @@
-﻿import React, { useState, useRef } from "react";
+import React, { useState, useRef } from "react";
 import { ChevronLeft, MapPin, Play, CheckCircle2, Users, Calendar as CalendarIcon, Clock } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
@@ -9,18 +9,18 @@ export default function CarlosZaraDetails() {
   const [selectedDate, setSelectedDate] = useState("");
   
   const space = {
-    title: "Área de Lazer Carlos Zara",
+    title: "Ãrea de Lazer Carlos Zara",
     city: "Novo Horizonte",
     priceDaily: 600,
     pricePackage: 1000,
-    checkInNote: "Retirada da chave: Sexta-feira às 17:30",
+    checkInNote: "Retirada da chave: Sexta-feira Ã s 17:30",
     phone: "5517991178961", // Mantendo o padrão de contato do criador
     // Caminho baseado na pasta que vi no seu print
     images: [
-      "/spaces/Área de lazer Carlos Zara/foto1.jpg",
-      "/spaces/Área de lazer Carlos Zara/foto2.jpg",
-      "/spaces/Área de lazer Carlos Zara/foto3.jpg",
-      "/spaces/Área de lazer Carlos Zara/foto4.jpg"
+      "/spaces/Ãrea de lazer Carlos Zara/foto1.webp",
+      "/spaces/Ãrea de lazer Carlos Zara/foto2.webp",
+      "/spaces/Ãrea de lazer Carlos Zara/foto3.webp",
+      "/spaces/Ãrea de lazer Carlos Zara/foto4.webp"
     ]
   };
 
@@ -28,12 +28,12 @@ export default function CarlosZaraDetails() {
 
   const handleWhatsApp = () => {
     if (!selectedDate) {
-      alert("Selecione a data para verificarmos a disponibilidade! ✨");
+      alert("Selecione a data para verificarmos a disponibilidade! âœ¨");
       return;
     }
     const [year, month, day] = selectedDate.split("-");
     const dataFormatada = `${day}/${month}/${year}`;
-    const mensagem = encodeURIComponent(`Olá! Vi a "${space.title}" no Bora Lá e gostaria de reservar para o dia ${dataFormatada}.`);
+    const mensagem = encodeURIComponent(`Olá! Vi a "${space.title}" no BORA LÁ e gostaria de reservar para o dia ${dataFormatada}.`);
     window.open(`https://wa.me/${space.phone}?text=${mensagem}`, "_blank");
   };
 

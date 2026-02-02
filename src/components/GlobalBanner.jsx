@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export default function GlobalBanner() {
@@ -21,8 +21,8 @@ export default function GlobalBanner() {
           </h2>
           
           <p className="text-slate-300 font-bold uppercase text-sm lg:text-lg italic tracking-widest mb-10 max-w-2xl leading-tight">
-            SUA MÃO DE OBRA É O QUE FAZ A FESTA ACONTECER. <br className="hidden lg:block"/>
-            VENHA SER UM PARCEIRO E ESTEJA ONDE OS CLIENTES ESTÃO.
+            SUA MÃƒO DE OBRA Ã‰ O QUE FAZ A FESTA ACONTECER. <br className="hidden lg:block"/>
+            VENHA SER UM PARCEIRO E ESTEJA ONDE OS CLIENTES ESTÃƒO.
           </p>
 
           <div className="flex flex-wrap gap-4 items-center">
@@ -30,7 +30,7 @@ export default function GlobalBanner() {
               QUERO TRABALHAR MAIS
             </button>
             <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/40 hidden md:block">
-              BORA LÁ B2B SOLUTIONS
+              BORA LÁ B2B SOLUTIONS
             </span>
           </div>
         </div>

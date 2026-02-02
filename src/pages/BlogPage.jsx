@@ -1,4 +1,4 @@
-/* @author Felipe Makarios | Creator - Bora Lá */
+/* @author Felipe Makarios | Creator - BORA LÁ */
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Youtube, Tv, BookText, ArrowRight, Info } from "lucide-react";
@@ -7,8 +7,8 @@ const articles = [
   {
     id: "a1",
     tag: "O Aplicativo",
-    title: "Bora Lá: O manifesto por festas sem estresse",
-    excerpt: "Nascido em Novo Horizonte, o Bora Lá une tecnologia e curadoria para transformar a forma como você planeja seu lazer.",
+    title: "BORA LÁ: O manifesto por festas sem estresse",
+    excerpt: "Nascido em Novo Horizonte, o BORA LÁ une tecnologia e curadoria para transformar a forma como você planeja seu lazer.",
     slug: "manifesto-bora-la"
   },
   {
@@ -53,11 +53,11 @@ export default function BlogPage() {
       {/* GRID EM "L" INVERTIDO */}
       <section className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-6">
         
-        {/* VÍDEO (Lado Esquerdo - 2 colunas) */}
+        {/* VáDEO (Lado Esquerdo - 2 colunas) */}
         <div className="md:col-span-2 md:row-span-2">
           <div className="flex items-center gap-2 mb-4">
              <Youtube className="text-[#EE0000]" size={20} />
-             <h2 className="text-xs font-black uppercase italic tracking-widest text-[#1F2937]">TV Bora Lá</h2>
+             <h2 className="text-xs font-black uppercase italic tracking-widest text-[#1F2937]">TV BORA LÁ</h2>
           </div>
           <div className="aspect-video bg-black rounded-[40px] overflow-hidden border-[8px] border-[#1F2937] shadow-2xl">
             <iframe 
@@ -70,16 +70,16 @@ export default function BlogPage() {
           </div>
         </div>
 
-        {/* ANÚNCIO (Topo Direito) */}
+        {/* ANÃƒÅ¡NCIO (Topo Direito) */}
         <div className="bg-[#1F2937] rounded-[35px] p-8 border-b-[8px] border-[#00BFA6] shadow-xl flex flex-col justify-center">
            <span className="text-[9px] font-black text-[#00BFA6] uppercase tracking-widest mb-2">Publicidade Local</span>
            <h4 className="text-white text-xl font-black uppercase italic leading-tight">
-             Espaço disponível para marcas de Novo Horizonte
+             Espaço disponá­vel para marcas de Novo Horizonte
            </h4>
            <div className="mt-4 w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center font-black text-white text-xs">ADS</div>
         </div>
 
-        {/* ARTIGO 1 (Abaixo do Anúncio, fecha o L) */}
+        {/* ARTIGO 1 (Abaixo do AnÃºncio, fecha o L) */}
         <div 
           onClick={() => navigate(`/blog/${articles[0].slug}`)} 
           className="bg-white p-6 rounded-[35px] border-b-4 border-black/10 hover:border-[#00BFA6] transition-all cursor-pointer group shadow-sm flex flex-col justify-between"

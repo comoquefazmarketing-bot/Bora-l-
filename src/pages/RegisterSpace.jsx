@@ -16,7 +16,7 @@ export default function RegisterSpace() {
     setTimeout(() => {
       setFormData({
         ...formData,
-        description: `Experiência sensorial única em ${formData.location || 'nossa região'}. Espaço sofisticado com acabamento premium, ideal para momentos inesquecíveis. O ambiente perfeito para quem busca lazer com propósito.`
+        description: `Experiáªncia sensorial Ãºnica em ${formData.location || 'nossa região'}. Espaço sofisticado com acabamento premium, ideal para momentos inesquecá­veis. O ambiente perfeito para quem busca lazer com propósito.`
       });
       setIsGenerating(false);
     }, 1500);
@@ -62,7 +62,7 @@ export default function RegisterSpace() {
         <form onSubmit={handleSubmit} className="space-y-6 bg-white/50 backdrop-blur-xl p-8 lg:p-12 rounded-[40px] border border-black/5 shadow-2xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="col-span-2 space-y-2">
-              <label className="text-[10px] font-black uppercase tracking-widest ml-4 text-black/40">Título da Propriedade</label>
+              <label className="text-[10px] font-black uppercase tracking-widest ml-4 text-black/40">Tá­tulo da Propriedade</label>
               <input required value={formData.title} onChange={e => setFormData({...formData, title: e.target.value})} placeholder="Ex: Rancho Sensorial Paradise" className="w-full bg-white border-none rounded-2xl py-5 px-8 outline-none focus:ring-2 focus:ring-[#00BFA6] font-bold" />
             </div>
 

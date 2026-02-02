@@ -1,4 +1,4 @@
-﻿import React from "react";
+import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { MapPin, Users, Star, Search, Calendar } from "lucide-react";
@@ -11,7 +11,7 @@ export default function Explore() {
     { id: 'top-burguer', title: "Recanto Top Burguer", folder: "area de lazer top burguer", price: 330, cap: 40 },
     { id: 'sao-sebastiao', title: "Chácara São Sebastião", folder: "Chácara São Sebastião", price: 450, cap: 100 },
     { id: 'recanto-sol', title: "Recanto do Sol", folder: "Recanto do Sol", price: 380, cap: 50 },
-    { id: 'carlos-zara', title: "Área de Lazer Carlos Zara", folder: "Área de lazer Carlos Zara", price: 300, cap: 35 }
+    { id: 'carlos-zara', title: "Ãrea de Lazer Carlos Zara", folder: "Ãrea de lazer Carlos Zara", price: 300, cap: 35 }
   ];
 
   return (
@@ -39,7 +39,7 @@ export default function Explore() {
             </div>
           </div>
           <button className="bg-[#00BFA6] text-white px-8 py-4 rounded-2xl font-black flex items-center gap-2">
-            <Search className="w-5 h-5" /> Bora Lá!
+            <Search className="w-5 h-5" /> BORA LÁ!
           </button>
         </div>
 
@@ -47,7 +47,7 @@ export default function Explore() {
           {spaces.map((s) => (
             <Card key={s.id} onClick={() => navigate(`/space-details?id=${s.id}`)} className="cursor-pointer border-none shadow-lg rounded-[40px] overflow-hidden bg-white">
               <div className="aspect-video relative">
-                <img src={`/spaces/${s.folder}/foto1.jpg`} className="w-full h-full object-cover" alt={s.title} />
+                <img src={`/spaces/${s.folder}/foto1.webp`} className="w-full h-full object-cover" alt={s.title} />
                 <Badge className="absolute top-6 right-6 bg-white text-black font-black"><Star className="w-4 h-4 mr-1 fill-yellow-500" /> 5.0</Badge>
               </div>
               <CardContent className="p-8">

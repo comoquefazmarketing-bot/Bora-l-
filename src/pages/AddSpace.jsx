@@ -1,4 +1,4 @@
-﻿import React, { useState } from "react";
+import React, { useState } from "react";
 import { Save, Image as ImageIcon, MapPin, Users, Info, ShieldCheck } from "lucide-react";
 
 export default function AddSpace() {
@@ -18,7 +18,7 @@ export default function AddSpace() {
   const todasComodidades = [
     "Wi-Fi", "Estacionamento", "Churrasqueira", "Piscina", 
     "Ar Condicionado", "Cozinha", "Som Ambiente", "TV", 
-    "Banheiros", "Área Verde", "Segurança"
+    "Banheiros", "Ãrea Verde", "Segurança"
   ];
 
   const toggleComodidade = (item) => {
@@ -45,10 +45,10 @@ export default function AddSpace() {
 
         <div className="p-8 md:p-16 space-y-12">
           
-          {/* Seção 1: Informações Básicas */}
+          {/* Seção 1: InformaçÃµes Básicas */}
           <section className="space-y-6">
             <h2 className="flex items-center gap-2 text-xl font-black text-slate-800 uppercase tracking-tight">
-              <Info className="text-[#00BFA6]" /> Informações Básicas
+              <Info className="text-[#00BFA6]" /> InformaçÃµes Básicas
             </h2>
             <div className="grid md:grid-cols-2 gap-8">
               <div className="space-y-2">
@@ -59,7 +59,7 @@ export default function AddSpace() {
                 <label className="text-[10px] font-black uppercase text-slate-400 ml-4">Tipo de Espaço *</label>
                 <select className="w-full p-5 bg-slate-50 rounded-[25px] border-none focus:ring-2 ring-[#00BFA6] font-bold">
                   <option>Chácara</option>
-                  <option>Piscina / Área de Lazer</option>
+                  <option>Piscina / Ãrea de Lazer</option>
                   <option>Salão de Festas</option>
                   <option>Outro</option>
                 </select>
@@ -89,11 +89,11 @@ export default function AddSpace() {
              </div>
           </section>
 
-          {/* Seção 3: Conteúdo Emocional */}
+          {/* Seção 3: ConteÃºdo Emocional */}
           <section className="space-y-6">
             <div className="space-y-2">
               <label className="text-[10px] font-black uppercase text-slate-400 ml-4">Frase Curta (Emocional)</label>
-              <input className="w-full p-5 bg-slate-50 rounded-[25px] border-none focus:ring-2 ring-[#00BFA6] font-bold italic" placeholder="Ideal para aquele churrasco de domingo com a família" />
+              <input className="w-full p-5 bg-slate-50 rounded-[25px] border-none focus:ring-2 ring-[#00BFA6] font-bold italic" placeholder="Ideal para aquele churrasco de domingo com a famÃ­lia" />
             </div>
             <div className="space-y-2">
               <label className="text-[10px] font-black uppercase text-slate-400 ml-4">Descrição Completa</label>
@@ -139,7 +139,7 @@ export default function AddSpace() {
           </section>
 
           <button className="w-full bg-[#00BFA6] text-white py-8 rounded-[35px] font-black text-2xl shadow-2xl shadow-[#00BFA6]/40 hover:translate-y-[-4px] active:scale-95 transition-all flex items-center justify-center gap-4">
-            <Save size={28} /> CRIAR ESPAÇO NO BORALÁ
+            <Save size={28} /> CRIAR ESPAÃ‡O NO BORALÃ
           </button>
 
         </div>

@@ -1,4 +1,4 @@
-﻿export const INITIAL_REVIEW_STATE = {
+export const INITIAL_REVIEW_STATE = {
   space_id: "",
   user_email: "",
   user_name: "",

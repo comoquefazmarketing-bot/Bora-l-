@@ -1,4 +1,4 @@
-﻿/* @author Felipe Makarios | Creator & Lead Architect - Bora Lá / Manda Lá */
+/* @author Felipe Makarios | Creator & Lead Architect - BORA LÁ / Manda Lá */
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { 
@@ -15,7 +15,7 @@ export default function Dashboard() {
       
       {/* HEADER MOBILE - ESSENCIAL PARA O PAI FICAR ON NO CELULAR */}
       <div className="md:hidden flex justify-between items-center p-4 bg-white border-b sticky top-0 z-[100]">
-        <img src="/logo.png" alt="Bora Lá" className="h-8" />
+        <img src="/logo.png" alt="BORA LÁ" className="h-8" />
         <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="p-2 text-slate-900">
           {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
@@ -28,7 +28,7 @@ export default function Dashboard() {
         md:relative md:translate-x-0 md:flex md:flex-col
       `}>
         <div className="p-8 h-full flex flex-col">
-          <img src="/logo.png" alt="Bora Lá" className="w-32 mb-12 hidden md:block" />
+          <img src="/logo.png" alt="BORA LÁ" className="w-32 mb-12 hidden md:block" />
           
           <nav className="space-y-4 flex-1">
             <button className="w-full flex items-center gap-4 p-4 rounded-2xl bg-slate-900 text-white font-bold uppercase text-xs tracking-widest">
@@ -49,7 +49,7 @@ export default function Dashboard() {
         </div>
       </aside>
 
-      {/* CONTEÚDO PRINCIPAL */}
+      {/* CONTEÃšDO PRINCIPAL */}
       <main className="flex-1 p-4 md:p-10 lg:p-16 overflow-x-hidden">
         <header className="mb-10">
           <h1 className="text-3xl md:text-5xl font-black italic uppercase tracking-tighter">
@@ -67,7 +67,7 @@ export default function Dashboard() {
             >
               <div className="aspect-[4/5] relative overflow-hidden">
                 <img 
-                  src={`${space.imagesFolder}foto1.jpg`} 
+                  src={`${space.imagesFolder}foto1.webp`} 
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
                   alt={space.title} 
                 />

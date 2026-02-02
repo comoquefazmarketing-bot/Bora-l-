@@ -1,4 +1,4 @@
-/* @author Felipe Makarios | Widget Dinâmica */
+/* @author Felipe Makarios | Widget Diná¢mica */
 import React from 'react';
 import { CONTENT_HUB } from '../data/contentHub';
 import { Sparkles, ArrowRight } from 'lucide-react';
@@ -13,7 +13,7 @@ export default function GlobalContentUpdate() {
         <Sparkles size={24} />
       </div>
       <div className="flex-1">
-        <span className="text-[10px] font-black uppercase tracking-widest text-[#00BFA6]">Destaque Bora Lá</span>
+        <span className="text-[10px] font-black uppercase tracking-widest text-[#00BFA6]">Destaque BORA LÁ</span>
         <h4 className="text-xl font-black uppercase italic leading-tight">{featured.title}</h4>
       </div>
       <button className="bg-white text-black px-6 py-3 rounded-full font-black uppercase text-[10px] hover:bg-[#00BFA6] hover:text-white transition-all">

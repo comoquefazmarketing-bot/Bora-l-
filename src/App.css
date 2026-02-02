@@ -30,7 +30,7 @@
 }
 /* --- UX/UI MOBILE BY FELIPE MAKARIOS --- */
 @media (max-width: 768px) {
-  /* Impede que tÌtulos estourem a lateral */
+  /* Impede que t√≠tulos estourem a lateral */
   h1, h2, h3 {
     word-break: break-word;
     font-size: clamp(2.5rem, 10vw, 4rem) !important;
@@ -39,17 +39,17 @@
 
   /* Ajuste da Calculadora Global no Mobile */
   .fixed.inset-0.z-50 > div {
-    height: 90vh !important; /* N„o deixa ocupar 100% para o usu·rio ver o fundo */
+    height: 90vh !important; /* N√£o deixa ocupar 100% para o usu√°rio ver o fundo */
     margin-top: auto !important;
   }
 
-  /* Melhora o espaÁamento dos cards na Home */
+  /* Melhora o espa√ßamento dos cards na Home */
   .grid-cols-1 {
     gap: 1.5rem !important;
     padding: 0 10px !important;
   }
   
-  /* Garante que o mapa n„o quebre o scroll */
+  /* Garante que o mapa n√£o quebre o scroll */
   iframe {
     pointer-events: auto;
     touch-action: pan-y;

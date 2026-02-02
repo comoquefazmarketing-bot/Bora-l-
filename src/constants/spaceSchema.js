@@ -1,12 +1,12 @@
-﻿export const SPACE_TYPES = [
+export const SPACE_TYPES = [
   { value: 'piscina', label: 'Piscina' },
   { value: 'chacara', label: 'Chácara' },
   { value: 'salao_festas', label: 'Salão de Festas' },
   { value: 'quadra_esportes', label: 'Quadra de Esportes' },
   { value: 'espaco_eventos', label: 'Espaço de Eventos' },
-  { value: 'area_camping', label: 'Área de Camping' },
+  { value: 'area_camping', label: 'Ãrea de Camping' },
   { value: 'chale', label: 'Chalé' },
-  { value: 'sitio', label: 'Sítio' },
+  { value: 'sitio', label: 'SÃ­tio' },
   { value: 'outro', label: 'Outro' }
 ];
 

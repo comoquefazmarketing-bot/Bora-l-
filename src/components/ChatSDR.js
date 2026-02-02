@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { MessageCircle, X, Home, Calculator, Star, User, Handshake, BarChart } from 'lucide-react';
 
 const ChatSDR = () => {
@@ -6,16 +6,16 @@ const ChatSDR = () => {
   const whatsappNumber = "5511933515087";
 
   const options = [
-    { id: "LOCACAO", label: "Locação de Chácaras", icon: <Home size={18} />, msg: "Olá Karen! Gostaria de informações sobre locação de chácaras." },
+    { id: "LOCACAO", label: "Locação de Chácaras", icon: <Home size={18} />, msg: "Olá Karen! Gostaria de informaçÃµes sobre locação de chácaras." },
     { id: "CALC", label: "Calculadora de Churrasco", icon: <Calculator size={18} />, msg: "Oi! Preciso de ajuda com a Calculadora de Churrasco." },
-    { id: "ANUNCIO", label: "Anunciar minha Chácara", icon: <Star size={18} />, msg: "Olá! Sou proprietário e quero anunciar minha chácara no Bora Lá." },
-    { id: "PARCERIA", label: "Quero ser Parceiro", icon: <Handshake size={18} />, msg: "Olá! Tenho interesse em uma parceria comercial com o Bora Lá e a Como Que Faz." },
-    { id: "SUPORTE", label: "Falar com Consultor", icon: <User size={18} />, msg: "Olá! Gostaria de falar com o suporte do Bora Lá." }
+    { id: "ANUNCIO", label: "Anunciar minha Chácara", icon: <Star size={18} />, msg: "Olá! Sou proprietário e quero anunciar minha chácara no BORA LÁ." },
+    { id: "PARCERIA", label: "Quero ser Parceiro", icon: <Handshake size={18} />, msg: "Olá! Tenho interesse em uma parceria comercial com o BORA LÁ e a Como Que Faz." },
+    { id: "SUPORTE", label: "Falar com Consultor", icon: <User size={18} />, msg: "Olá! Gostaria de falar com o suporte do BORA LÁ." }
   ];
 
   const handleRedirect = (opt) => {
     // BACKOFFICE LOG: Rastreamento de interesse
-    console.log(`[ANALYTICS] Interesse detectado: ${opt.id} às ${new Date().toLocaleString()}`);
+    console.log(`[ANALYTICS] Interesse detectado: ${opt.id} Ã s ${new Date().toLocaleString()}`);
     
     // Se você tiver Google Analytics instalado, o comando abaixo ativa:
     // if (window.gtag) { window.gtag('event', 'clique_sdr', { 'assunto': opt.id }); }
@@ -34,7 +34,7 @@ const ChatSDR = () => {
         }}>
           <div style={{ backgroundColor: '#0984E3', padding: '15px', color: 'white' }}>
             <h4 style={{ margin: 0 }}>Karen AI | SDR</h4>
-            <p style={{ margin: 0, fontSize: '11px', opacity: 0.8 }}>Análise de interesse ativa 📊</p>
+            <p style={{ margin: 0, fontSize: '11px', opacity: 0.8 }}>Análise de interesse ativa ðŸ“Š</p>
           </div>
           <div style={{ padding: '10px' }}>
             {options.map((opt, i) => (

@@ -1,18 +1,18 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Sparkles, ArrowRight } from 'lucide-react';
 
 const slidesB2B = [
   { id: 'churrasco', dor: 'AGENDA VAZIA?', prof: 'CHURRASQUEIROS', bg: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=2000' },
   { id: 'decor', dor: 'QUER MAIS EVENTOS?', prof: 'DECORADORAS', bg: 'https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=2000' },
   { id: 'buffet', dor: 'SEU SABOR NO TOPO?', prof: 'BUFFETS & CONFEITEIRAS', bg: 'https://images.unsplash.com/photo-1530101128243-575b52a0a13b?q=80&w=2000' },
-  { id: 'dj', dor: 'PICKUP PARADA?', prof: 'DJs & SONORIZAÇÃO', bg: 'https://images.unsplash.com/photo-1516280440614-37939bbacd81?q=80&w=2000' },
-  { id: 'infantil', dor: 'RECREAÇÃO PARADA?', prof: 'FESTAS INFANTIS', bg: 'https://images.unsplash.com/photo-1533450718591-29d45635f0a9?q=80&w=2000' },
-  { id: 'cerimonial', dor: 'ORGANIZAÇÃO DE ELITE?', prof: 'CERIMONIALISTAS', bg: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=2000' }
+  { id: 'dj', dor: 'PICKUP PARADA?', prof: 'DJs & SONORIZAÃ‡ÃƒO', bg: 'https://images.unsplash.com/photo-1516280440614-37939bbacd81?q=80&w=2000' },
+  { id: 'infantil', dor: 'RECREAÃ‡ÃƒO PARADA?', prof: 'FESTAS INFANTIS', bg: 'https://images.unsplash.com/photo-1533450718591-29d45635f0a9?q=80&w=2000' },
+  { id: 'cerimonial', dor: 'ORGANIZAÃ‡ÃƒO DE ELITE?', prof: 'CERIMONIALISTAS', bg: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=2000' }
 ];
 
 export default function GlobalB2BBanner() {
   const [current, setCurrent] = useState(0);
-  const linkWhats = "https://wa.me/5517988031679?text=" + encodeURIComponent("Olá Felipe, vi o banner B2B no app Bora Lá e quero ser um parceiro profissional!");
+  const linkWhats = "https://wa.me/5517988031679?text=" + encodeURIComponent("Olá Felipe, vi o banner B2B no app BORA LÁ e quero ser um parceiro profissional!");
 
   useEffect(() => {
     const timer = setInterval(() => setCurrent((prev) => (prev + 1) % slidesB2B.length), 8000);

@@ -1,4 +1,4 @@
-﻿export const suppliers = [
+export const suppliers = [
   { 
     id: "zero-grau", 
     name: "Zero Grau", 

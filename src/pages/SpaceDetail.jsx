@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { MapPin, Users, Waves, Flame, Tv, Wifi, Utensils, ArrowLeft, Heart, Share2, Calendar, Star, CheckCircle2, Coffee, Refrigerator, Wind } from "lucide-react";
 import { spacesData } from "../data/spaces";
@@ -13,7 +13,7 @@ export default function SpaceDetail() {
     if (found) setSpace(found);
   }, [id]);
 
-  if (!space) return <div className="p-20 text-center font-black uppercase tracking-widest text-[#B2B0AB]">Carregando Experiência...</div>;
+  if (!space) return <div className="p-20 text-center font-black uppercase tracking-widest text-[#B2B0AB]">Carregando ExperiÃªncia...</div>;
 
   const isRecanto = space.id === "recanto-top-burguer";
 
@@ -34,16 +34,16 @@ export default function SpaceDetail() {
         {/* Galeria de Imagens Estilizada */}
         <div className="grid grid-cols-4 grid-rows-2 gap-4 h-[600px] mb-12 rounded-[50px] overflow-hidden shadow-2xl border-[10px] border-white">
           <div className="col-span-2 row-span-2 relative group overflow-hidden">
-            <img src={`${space.imagesFolder}foto1.jpg`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" alt="Principal" />
+            <img src={`${space.imagesFolder}foto1.webp`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" alt="Principal" />
           </div>
           <div className="col-span-1 row-span-1 relative group overflow-hidden">
-            <img src={`${space.imagesFolder}foto2.jpg`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" alt="Destaque 1" />
+            <img src={`${space.imagesFolder}foto2.webp`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" alt="Destaque 1" />
           </div>
           <div className="col-span-1 row-span-1 relative group overflow-hidden">
-            <img src={`${space.imagesFolder}foto3.jpg`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" alt="Destaque 2" />
+            <img src={`${space.imagesFolder}foto3.webp`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" alt="Destaque 2" />
           </div>
           <div className="col-span-2 row-span-1 relative group overflow-hidden">
-            <img src={`${space.imagesFolder}foto4.jpg`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" alt="Destaque 3" />
+            <img src={`${space.imagesFolder}foto4.webp`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" alt="Destaque 3" />
           </div>
         </div>
 
@@ -56,7 +56,7 @@ export default function SpaceDetail() {
               <h1 className="text-6xl font-black uppercase italic tracking-tighter leading-none mb-6">{space.title}</h1>
               <p className="text-[#B2B0AB] font-medium text-lg leading-relaxed max-w-2xl">
                 {isRecanto ? 
-                  "O espaço perfeito para o seu lazer. Área completa com estrutura planejada para festas, churrascos e momentos inesquecíveis em família." : 
+                  "O espaço perfeito para o seu lazer. Ãrea completa com estrutura planejada para festas, churrascos e momentos inesquecÃ­veis em famÃ­lia." : 
                   space.description}
               </p>
             </div>
@@ -93,7 +93,7 @@ export default function SpaceDetail() {
                   { icon: <CheckCircle2 size={20}/>, label: "Wi-Fi de alta velocidade" },
                   { icon: <CheckCircle2 size={20}/>, label: "Smart TV para streaming" },
                   { icon: <CheckCircle2 size={20}/>, label: "Móveis: 10 mesas de madeira e 40 cadeiras" },
-                  { icon: <MapPin size={20}/>, label: "Referência: Atrás do Clube Usina Estiva" }
+                  { icon: <MapPin size={20}/>, label: "ReferÃªncia: Atrás do Clube Usina Estiva" }
                 ].map((item, i) => (
                   <div key={i} className="flex items-center gap-4 text-[#1A1A1A] font-bold text-sm">
                     <span className="text-[#00BFA6]">{item.icon}</span>
@@ -113,8 +113,8 @@ export default function SpaceDetail() {
                   <span className="text-4xl font-black italic tracking-tighter">R$ {space.price}</span>
                 </div>
                 <div className="text-right">
-                   <div className="flex items-center gap-1 text-[12px] font-black text-[#00BFA6] mb-1">⭐ 5.0</div>
-                   <span className="text-[10px] font-black uppercase tracking-widest text-[#B2B0AB]">12 Avaliações</span>
+                   <div className="flex items-center gap-1 text-[12px] font-black text-[#00BFA6] mb-1">â­ 5.0</div>
+                   <span className="text-[10px] font-black uppercase tracking-widest text-[#B2B0AB]">12 AvaliaçÃµes</span>
                 </div>
               </div>
 

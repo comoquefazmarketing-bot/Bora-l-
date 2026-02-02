@@ -15,7 +15,7 @@ export default function SpaceCard({ space }) {
         </div>
       </div>
       <div className="p-10">
-        <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#00BFA6] mb-3">Experiência Selecionada</p>
+        <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#00BFA6] mb-3">ExperiÃªncia Selecionada</p>
         <h3 className="text-3xl font-black italic uppercase tracking-tighter leading-none mb-4">{space.title}</h3>
         <div className="flex items-center gap-2 text-[#B2B0AB]">
           <MapPin size={14} className="text-[#00BFA6]" />

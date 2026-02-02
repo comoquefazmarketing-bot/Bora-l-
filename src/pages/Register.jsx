@@ -1,4 +1,4 @@
-/* @author Felipe Makarios | Lead Architect - Bora Lá */
+/* @author Felipe Makarios | Lead Architect - BORA LÁ */
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { MapPin, Store, ArrowLeft } from 'lucide-react';

@@ -1,4 +1,4 @@
-﻿export const BOOKING_STATUS = {
+export const BOOKING_STATUS = {
   PENDENTE: 'pendente',
   CONFIRMADA: 'confirmada',
   CANCELADA: 'cancelada',

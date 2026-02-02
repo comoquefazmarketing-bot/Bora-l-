@@ -1,4 +1,4 @@
-﻿import React, { useState } from "react";
+import React, { useState } from "react";
 import { Plus, Building, X, MapPin, Info, Save, Loader2, CheckCircle } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -13,10 +13,10 @@ export default function MySpaces() {
   const [spaces, setSpaces] = useState([
     {
       id: 1,
-      name: "Top Burguer - Área de Lazer",
-      address: "Rua Manoel Neves, 969 - Parque dos Ipês",
+      name: "Top Burguer - Ãrea de Lazer",
+      address: "Rua Manoel Neves, 969 - Parque dos IpÃªs",
       status: "Ativo",
-      image: "/spaces/area de lazer top burguer/foto1.jpg"
+      image: "/spaces/area de lazer top burguer/foto1.webp"
     }
   ]);
 
@@ -34,7 +34,7 @@ export default function MySpaces() {
     const payload = {
       ...formData,
       timestamp: new Date().toISOString(),
-      origem: "App Bora Lá - Painel do Proprietário",
+      origem: "App BORA LÁ - Painel do Proprietário",
       autor: "Felipe Makarios"
     };
 
@@ -56,7 +56,7 @@ export default function MySpaces() {
       }
     } catch (error) {
       console.error("Erro na ligação n8n:", error);
-      alert("Erro ao ligar ao n8n. Verifica se o túnel está ativo!");
+      alert("Erro ao ligar ao n8n. Verifica se o tÃºnel está ativo!");
     } finally {
       setIsSending(false);
     }
@@ -127,7 +127,7 @@ export default function MySpaces() {
                       <form onSubmit={handleSubmit} className="space-y-4">
                         <input required value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} className="w-full px-6 py-4 bg-slate-50 border-none rounded-2xl font-bold focus:ring-2 focus:ring-[#00BFA6]" placeholder="Nome do Espaço" />
                         <input required value={formData.address} onChange={e => setFormData({...formData, address: e.target.value})} className="w-full px-6 py-4 bg-slate-50 border-none rounded-2xl font-bold focus:ring-2 focus:ring-[#00BFA6]" placeholder="Endereço Completo" />
-                        <input required type="number" value={formData.price} onChange={e => setFormData({...formData, price: e.target.value})} className="w-full px-6 py-4 bg-slate-50 border-none rounded-2xl font-bold focus:ring-2 focus:ring-[#00BFA6]" placeholder="Valor por período (R$)" />
+                        <input required type="number" value={formData.price} onChange={e => setFormData({...formData, price: e.target.value})} className="w-full px-6 py-4 bg-slate-50 border-none rounded-2xl font-bold focus:ring-2 focus:ring-[#00BFA6]" placeholder="Valor por perÃ­odo (R$)" />
                         
                         <div className="p-4 bg-[#F5E9DA]/30 rounded-2xl border border-[#F5E9DA] flex gap-3 text-xs font-bold text-slate-600">
                           <Info className="w-5 h-5 text-[#00BFA6] shrink-0" />

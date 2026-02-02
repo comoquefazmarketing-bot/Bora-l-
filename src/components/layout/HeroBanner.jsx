@@ -5,10 +5,10 @@ export default function HeroBanner() {
   const [index, setIndex] = useState(0);
   const frases = [
     "Fazer um churrasco memorável?",
-    "Passar um momento com a família?",
+    "Passar um momento com a famá­lia?",
     "Celebrar com os amigos?",
     "Sair da rotina e descansar?",
-    "Criar memórias incríveis?"
+    "Criar memórias incrá­veis?"
   ];
 
   useEffect(() => {
@@ -25,25 +25,25 @@ export default function HeroBanner() {
         {/* LOGO OFICIAL */}
         <div className="mb-8">
           <img 
-            src="/logo.png" 
-            alt="Bora Lá" 
+            src="/logo.webp" 
+            alt="BORA LÁ" 
             className="w-32 md:w-56 h-auto drop-shadow-sm"
           />
         </div>
 
-        {/* MENSAGEM DINÂMICA E BRANDING */}
+        {/* MENSAGEM DINá€šMICA E BRANDING */}
         <div className="min-h-[160px] md:min-h-[220px] flex flex-col justify-center">
           <h2 className="text-slate-800 text-2xl md:text-4xl font-bold italic transition-opacity duration-500 mb-2">
             {frases[index]}
           </h2>
           <h1 className="text-[#00BFA6] text-7xl md:text-[150px] font-black italic uppercase tracking-tighter leading-[0.8]">
-            Bora Lá.
+            BORA LÁ.
           </h1>
         </div>
 
         {/* SUBTEXTO SENSORIAL (OPCIONAL) */}
         <p className="mt-8 text-slate-400 font-black uppercase tracking-[3px] text-xs md:text-sm italic">
-          Experiências únicas começam aqui.
+          Experiáªncias Ãºnicas começam aqui.
         </p>
 
       </div>

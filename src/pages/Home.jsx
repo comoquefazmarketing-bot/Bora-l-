@@ -1,4 +1,4 @@
-/* @author Felipe Makarios | Lead Architect */
+/* @author Felipe Makarios | Lead Architect - BORA LÁ v2 */
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { MapPin, ArrowUpRight } from 'lucide-react';
@@ -10,7 +10,7 @@ const areasReais = [
   { id: "carlos-zara", nome: "ÁREA DE LAZER CARLOS ZARA", cidade: "Novo Horizonte - SP", preco: "600", folder: "Área de lazer Carlos Zara" },
   { id: "santa-clara", nome: "ESPAÇO SANTA CLARA", cidade: "Novo Horizonte - SP", preco: "300", folder: "espaco santa clara" },
   { id: "recanto-america", nome: "RECANTO AMÉRICA", cidade: "Novo Horizonte - SP", preco: "300", folder: "recanto america" },
-  { id: "recanto-do-sol", nome: "RECANTO PÔR DO SOL", cidade: "Consultar", folder: "Recanto do Sol" },
+  { id: "recanto-do-sol", nome: "RECANTO PÔR DO SOL", cidade: "Novo Horizonte - SP", preco: "Consultar", folder: "Recanto do Sol" },
   { id: "assolini", nome: "ÁREA DE LAZER ASSOLINI", cidade: "Novo Horizonte - SP", preco: "Consultar", folder: "ÁREA DE LAZER ASSOLINI" }
 ];
 
@@ -49,7 +49,7 @@ export default function Home() {
           <div className="lg:col-span-7 grid grid-cols-3 gap-4 h-[300px] lg:h-[450px]">
             {areasReais.slice(0, 3).map((area) => (
               <div key={area.id} onClick={() => navigate(`/space/${area.id}`)} className="relative group overflow-hidden rounded-[40px] lg:rounded-[60px] cursor-pointer shadow-2xl bg-slate-100 border border-black/5">
-                <img src={`/spaces/${area.folder}/foto1.jpg`} className="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-125" alt="" />
+                <img src={`/spaces/${area.folder}/foto1.webp`} className="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-125" alt={area.nome} />
                 <div className="absolute inset-0 bg-[#00BFA6]/40 opacity-0 group-hover:opacity-100 backdrop-blur-md transition-all duration-500 flex items-center justify-center">
                   <ArrowUpRight className="text-white" size={40} />
                 </div>
@@ -58,13 +58,13 @@ export default function Home() {
           </div>
         </section>
 
-        <h2 className="text-4xl lg:text-7xl font-black uppercase italic tracking-tighter mb-12 text-slate-900">LUGARES <span className="text-[#00BFA6]">INCRÍVEIS.</span></h2>
+        <h2 className="text-4xl lg:text-7xl font-black uppercase italic tracking-tighter mb-12 text-slate-900">CHÁCARAS E LAZER <span className="text-[#00BFA6]">EM NOVO HORIZONTE.</span></h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           {areasReais.map(area => (
             <div key={area.id} onClick={() => navigate(`/space/${area.id}`)} className="group cursor-pointer">
               <div className="relative aspect-[4/5] rounded-[50px] overflow-hidden mb-5 bg-gray-100 border border-black/5 shadow-sm group-hover:shadow-2xl transition-all duration-700">
-                <img src={`/spaces/${area.folder}/foto1.jpg`} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[2s]" alt="" />
+                <img src={`/spaces/${area.folder}/foto1.webp`} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[2s]" alt={area.nome} />
                 <div className="absolute top-6 left-6 bg-white/95 px-4 py-1.5 rounded-2xl flex items-center gap-2 shadow-md">
                   <MapPin size={12} className="text-[#00BFA6]" />
                   <span className="text-[10px] font-black uppercase tracking-tighter text-slate-900">{area.cidade}</span>

@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { Target, Users, Calculator, MessageCircle, ArrowLeft, Heart, ShieldCheck, Zap, Star, AlertCircle, CheckCircle2, Handshake } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
@@ -17,14 +17,14 @@ export default function Treinamento() {
           <h1 className="text-5xl font-black mt-4 mb-4 italic uppercase leading-none">O Mercado está quebrado.<br/><span className="text-[#00BFA6]">Nós somos a cura.</span></h1>
         </header>
 
-        {/* COMPARATIVO: O CAOS VS A SOLUÇÃO */}
+        {/* COMPARATIVO: O CAOS VS A SOLUÃ‡ÃƒO */}
         <div className="grid md:grid-cols-2 gap-6 mb-16">
           <div className="bg-red-50 p-8 rounded-[40px] border border-red-100">
             <h3 className="text-red-600 font-black uppercase italic mb-6 flex items-center gap-2">
               <AlertCircle size={20} /> O Caos de Hoje
             </h3>
             <ul className="space-y-4 text-sm font-medium text-gray-700">
-              <li>• O cliente pede indicação em grupos e recebe 20 números aleatórios.</li>
+              <li>• O cliente pede indicação em grupos e recebe 20 nÃºmeros aleatórios.</li>
               <li>• Tem que salvar contato por contato e mandar a mesma pergunta 20 vezes.</li>
               <li>• O dono da área responde 50 "curiosos" por dia com as mesmas fotos e textos.</li>
               <li>• No fim, o cliente aluga no escuro e o dono perde o dia no WhatsApp.</li>
@@ -32,10 +32,10 @@ export default function Treinamento() {
           </div>
           <div className="bg-[#E6F9F6] p-8 rounded-[40px] border border-[#00BFA6]">
             <h3 className="text-[#00BFA6] font-black uppercase italic mb-6 flex items-center gap-2">
-              <CheckCircle2 size={20} /> A Solução Bora Lá
+              <CheckCircle2 size={20} /> A Solução BORA LÁ
             </h3>
             <ul className="space-y-4 text-sm font-medium text-gray-700">
-              <li>• Vitrine Única: O cliente vê todas as opções, preços e fotos em um só lugar.</li>
+              <li>• Vitrine Ãšnica: O cliente vÃª todas as opçÃµes, preços e fotos em um só lugar.</li>
               <li>• Filtro Inteligente: A Karen faz a triagem e entrega o lead pronto pro dono.</li>
               <li>• Confiança: Curadoria Felipe Makarios. Acabou o medo de chácara fantasma.</li>
               <li>• Economia: Calculadora de Churrasco evita que o cliente jogue dinheiro fora.</li>
@@ -51,13 +51,13 @@ export default function Treinamento() {
           <div className="bg-white p-8 rounded-[40px] shadow-sm border border-gray-100">
             <div className="flex items-center gap-3 mb-4 text-[#00BFA6]">
               <Star fill="currentColor" />
-              <h4 className="text-xl font-black uppercase italic">Para Donos de Áreas</h4>
+              <h4 className="text-xl font-black uppercase italic">Para Donos de Ãreas</h4>
             </div>
             <p className="text-gray-600 text-sm leading-relaxed mb-4">
-              "Você não é atendente, é empresário. Deixe que o Bora Lá atenda os curiosos. Nós te entregamos quem já viu as fotos, já sabe o preço e só quer a chave."
+              "você não é atendente, é empresário. Deixe que o BORA LÁ atenda os curiosos. Nós te entregamos quem já viu as fotos, já sabe o preço e só quer a chave."
             </p>
             <div className="flex gap-2 text-[10px] font-bold uppercase text-gray-400">
-              <span>#FIM_DOS_CURIOSOS</span> <span>#VALORIZAÇÃO_DO_IMÓVEL</span>
+              <span>#FIM_DOS_CURIOSOS</span> <span>#VALORIZAÃ‡ÃƒO_DO_IMÃ“VEL</span>
             </div>
           </div>
 
@@ -68,10 +68,10 @@ export default function Treinamento() {
               <h4 className="text-xl font-black uppercase italic">Para Fornecedores</h4>
             </div>
             <p className="text-gray-600 text-sm leading-relaxed mb-4">
-              "Anunciar em rede social é pescar no oceano. No Bora Lá, você pesca no aquário. Entregamos o cliente no exato momento em que ele fechou a locação e precisa de você."
+              "Anunciar em rede social é pescar no oceano. No BORA LÁ, você pesca no aquário. Entregamos o cliente no exato momento em que ele fechou a locação e precisa de você."
             </p>
             <div className="flex gap-2 text-[10px] font-bold uppercase text-gray-400">
-              <span>#PONTO_DE_VENDA_ESTRATÉGICO</span> <span>#CLIENTE_COM_CARTÃO_NA_MÃO</span>
+              <span>#PONTO_DE_VENDA_ESTRATÃ‰GICO</span> <span>#CLIENTE_COM_CARTÃƒO_NA_MÃƒO</span>
             </div>
           </div>
         </div>
@@ -91,7 +91,7 @@ export default function Treinamento() {
         </div>
 
         <footer className="mt-20 text-center text-gray-400 font-black uppercase italic text-[10px] tracking-widest">
-          Propriedade Intelectual Felipe Makarios • Bora Lá v2.0
+          Propriedade Intelectual Felipe Makarios • BORA LÁ v2.0
         </footer>
       </div>
     </div>

@@ -1,4 +1,4 @@
-/* @author Felipe Makarios | Creator - Bora Lá */
+/* @author Felipe Makarios | Creator - BORA LÁ */
 import React from 'react';
 import Hero from '../components/Hero';
 import BlogSection from '../components/BlogSection';
@@ -10,7 +10,7 @@ export default function HomePage() {
       <div className="relative z-10">
         <BlogSection />
       </div>
-      {/* Outras seções aqui */}
+      {/* Outras seçáµes aqui */}
     </main>
   );
 }

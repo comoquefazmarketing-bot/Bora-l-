@@ -1,4 +1,4 @@
-/* @author Felipe Makarios | Creator - Bora Lá */
+/* @author Felipe Makarios | Creator - BORA LÁ */
 import React from 'react';
 import { BookOpen, MapPin, Sun, Utensils, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
@@ -21,7 +21,7 @@ const posts = [
   {
     id: 3,
     icon: <Sun size={20} />,
-    title: "Descanso e Férias: Como organizar o lazer em família",
+    title: "Descanso e Férias: Como organizar o lazer em famá­lia",
     desc: "Dicas de planejamento para que suas férias sejam focadas apenas no que importa: relaxar.",
     tag: "Estilo de Vida"
   }
@@ -37,11 +37,11 @@ export default function BlogSection() {
               <BookOpen size={24} />
             </div>
             <h2 className="text-4xl font-black text-[#1F2937] uppercase italic tracking-tighter">
-              Universo Bora Lá
+              Universo BORA LÁ
             </h2>
           </div>
           <p className="text-[#4B5563] font-mono text-sm uppercase font-bold tracking-widest">
-            Festa • Lazer • Descanso • Férias
+            Festa Ã¢â‚¬ Lazer Ã¢â‚¬ Descanso Ã¢â‚¬ Férias
           </p>
         </div>
 

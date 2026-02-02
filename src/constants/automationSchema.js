@@ -1,4 +1,4 @@
-﻿export const SOURCE_TYPES = {
+export const SOURCE_TYPES = {
   FACEBOOK: 'facebook_automation',
   MANUAL: 'manual_entry',
   INSTAGRAM: 'instagram_scraping'

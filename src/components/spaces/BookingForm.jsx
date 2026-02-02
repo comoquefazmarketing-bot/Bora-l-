@@ -1,4 +1,4 @@
-﻿import React, { useState } from "react";
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Calendar } from "@/components/ui/calendar";
@@ -19,14 +19,14 @@ export default function BookingForm({ space }) {
 
   const handleWhatsAppRedirect = () => {
     if (!checkIn || !checkOut) {
-      alert("Por favor, selecione as datas de entrada e saída");
+      alert("Por favor, selecione as datas de entrada e saÃ­da");
       return;
     }
 
     const total = calculateTotal();
     const message = `Olá Felipe! Gostaria de reservar o ${space.title}.` + 
                     ` Entrada: ${format(checkIn, "dd/MM")}` + 
-                    ` Saída: ${format(checkOut, "dd/MM")}.` + 
+                    ` SaÃ­da: ${format(checkOut, "dd/MM")}.` + 
                     ` Valor Total: R$ ${total}`;
     
     window.open(`https://wa.me/5517991557002?text=${encodeURIComponent(message)}`, '_blank');
@@ -56,7 +56,7 @@ export default function BookingForm({ space }) {
             <PopoverTrigger asChild>
               <Button variant="outline" className="w-full justify-start rounded-xl font-bold">
                 <CalendarIcon className="mr-2 h-4 w-4 text-[#00BFA6]" />
-                {checkOut ? format(checkOut, "dd/MM/yy") : "Saída"}
+                {checkOut ? format(checkOut, "dd/MM/yy") : "SaÃ­da"}
               </Button>
             </PopoverTrigger>
             <PopoverContent className="w-auto p-0">

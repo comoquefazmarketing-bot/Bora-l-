@@ -1,4 +1,4 @@
-﻿import React, { useState } from "react";
+import React, { useState } from "react";
 import { Save, Phone, User, DollarSign, MapPin, ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { spacesData as initialData } from "../../data/spaces";
@@ -18,12 +18,12 @@ export default function Admin() {
       .replace(/"/g, "'"); // Troca aspas duplas por simples para o JS
     
     const command = `
-$pathData = "E:\\Bora Lá\\web-app\\src\\data\\spaces.js"
+$pathData = "E:\\BORA LÁ\\web-app\\src\\data\\spaces.js"
 $codeData = @"
 export const spacesData = ${dataString};
 "@
 [System.IO.File]::WriteAllText($pathData, $codeData, [System.Text.Encoding]::UTF8)
-Write-Host "✅ Dados sincronizados via Admin! Tum Dum!" -ForegroundColor Green`;
+Write-Host "âœ… Dados sincronizados via Admin! Tum Dum!" -ForegroundColor Green`;
     
     navigator.clipboard.writeText(command);
     setStatus("Comando PowerShell copiado! Cole no terminal para salvar.");
@@ -37,13 +37,13 @@ Write-Host "✅ Dados sincronizados via Admin! Tum Dum!" -ForegroundColor Green`
           <button onClick={() => navigate("/")} className="flex items-center gap-2 text-slate-400 font-bold uppercase text-[10px] tracking-widest mb-2 hover:text-black">
             <ArrowLeft size={14}/> Voltar ao App
           </button>
-          <h1 className="text-3xl font-black uppercase italic tracking-tighter">Painel de Controle Bora Lá</h1>
+          <h1 className="text-3xl font-black uppercase italic tracking-tighter">Painel de Controle BORA LÁ</h1>
         </div>
         <button 
           onClick={generatePowerShell}
           className="bg-black text-[#00BFA6] px-8 py-4 rounded-2xl font-black uppercase tracking-widest hover:scale-105 transition-all shadow-xl flex items-center gap-3"
         >
-          <Save size={20} /> Salvar Alterações
+          <Save size={20} /> Salvar AlteraçÃµes
         </button>
       </header>
 

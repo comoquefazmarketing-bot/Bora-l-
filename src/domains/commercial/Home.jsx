@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { spaces } from '../../data/spaces';
 import SearchHero from './components/SearchHero';
 import { Sparkles, MapPin, Calculator, Handshake, Megaphone } from 'lucide-react';
@@ -6,17 +6,17 @@ import { Sparkles, MapPin, Calculator, Handshake, Megaphone } from 'lucide-react
 export default function Home() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Slides dinâmicos combinando Áreas e Serviços
+  // Slides dinÃ¢micos combinando Ãreas e Serviços
   const slides = [
     ...spaces.slice(0, 3).map(s => ({ 
       type: 'space', 
       url: s.images[0], 
       title: s.title,
-      subtitle: 'TUDO O QUE VOCÊ MERECE ESTÁ AQUI.'
+      subtitle: 'TUDO O QUE VOCÃŠ MERECE ESTÃ AQUI.'
     })),
     { 
       type: 'service', 
-      url: '/spaces/banner_churrasco.jpg', // Use uma imagem de churrasco de qualidade
+      url: '/spaces/banner_churrasco.webp', // Use uma imagem de churrasco de qualidade
       title: 'CALCULADORA CHURRASCO', 
       subtitle: 'GERE SUA LISTA COMPLETA EM 5 SEGUNDOS!',
       icon: <Calculator size={24} />,
@@ -24,9 +24,9 @@ export default function Home() {
     },
     { 
       type: 'service', 
-      url: '/spaces/banner_anuncie.jpg', 
-      title: 'ANUNCIE SUA ÁREA', 
-      subtitle: 'RENDA EXTRA COM SEU ESPAÇO DE LAZER.',
+      url: '/spaces/banner_anuncie.webp', 
+      title: 'ANUNCIE SUA ÃREA', 
+      subtitle: 'RENDA EXTRA COM SEU ESPAÃ‡O DE LAZER.',
       icon: <Megaphone size={24} />,
       color: '#FF5A1F'
     }
@@ -52,10 +52,10 @@ export default function Home() {
             <img src={slide.url} className="w-full h-full object-cover opacity-60" alt={slide.title} />
             <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A] via-transparent to-[#1A1A1A]/30"></div>
             
-            {/* Conteúdo Centralizado */}
+            {/* ConteÃºdo Centralizado */}
             <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
               <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full text-[10px] font-black text-[#00BFA6] uppercase tracking-[0.3em] mb-8 border border-white/20">
-                <Sparkles size={14} /> Experiência Sensorial
+                <Sparkles size={14} /> ExperiÃªncia Sensorial
               </div>
               
               <h2 className="text-white text-lg font-bold tracking-[0.2em] mb-4 opacity-80 uppercase">

@@ -1,4 +1,4 @@
-/* @author Felipe Makarios | Lead Architect - Bora LÃ¡ */
+/* @author Felipe Makarios | Lead Architect - BORA LÁƒÆ’Ã‚Â¡ */
 import React, { useState, useEffect, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { MapPin, ArrowLeft, Camera, CheckCircle2, ShieldCheck } from 'lucide-react';
@@ -7,14 +7,14 @@ const AIRTABLE_TOKEN = "patiEBmJuIklc75sW";
 const BASE_ID = "apppozTUADmOu0mjRS";
 const TABLE_NAME = "Leads";
 
-// ÃREAS QUE VOCÃŠ JÃ TINHA (LEGADO)
+// ÃƒÆ’Ã‚ÂREAS QUE VOCÃƒÆ’Ã…Â  JÃƒÆ’Ã‚Â TINHA (LEGADO)
 const legacySpaces = [
-  { id: "top-burguer", title: "RECANTO TOP BURGUER", phone: "5517991178961", folder: "area de lazer top burguer", location: "Rua Manoel Neves, 969, Novo Horizonte - SP", price: "330", capacity: "50", description: ["10 Mesas de Madeira", "40 Cadeiras", "TV LED Smart", "Internet Wi-Fi", "Piscina Aquecimento Solar", "2 Freezers", "Geladeira", "FogÃ£o com GÃ¡s", "Banheiro Masc/Fem"] },
-  { id: "rancho-paradise", title: "RANCHO PARADISE BORBOREMA", phone: "", folder: "Rancho Paradise Borborema", location: "CondomÃ­nio Village TietÃª, Borborema - SP", price: "380", capacity: "5", description: ["Rio TietÃª", "2 SuÃ­tes com Ar Condicionado", "Piscina com SPA", "Rampa para Barco", "Pier de Pesca", "CondomÃ­nio 24h", "Parque Infantil", "Quadra de VÃ´lei"] },
-  { id: "sao-sebastiao", title: "CHÃCARA SÃƒO SEBASTIÃƒO", phone: "5517992376515", folder: "ChÃ¡cara SÃ£o SebastiÃ£o", location: "Novo Horizonte - SP", price: "300", capacity: "100" },
-  { id: "carlos-zara", title: "ÃREA DE LAZER CARLOS ZARA", phone: "5517997179203", folder: "Ãrea de lazer Carlos Zara", location: "Av. CÃ´nego Alfredo Reith, 1363", price: "600", capacity: "60" },
-  { id: "recanto-do-sol", title: "RECANTO PÃ”R DO SOL", phone: "5517992489873", folder: "Recanto do Sol", location: "R. Alexandre Baraldo, 433, Novo Horizonte - SP", price: "Consultar", capacity: "80" },
-  { id: "assolini", title: "ÃREA DE LAZER ASSOLINI", phone: "5517992119367", folder: "ÃREA DE LAZER ASSOLINI", location: "R. MÃ¡rio Benedicto da Silva, 1305, Novo Horizonte - SP", price: "Consultar", capacity: "40" }
+  { id: "top-burguer", title: "RECANTO TOP BURGUER", phone: "5517991178961", folder: "area de lazer top burguer", location: "Rua Manoel Neves, 969, Novo Horizonte - SP", price: "330", capacity: "50", description: ["10 Mesas de Madeira", "40 Cadeiras", "TV LED Smart", "Internet Wi-Fi", "Piscina Aquecimento Solar", "2 Freezers", "Geladeira", "FogÃƒÆ’Ã‚Â£o com GÃƒÆ’Ã‚Â¡s", "Banheiro Masc/Fem"] },
+  { id: "rancho-paradise", title: "RANCHO PARADISE BORBOREMA", phone: "", folder: "Rancho Paradise Borborema", location: "CondomÃƒÆ’Ã‚Â­nio Village TietÃƒÆ’Ã‚Âª, Borborema - SP", price: "380", capacity: "5", description: ["Rio TietÃƒÆ’Ã‚Âª", "2 SuÃƒÆ’Ã‚Â­tes com Ar Condicionado", "Piscina com SPA", "Rampa para Barco", "Pier de Pesca", "CondomÃƒÆ’Ã‚Â­nio 24h", "Parque Infantil", "Quadra de VÃƒÆ’Ã‚Â´lei"] },
+  { id: "sao-sebastiao", title: "CHÃƒÆ’Ã‚ÂCARA SÃƒÆ’Ã†â€™O SEBASTIÃƒÆ’Ã†â€™O", phone: "5517992376515", folder: "ChÃƒÆ’Ã‚Â¡cara SÃƒÆ’Ã‚Â£o SebastiÃƒÆ’Ã‚Â£o", location: "Novo Horizonte - SP", price: "300", capacity: "100" },
+  { id: "carlos-zara", title: "ÃƒÆ’Ã‚ÂREA DE LAZER CARLOS ZARA", phone: "5517997179203", folder: "ÃƒÆ’Ã‚Ârea de lazer Carlos Zara", location: "Av. CÃƒÆ’Ã‚Â´nego Alfredo Reith, 1363", price: "600", capacity: "60" },
+  { id: "recanto-do-sol", title: "RECANTO PÃƒÆ’Ã¢â‚¬ÂR DO SOL", phone: "5517992489873", folder: "Recanto do Sol", location: "R. Alexandre Baraldo, 433, Novo Horizonte - SP", price: "Consultar", capacity: "80" },
+  { id: "assolini", title: "ÃƒÆ’Ã‚ÂREA DE LAZER ASSOLINI", phone: "5517992119367", folder: "ÃƒÆ’Ã‚ÂREA DE LAZER ASSOLINI", location: "R. MÃƒÆ’Ã‚Â¡rio Benedicto da Silva, 1305, Novo Horizonte - SP", price: "Consultar", capacity: "40" }
 ];
 
 export default function SpaceDetails() {
@@ -33,7 +33,7 @@ export default function SpaceDetails() {
       setData({ type: 'legacy', ...legacy });
       setLoading(false);
     } else {
-      // 2. Se nÃ£o achar, busca no Airtable
+      // 2. Se nÃƒÆ’Ã‚Â£o achar, busca no Airtable
       fetch(`https://api.airtable.com/v0/${BASE_ID}/${TABLE_NAME}/${id}`, {
         headers: { Authorization: `Bearer ${AIRTABLE_TOKEN}` }
       })
@@ -47,19 +47,19 @@ export default function SpaceDetails() {
     window.scrollTo(0,0);
   }, [id]);
 
-  if (loading) return <div className="min-h-screen flex items-center justify-center font-black italic uppercase">Buscando ExperiÃªncia...</div>;
-  if (!data) return <div className="min-h-screen flex items-center justify-center font-black italic uppercase">EspaÃ§o nÃ£o localizado</div>;
+  if (loading) return <div className="min-h-screen flex items-center justify-center font-black italic uppercase">Buscando ExperiÃƒÆ’Ã‚Âªncia...</div>;
+  if (!data) return <div className="min-h-screen flex items-center justify-center font-black italic uppercase">EspaÃƒÆ’Ã‚Â§o nÃƒÆ’Ã‚Â£o localizado</div>;
 
-  // NormalizaÃ§Ã£o das fotos (se for legado usa pasta local, se for airtable usa URL)
+  // NormalizaÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Â£o das fotos (se for legado usa pasta local, se for airtable usa URL)
   const isAirtable = data.type === 'airtable';
-  const title = isAirtable ? data["Ãrea de Lazer"] : data.title;
+  const title = isAirtable ? data["ÃƒÆ’Ã‚Ârea de Lazer"] : data.title;
   const price = data.price || data.Preco;
   const fotos = isAirtable 
     ? (data.Attachments?.map(a => a.url) || []) 
-    : Array.from({ length: 10 }, (_, i) => `/spaces/${data.folder}/foto${i + 1}.jpg`);
+    : Array.from({ length: 10 }, (_, i) => `/spaces/${data.folder}/foto${i + 1}.webp`);
 
   const handleWhatsApp = () => {
-    const msg = `OlÃ¡! Vi o anÃºncio do *${title}* no Portal Bora LÃ¡ e gostaria de consultar a disponibilidade para ${selectedDate || 'uma data em breve'}.`;
+    const msg = `OlÃƒÆ’Ã‚Â¡! Vi o anÃƒÆ’Ã‚Âºncio do *${title}* no Portal BORA LÁƒÆ’Ã‚Â¡ e gostaria de consultar a disponibilidade para ${selectedDate || 'uma data em breve'}.`;
     const fone = isAirtable ? data.WhatsApp?.replace(/\D/g,'') : data.phone;
     window.open(`https://wa.me/${fone}?text=${encodeURIComponent(msg)}`, '_blank');
   };
@@ -117,7 +117,7 @@ export default function SpaceDetails() {
           <div className="lg:col-span-4 h-fit sticky top-40">
             <div className="bg-white rounded-[70px] p-12 shadow-2xl border border-black/5">
               <div className="space-y-10 text-center">
-                <p className="text-[#00BFA6] font-black uppercase tracking-[0.4em] text-xs italic">BORA LÃ</p>
+                <p className="text-[#00BFA6] font-black uppercase tracking-[0.4em] text-xs italic">BORA LÁƒÆ’Ã‚Â</p>
                 <h2 className="text-4xl font-black italic tracking-tighter">R$ {price}</h2>
                 <div onClick={() => dateInputRef.current.showPicker()} className="bg-slate-50 p-10 rounded-[45px] border border-slate-100 cursor-pointer">
                   <label className="block text-xs font-black uppercase tracking-widest text-slate-400 mb-4 italic">DATA DO EVENTO</label>

@@ -1,4 +1,4 @@
-﻿import React from "react";
+import React from "react";
 import { Waves, Flame, TreePine, Building2 } from "lucide-react";
 
 const filters = [

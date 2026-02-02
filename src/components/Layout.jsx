@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import Sidebar from './Sidebar';
 import Calculator from '../services/Calculator';
 

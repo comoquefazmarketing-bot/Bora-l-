@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import Home from './pages/Home';
 import FAQ from './pages/FAQ'; 
@@ -31,7 +31,7 @@ const GlobalHeader = () => {
         </button>
       </div>
       <div className="flex-1 flex justify-end items-center gap-3 cursor-pointer" onClick={() => navigate('/')}>
-         <span className="font-black italic text-xl uppercase text-black">BORA LÁ</span>
+         <span className="font-black italic text-xl uppercase text-black">BORA LÁ</span>
          <div className="w-10 h-10 bg-[#00BFA6] rounded-xl flex items-center justify-center shadow-lg">
             <Flame size={22} className="text-white" fill="currentColor" />
          </div>

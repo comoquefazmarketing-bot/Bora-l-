@@ -1,4 +1,4 @@
-﻿import Airtable from 'airtable';
+import Airtable from 'airtable';
 
 // Conexão segura com o token do Felipe
 const base = new Airtable({

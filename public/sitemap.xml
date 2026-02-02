@@ -1,28 +1,26 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+  <url><loc>https://bora-la.vercel.app/</loc><priority>1.0</priority></url>
+  <url><loc>https://bora-la.vercel.app/partners-selection</loc><priority>0.9</priority></url>
+  <url><loc>https://bora-la.vercel.app/blog</loc><priority>0.8</priority></url>
+
+  <url><loc>https://bora-la.vercel.app/space/top-burguer</loc></url>
+  <url><loc>https://bora-la.vercel.app/space/rancho-paradise</loc></url>
+  <url><loc>https://bora-la.vercel.app/space/sao-sebastiao</loc></url>
+  <url><loc>https://bora-la.vercel.app/space/carlos-zara</loc></url>
+  <url><loc>https://bora-la.vercel.app/space/santa-clara</loc></url>
+  <url><loc>https://bora-la.vercel.app/space/recanto-do-sol</loc></url>
+  <url><loc>https://bora-la.vercel.app/space/assolini</loc></url>
+  <url><loc>https://bora-la.vercel.app/space/recanto-america</loc></url>
+
   <url>
-    <loc>https://bora-la.vercel.app/</loc>
-    <lastmod>2026-01-31</lastmod>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://bora-la.vercel.app/faq</loc>
-    <lastmod>2026-01-31</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://bora-la.vercel.app/partners-selection</loc>
-    <lastmod>2026-01-31</lastmod>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://bora-la.vercel.app/register-supplier</loc>
-    <lastmod>2026-01-31</lastmod>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://bora-la.vercel.app/blog</loc>
-    <lastmod>2026-01-31</lastmod>
-    <priority>0.6</priority>
+    <loc>https://bora-la.vercel.app/blog/video-tour-chacaras</loc>
+    <video:video>
+      <video:player_loc>https://www.youtube.com/embed/qWypdDbIL3Y</video:player_loc>
+      <video:thumbnail_loc>https://img.youtube.com/vi/qWypdDbIL3Y/maxresdefault.jpg</video:thumbnail_loc>
+      <video:title>Dicas de Costela e Tour pelas Chácaras de Novo Horizonte | BORA LÁ</video:title>
+      <video:description>Aprenda a fazer a costela perfeita e conheça as melhores áreas de lazer com a nossa Calculadora de Churrasco.</video:description>
+    </video:video>
   </url>
 </urlset>

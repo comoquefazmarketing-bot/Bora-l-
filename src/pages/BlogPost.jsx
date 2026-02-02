@@ -33,7 +33,7 @@ export default function BlogPost() {
                 <div className="flex items-center gap-4">
                    <div className="text-3xl">{post.sponsor.logo}</div>
                    <div>
-                      <p className="text-[9px] font-black text-[#00BFA6] uppercase tracking-widest leading-none mb-1">Conteúdo Oferecido por:</p>
+                      <p className="text-[9px] font-black text-[#00BFA6] uppercase tracking-widest leading-none mb-1">ConteÃºdo Oferecido por:</p>
                       <h4 className="text-xl font-black text-[#1F2937] uppercase italic leading-tight">{post.sponsor.name}</h4>
                    </div>
                 </div>
@@ -42,15 +42,15 @@ export default function BlogPost() {
           </div>
         ) : (
           <div className="mb-10 p-6 bg-slate-50 rounded-[35px] border border-dashed border-slate-200 flex items-center justify-between">
-             <p className="text-[10px] font-bold text-slate-400 uppercase italic">Publicidade disponível para este tema</p>
+             <p className="text-[10px] font-bold text-slate-400 uppercase italic">Publicidade disponá­vel para este tema</p>
              <Megaphone size={18} className="text-slate-300" />
           </div>
         )}
 
-        {/* CABEÇALHO DO ARTIGO */}
+        {/* CABEá€¡ALHO DO ARTIGO */}
         <div className="flex items-center gap-4 text-slate-400 text-[10px] font-black uppercase tracking-widest mb-4">
           <span className="text-[#00BFA6]">{post.tag}</span>
-          <span>•</span>
+          <span>Ã¢â‚¬</span>
           <span className="flex items-center gap-1"><Calendar size={12}/> 30 JAN, 2026</span>
         </div>
 

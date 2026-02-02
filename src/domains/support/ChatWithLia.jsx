@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Send, Loader2, Sparkles, ChevronLeft } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -40,7 +40,7 @@ export default function ChatWithLia() {
         body: JSON.stringify({
           chatInput: textToSend,
           userName: "Felipe Makarios",
-          userContext: "Dono do App Bora Lá"
+          userContext: "Dono do App BORA LÁ"
         })
       });
 
@@ -85,7 +85,7 @@ export default function ChatWithLia() {
             <div className="text-center py-10">
               <h1 className="text-3xl font-black text-slate-900 mb-6">Como posso te ajudar hoje?</h1>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {["Qual a melhor chácara para 50 pessoas?", "Tem algum lugar disponível para sábado?", "Quais áreas tem piscina?", "Me mostre os preços"].map((s) => (
+                {["Qual a melhor chácara para 50 pessoas?", "Tem algum lugar disponÃ­vel para sábado?", "Quais áreas tem piscina?", "Me mostre os preços"].map((s) => (
                   <button key={s} onClick={() => handleSendMessage(null, s)} className="p-4 rounded-2xl border-2 border-slate-100 hover:border-[#00BFA6] text-left font-bold text-slate-600 transition-all">
                     {s}
                   </button>

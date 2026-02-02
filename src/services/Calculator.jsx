@@ -105,10 +105,10 @@ export default function Calculator() {
               {/* FORNECEDORES EMOJIS */}
               <div className="grid grid-cols-4 gap-3 pt-2">
                 {[ 
-                  {n:"Adega", i:"🍺"}, 
-                  {n:"Zero Grau", i:"❄️"}, 
+                  {n:"Adega", i:"Ã°Å¸ÂÂº"}, 
+                  {n:"Zero Grau", i:"Ã¢Ââ€žÃ¯Â¸Â"}, 
                   {n:"Quality", i:"🥩"}, 
-                  {n:"Piovani", i:"🛒"} 
+                  {n:"Piovani", i:"Ã°Å¸â€ºâ€™"} 
                 ].map((s, idx) => (
                   <div key={idx} className="bg-white/5 p-4 rounded-[25px] text-center border border-white/5 shadow-md">
                     <span className="text-3xl mb-1 block">{s.i}</span>

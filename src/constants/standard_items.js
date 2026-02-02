@@ -1,4 +1,4 @@
-﻿// Padrão de inventário para Novo Horizonte - Felipe Makarios
+// Padrão de inventário para Novo Horizonte - Felipe Makarios
 export const STANDARD_FACILITIES = {
   KITCHEN: ['Freezer', 'Geladeira', 'Fogão', 'Gás'],
   TECH: ['TV LED Smart', 'Internet'],

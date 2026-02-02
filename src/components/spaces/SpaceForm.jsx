@@ -15,7 +15,7 @@ export default function SpaceForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Dados do Espaço:', formData);
-    alert('Espaço salvo com sucesso na sua Experiência Sensorial!');
+    alert('Espaço salvo com sucesso na sua Experiáªncia Sensorial!');
   };
 
   return (

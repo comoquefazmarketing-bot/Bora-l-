@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { MapPin, Calendar, Users, Search } from 'lucide-react';
 
 export default function SearchHero() {

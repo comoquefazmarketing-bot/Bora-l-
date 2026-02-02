@@ -1,8 +1,8 @@
-﻿export const TARGET_REGION = {
+export const TARGET_REGION = {
   CITY: 'Novo Horizonte',
   STATE: 'SP',
   RADIUS_KM: 50,
-  NEIGHBORING_CITIES: ['Itajobi', 'Borborema', 'Urupês', 'Sales']
+  NEIGHBORING_CITIES: ['Itajobi', 'Borborema', 'UrupÃªs', 'Sales']
 };
 
 export const FACEBOOK_TARGET_GROUPS = [

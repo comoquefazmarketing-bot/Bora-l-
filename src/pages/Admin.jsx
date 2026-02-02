@@ -1,4 +1,4 @@
-/* @author Felipe Makarios | Lead Architect - Bora Lá */
+/* @author Felipe Makarios | Lead Architect - BORA LÁ */
 import React, { useState } from 'react';
 import { Save, Check, Loader2, UploadCloud, Users, Bed, Bath, Image as ImageIcon } from 'lucide-react';
 
@@ -36,7 +36,7 @@ export default function Admin() {
       const enderecoCodificado = encodeURIComponent(area.endereco);
       const iframeSimples = `https://maps.google.com/maps?q=${enderecoCodificado}&t=&z=13&ie=UTF8&iwloc=&output=embed`;
 
-      // 1. Upload de MÚLTIPLAS Fotos para Cloudinary
+      // 1. Upload de MÃƒÅ¡LTIPLAS Fotos para Cloudinary
       const uploadedImages = [];
       for (const file of imageFiles) {
         const formData = new FormData();
@@ -53,7 +53,7 @@ export default function Admin() {
         records: [{
           fields: {
             "Proprietário": "Felipe",
-            "Área de Lazer": area.nome,
+            "área de Lazer": area.nome,
             "WhatsApp": area.whatsapp,
             "Preco": area.preco,
             "Endereco": area.endereco,
@@ -88,17 +88,17 @@ export default function Admin() {
     <div className="min-h-screen bg-slate-50 p-4 lg:p-12 font-sans text-left text-slate-900">
       <div className="max-w-4xl mx-auto bg-white rounded-[40px] shadow-2xl overflow-hidden border border-slate-100">
         <div className="bg-black p-8 text-white">
-          <h1 className="text-2xl font-black italic tracking-tighter uppercase">GALERIA <span className="text-[#00BFA6]">BORA LÁ.</span></h1>
+          <h1 className="text-2xl font-black italic tracking-tighter uppercase">GALERIA <span className="text-[#00BFA6]">BORA LÁƒÂ.</span></h1>
         </div>
 
         <div className="p-8 grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="space-y-4">
-            <input type="text" placeholder="NOME DA ÁREA" value={area.nome} className="w-full bg-slate-100 border-none rounded-2xl p-4 font-bold" onChange={(e) => setArea({...area, nome: e.target.value})} />
+            <input type="text" placeholder="NOME DA áREA" value={area.nome} className="w-full bg-slate-100 border-none rounded-2xl p-4 font-bold" onChange={(e) => setArea({...area, nome: e.target.value})} />
             <div className="grid grid-cols-2 gap-4">
-              <input type="text" placeholder="PREÇO" value={area.preco} className="w-full bg-slate-100 border-none rounded-2xl p-4 font-bold" onChange={(e) => setArea({...area, preco: e.target.value})} />
+              <input type="text" placeholder="PREá€¡O" value={area.preco} className="w-full bg-slate-100 border-none rounded-2xl p-4 font-bold" onChange={(e) => setArea({...area, preco: e.target.value})} />
               <input type="text" placeholder="WHATSAPP" value={area.whatsapp} className="w-full bg-slate-100 border-none rounded-2xl p-4 font-bold" onChange={(e) => setArea({...area, whatsapp: e.target.value})} />
             </div>
-            <input type="text" placeholder="ENDEREÇO COMPLETO" value={area.endereco} className="w-full bg-slate-100 border-none rounded-2xl p-4 font-bold" onChange={(e) => setArea({...area, endereco: e.target.value})} />
+            <input type="text" placeholder="ENDEREá€¡O COMPLETO" value={area.endereco} className="w-full bg-slate-100 border-none rounded-2xl p-4 font-bold" onChange={(e) => setArea({...area, endereco: e.target.value})} />
             
             <div className="grid grid-cols-3 gap-2">
                <div className="bg-slate-100 p-4 rounded-2xl text-center">

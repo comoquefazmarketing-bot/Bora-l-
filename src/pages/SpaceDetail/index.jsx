@@ -1,4 +1,4 @@
-﻿import React, { useState } from "react";
+import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { spaces } from "../../data/spaces";
 import { MapPin, MessageCircle, ArrowLeft, Share2, CheckCircle2, Navigation } from "lucide-react";
@@ -10,14 +10,14 @@ export default function SpaceDetail() {
 
   const space = spaces.find(s => s.id === id) || spaces[0];
 
-  // Se não tiver mapa específico, usamos um ponto central de Novo Horizonte para manter a estética
+  // Se não tiver mapa especÃ­fico, usamos um ponto central de Novo Horizonte para manter a estética
   const defaultMap = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14863.66579603091!2d-49.2300000!3d-21.4600000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94bc000000000000%3A0x0!2zMjHCsDI3JzM2LjAiUyA0OcKwMTMnNDguMCJX!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr";
   
   const mapSource = space.googleMaps || defaultMap;
 
   const handleWhatsApp = () => {
     if (!selectedDate) return alert("Felipe, peça ao usuário para selecionar a data!");
-    const msg = `Olá ${space.host}, vi o anúncio no Bora Lá e gostaria de reservar o ${space.title} para o dia ${selectedDate}. Está disponível?`;
+    const msg = `Olá ${space.host}, vi o anÃºncio no BORA LÁ e gostaria de reservar o ${space.title} para o dia ${selectedDate}. Está disponÃ­vel?`;
     window.open(`https://wa.me/${space.phone}?text=${encodeURIComponent(msg)}`, "_blank");
   };
 
@@ -41,7 +41,7 @@ export default function SpaceDetail() {
               <img src={space.images[0]} className="w-full h-full object-cover hover:scale-105 transition-transform duration-[3s]" alt={space.title} />
             </div>
 
-            {/* SEÇÃO DO MAPA ESTÉTICO */}
+            {/* SEÃ‡ÃƒO DO MAPA ESTÃ‰TICO */}
             <div className="space-y-6">
               <div className="flex items-center justify-between">
                 <h3 className="text-xl font-black italic uppercase tracking-tighter flex items-center gap-2">

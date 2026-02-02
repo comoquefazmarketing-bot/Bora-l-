@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, CheckCircle, Smartphone, Home, User } from 'lucide-react';
 
@@ -26,7 +26,7 @@ export default function LeadForm() {
         body: JSON.stringify({
           fields: {
             "Proprietário": formData.nome.trim(),
-            "Área de Lazer": formData.area.trim(),
+            "Ãrea de Lazer": formData.area.trim(),
             "WhatsApp": String(formData.whatsapp).trim() // Garante envio como texto
           }
         })
@@ -78,13 +78,13 @@ export default function LeadForm() {
           </div>
 
           <div className="space-y-2">
-            <label className="text-[8px] font-black text-slate-500 uppercase tracking-widest ml-4 flex items-center gap-2"><Home size={12} className="text-[#00BFA6]"/> Área de Lazer</label>
+            <label className="text-[8px] font-black text-slate-500 uppercase tracking-widest ml-4 flex items-center gap-2"><Home size={12} className="text-[#00BFA6]"/> Ãrea de Lazer</label>
             <input required type="text" placeholder="Nome do espaço" className="w-full bg-white/5 border border-white/5 rounded-2xl py-4 px-7 text-white font-bold outline-none text-sm" onChange={(e) => setFormData({...formData, area: e.target.value})} />
           </div>
 
           <div className="space-y-2">
             <label className="text-[8px] font-black text-slate-500 uppercase tracking-widest ml-4 flex items-center gap-2"><Smartphone size={12} className="text-[#00BFA6]"/> WhatsApp</label>
-            <input required type="text" placeholder="DDD + Número" className="w-full bg-white/5 border border-white/5 rounded-2xl py-4 px-7 text-white font-bold outline-none text-sm" onChange={(e) => setFormData({...formData, whatsapp: e.target.value})} />
+            <input required type="text" placeholder="DDD + NÃºmero" className="w-full bg-white/5 border border-white/5 rounded-2xl py-4 px-7 text-white font-bold outline-none text-sm" onChange={(e) => setFormData({...formData, whatsapp: e.target.value})} />
           </div>
 
           <button type="submit" disabled={loading} className="w-full bg-[#00BFA6] text-slate-900 py-5 rounded-2xl font-black uppercase text-[10px] tracking-[0.2em] transition-all flex items-center justify-center mt-4">
