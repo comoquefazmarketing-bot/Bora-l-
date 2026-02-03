@@ -1,0 +1,1 @@
+import React from 'react'; export default function ChecklistChacara() { return <div style={{padding:'100px', fontWeight:'bold', fontFamily:'sans-serif'}}><h1>ChecklistChacara</h1><p>O conteúdo está sendo carregado...</p><a href='/blog'>Voltar</a></div> }
