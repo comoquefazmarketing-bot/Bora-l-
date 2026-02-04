@@ -10,6 +10,10 @@ export const CONTENT_HUB = {
   ],
   artigos: [
     {
+  "title": "Churrasco de Novo Horizonte",
+  "content": "Bem-vindo ao blog de churrasco de Novo Horizonte! Aqui você encontrará receitas, dicas e notícias sobre o mundo do churrasco. Desde técnicas de grelha até receitas inovadoras, tudo para tornar seu próximo churrasco inesquecível. Venha se juntar à nossa comunidade e compartilhe sua paixão por churrasco com a gente!"
+},
+    {
       id: "a1",
       tag: "O Aplicativo",
       slug: "manifesto-bora-la",
