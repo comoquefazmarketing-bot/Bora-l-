@@ -10,6 +10,10 @@ export const CONTENT_HUB = {
   ],
   artigos: [
     {
+  "title": "Churrasco em Novo Horizonte: Dicas e Receitas",
+  "content": "Bem-vindos ao nosso blog de churrasco de Novo Horizonte! Aqui você encontrará dicas, receitas e segredos para tornar seu churrasco inesquecível. Desde cortes de carne até molhos e acompanhamentos, vamos explorar tudo o que há de melhor no mundo do churrasco. Então, prepare-se para uma jornada gastronômica pelo coração de Novo Horizonte, onde a paixão pelo churrasco é contagiosa!"
+},
+    {
   "title": "Churrasco de Novo Horizonte",
   "content": "Bem-vindo ao blog de churrasco de Novo Horizonte! Aqui você encontrará receitas, dicas e notícias sobre o mundo do churrasco. Desde técnicas de grelha até receitas inovadoras, tudo para tornar seu próximo churrasco inesquecível. Venha se juntar à nossa comunidade e compartilhe sua paixão por churrasco com a gente!"
 },
