@@ -55,7 +55,7 @@ export default function HomePage() {
           </div>
 
           <div className="relative group">
-            <motion.div animate={{ scale: [1, 1.15, 1], opacity: [0.2, 0.4, 0.2] }} transition={{ repeat: Infinity, duration: 2 }} className="absolute -inset-2 bg-[#EE0000] rounded-full blur-xl" />
+            
             <button onClick={() => window.dispatchEvent(new CustomEvent('openCalc'))} className="relative bg-[#EE0000] text-white px-8 py-3 rounded-full font-black uppercase italic text-[11px] tracking-widest flex items-center gap-3 shadow-xl border-b-4 border-black/20">
               <Calculator size={16} /> CALCULADORA DE CHURRASCO
             </button>

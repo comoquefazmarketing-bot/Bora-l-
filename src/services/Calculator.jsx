@@ -106,7 +106,7 @@ export default function Calculator() {
               <div className="grid grid-cols-4 gap-3 pt-2">
                 {[ 
                   {n:"Adega", i:"Ã°Å¸ÂÂº"}, 
-                  {n:"Zero Grau", i:"Ã¢Ââ€žÃ¯Â¸Â"}, 
+                  {n:"Zero Grau", i:"â€žÃ¯Â¸Â"}, 
                   {n:"Quality", i:"🥩"}, 
                   {n:"Piovani", i:"Ã°Å¸â€ºâ€™"} 
                 ].map((s, idx) => (

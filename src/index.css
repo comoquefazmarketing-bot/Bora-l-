@@ -33,3 +33,15 @@ body {
   box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
   transform: scale(0.98);
 }
+/* VIBRAÇÃO ELITE - FELIPE MAKARIOS */
+@keyframes shake-vibrate-8s {
+  0%, 85%, 100% { transform: scale(1); }
+  87%, 91%, 95%, 99% { transform: scale(1.05) rotate(-2deg); }
+  89%, 93%, 97% { transform: scale(1.05) rotate(2deg); }
+}
+
+.vibrate-target {
+  animation: shake-vibrate-8s 8s infinite !important;
+  box-shadow: none !important;
+  filter: none !important;
+}

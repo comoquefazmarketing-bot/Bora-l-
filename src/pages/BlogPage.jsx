@@ -1,129 +1,58 @@
-/* @author Felipe Makarios | Creator - BORA LÁ */
+﻿/* @author Felipe Makarios | Creator - BORA LÁ */
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { Sparkles, Zap, ArrowRight, PlayCircle, Image as ImageIcon } from "lucide-react";
-
+import { Zap, ChevronRight, Calculator, Star } from "lucide-react";
 import BlogSection from '../components/BlogSection';
 import BlogClusterBanner from '../components/BlogClusterBanner';
 
 export default function BlogPage() {
   const navigate = useNavigate();
+  const openCalc = () => window.dispatchEvent(new CustomEvent('openCalc'));
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC] font-sans text-slate-900 selection:bg-[#00BFA6] selection:text-white">
+    <div className="min-h-screen bg-[#1a1a1a] text-white font-sans">
       <Helmet>
-        <title>Blog Bora Lá | Lazer e Cultura em Novo Horizonte</title>
-        <meta name="description" content="O guia definitivo para o seu lazer em Novo Horizonte." />
+        <title>Inteligência em Lazer | BLOG LÁ.</title>
+        <meta name="mobile-web-app-capable" content="yes" />
       </Helmet>
 
-      {/* HEADER EDITORIAL */}
-      <header className="pt-32 pb-16 px-6 max-w-7xl mx-auto border-b border-slate-200">
-        <div className="flex flex-col md:flex-row justify-between items-end gap-10">
-          <div className="max-w-3xl">
-            <div className="flex items-center gap-2 text-[#00BFA6] font-black uppercase tracking-[0.4em] text-[10px] mb-6">
-              <Zap size={14} fill="currentColor" /> Inteligência em Lazer
-            </div>
-            <h1 className="text-7xl md:text-9xl font-black uppercase italic tracking-tighter leading-[0.8]">
-              BLOG <span className="text-[#00BFA6]">LÁ.</span>
-            </h1>
-          </div>
-          <div className="text-right hidden md:block pb-2">
-            <p className="text-slate-400 font-bold uppercase italic text-xs tracking-widest">By Felipe Makarios</p>
-            <div className="h-1 w-20 bg-[#00BFA6] ml-auto mt-2"></div>
-          </div>
+      <header className="pt-24 pb-12 px-6 max-w-7xl mx-auto text-center md:text-left">
+        <div className="flex items-center justify-center md:justify-start gap-2 text-[#00BFA6] mb-4">
+          <Zap size={18} fill="currentColor" />
+          <span className="text-[10px] font-black uppercase tracking-[0.4em]">Cultura de Elite</span>
         </div>
+        <h1 className="text-5xl md:text-8xl font-black uppercase italic tracking-tighter leading-none">
+          BLOG <span className="text-[#00BFA6]">LÁ.</span>
+        </h1>
       </header>
 
-      {/* DESTAQUE INVERTIDO: VÍDEO (ESQUERDA) | CULTURA (DIREITA) */}
-      <section className="py-12 px-6 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
-          
-          {/* VÍDEO EM DESTAQUE (GRANDE) */}
-          <div className="md:col-span-8 bg-black rounded-[3rem] p-4 shadow-2xl border-4 border-white overflow-hidden group relative aspect-video">
-            <div className="absolute top-8 left-8 z-10 flex items-center gap-2 bg-red-600 text-white px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest animate-pulse">
-              <PlayCircle size={12} /> Live Now
+      <section className="px-6 max-w-7xl mx-auto mb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="lg:col-span-2">
+            <div className="relative aspect-video rounded-[40px] overflow-hidden border border-white/10 shadow-2xl bg-black">
+              <iframe className="w-full h-full" src="https://www.youtube.com/embed/qWypdDbIL3Y" title="Bora Lá" frameBorder="0" allowFullScreen></iframe>
             </div>
-            <iframe 
-              className="w-full h-full rounded-[2rem]" 
-              src="https://www.youtube.com/embed/qWypdDbIL3Y" 
-              frameBorder="0" 
-              allowFullScreen
-            ></iframe>
           </div>
-
-          {/* CARD LATERAL: ESSÊNCIA & CULTURA (ANTIGO MANIFESTO) */}
-          <div 
-            onClick={() => navigate('/blog/manifesto')}
-            className="md:col-span-4 bg-[#1F2937] rounded-[3rem] p-10 text-white relative overflow-hidden group cursor-pointer shadow-xl flex flex-col justify-between"
-          >
-            <Sparkles className="absolute -right-10 -top-10 text-[#00BFA6]/10 group-hover:rotate-12 transition-transform duration-700" size={250} />
-            
-            <div className="relative z-10">
-              <span className="text-[#00BFA6] font-black uppercase italic text-[10px] tracking-widest">Nossa Visão</span>
-              <h2 className="text-4xl font-black uppercase italic tracking-tighter leading-none mt-4">
-                BORA LÁ:<br/>Essência & Cultura.
-              </h2>
+          <div className="flex flex-col gap-6">
+            <div onClick={openCalc} className="flex-1 bg-[#EE0000] p-8 rounded-[40px] hover:scale-[1.02] transition-all cursor-pointer shadow-xl flex flex-col justify-center">
+              <Calculator size={32} className="mb-4 animate-pulse" />
+              <h4 className="text-2xl font-black uppercase italic leading-tight mb-2">Calculadora Pro</h4>
+              <p className="text-white/80 text-xs font-bold uppercase tracking-tighter mb-4">Logística bruta para seu evento em NH.</p>
+              <div className="bg-black/20 py-2 px-4 rounded-full text-[10px] font-black uppercase w-fit">Abrir Agora</div>
             </div>
-
-            <div className="relative z-10 mt-8">
-              <p className="text-slate-400 font-medium text-sm mb-6 group-hover:text-white transition-colors">
-                Por que acreditamos que o lazer de qualidade é o segredo de uma vida épica em Novo Horizonte.
-              </p>
-              <div className="flex items-center gap-2 text-white font-black uppercase italic text-xs group-hover:gap-4 transition-all">
-                Conhecer filosofia <ArrowRight size={16} className="text-[#00BFA6]" />
-              </div>
+            <div onClick={() => navigate('/blog/segredo-costela')} className="flex-1 bg-[#242424] p-8 rounded-[40px] border border-white/5 hover:border-[#00BFA6] transition-all cursor-pointer flex flex-col justify-center">
+              <Star size={24} className="text-[#00BFA6] mb-4" />
+              <h4 className="text-xl font-black uppercase italic leading-tight text-white">Método Costela</h4>
+              <div className="flex items-center gap-2 text-[10px] font-black uppercase text-gray-500 mt-2">Ler Técnica <ChevronRight size={14} /></div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* SEÇÃO DE ARTIGOS COM FOTOS (Pente Fino Visual) */}
-      <section className="py-20 px-6 bg-slate-100/50">
-        <div className="max-w-7xl mx-auto">
-          <div className="mb-12">
-            <h2 className="text-4xl font-black uppercase italic tracking-tighter">Explorar <span className="text-[#00BFA6]">Matérias</span></h2>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* CARD 1: COSTELA */}
-            <article onClick={() => navigate('/blog/segredo-costela')} className="group cursor-pointer">
-              <div className="relative h-64 mb-6 overflow-hidden rounded-[2.5rem] shadow-lg">
-                <img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=800" alt="Costela" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                <span className="absolute bottom-6 left-6 bg-[#EE0000] text-white px-4 py-1 rounded-full text-[10px] font-black uppercase">Gastronomia</span>
-              </div>
-              <h3 className="text-2xl font-black uppercase italic leading-tight group-hover:text-[#00BFA6] transition-colors">O Segredo da Costela que Derrete</h3>
-            </article>
-
-            {/* CARD 2: CHÁCARAS */}
-            <article onClick={() => navigate('/blog/melhores-areas-lazer-nh')} className="group cursor-pointer">
-              <div className="relative h-64 mb-6 overflow-hidden rounded-[2.5rem] shadow-lg">
-                <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=800" alt="Lazer" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                <span className="absolute bottom-6 left-6 bg-[#00BFA6] text-white px-4 py-1 rounded-full text-[10px] font-black uppercase">Review</span>
-              </div>
-              <h3 className="text-2xl font-black uppercase italic leading-tight group-hover:text-[#00BFA6] transition-colors">Tour pelas Chácaras de Elite em NH</h3>
-            </article>
-
-            {/* CARD 3: CHECKLIST */}
-            <article onClick={() => navigate('/blog/checklist-chacara')} className="group cursor-pointer">
-              <div className="relative h-64 mb-6 overflow-hidden rounded-[2.5rem] shadow-lg border-2 border-white">
-                <img src="https://images.unsplash.com/photo-1533777857889-4be7c70b33f7?q=80&w=800" alt="Checklist" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                <span className="absolute bottom-6 left-6 bg-[#1F2937] text-white px-4 py-1 rounded-full text-[10px] font-black uppercase">Logística</span>
-              </div>
-              <h3 className="text-2xl font-black uppercase italic leading-tight group-hover:text-[#00BFA6] transition-colors">Checklist: Não passe vergonha no churrasco</h3>
-            </article>
-          </div>
-        </div>
-      </section>
-
+      <BlogSection />
       <BlogClusterBanner />
-
-      <footer className="py-20 text-center text-slate-400 font-bold uppercase italic text-[10px] tracking-[0.5em]">
-        © 2026 BORA LÁ • NOVO HORIZONTE
-      </footer>
+      <footer className="py-20 text-center text-gray-600 text-[10px] font-black uppercase tracking-[0.5em]">Felipe Makarios • BORA LÁ</footer>
     </div>
   );
 }
