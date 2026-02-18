@@ -1,7 +1,7 @@
-/* @author Felipe Makarios | Lead Architect - BORA LÁ v2 */
+﻿/* @author Felipe Makarios | Lead Architect - BORA LÁ v2 */
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { MapPin, ArrowUpRight } from 'lucide-react';
+import { MapPin, ArrowUpRight, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const areasReais = [
   { id: "top-burguer", nome: "RECANTO TOP BURGUER", cidade: "Novo Horizonte - SP", preco: "330", folder: "area de lazer top burguer" },
@@ -11,7 +11,12 @@ const areasReais = [
   { id: "santa-clara", nome: "ESPAÇO SANTA CLARA", cidade: "Novo Horizonte - SP", preco: "300", folder: "espaco santa clara" },
   { id: "recanto-america", nome: "RECANTO AMÉRICA", cidade: "Novo Horizonte - SP", preco: "300", folder: "recanto america" },
   { id: "recanto-do-sol", nome: "RECANTO PÔR DO SOL", cidade: "Novo Horizonte - SP", preco: "Consultar", folder: "Recanto do Sol" },
-  { id: "assolini", nome: "ÁREA DE LAZER ASSOLINI", cidade: "Novo Horizonte - SP", preco: "Consultar", folder: "ÁREA DE LAZER ASSOLINI" }
+  { id: "assolini", nome: "ÁREA DE LAZER ASSOLINI", cidade: "Novo Horizonte - SP", preco: "Consultar", folder: "ÁREA DE LAZER ASSOLINI" },
+  // NOVAS ÁREAS ADICIONADAS
+  { id: "flamboyant", nome: "ÁREA DE LAZER FLAMBOYANT", cidade: "Novo Horizonte - SP", preco: "Consultar", folder: "area de lazer flamboyant" },
+  { id: "morada-do-sol", nome: "ÁREA DE LAZER MORADA DO SOL", cidade: "Novo Horizonte - SP", preco: "Consultar", folder: "area de lazer morada do sol" },
+  { id: "club-fest", nome: "CLUB FEST SOLAREMAX", cidade: "Novo Horizonte - SP", preco: "Consultar", folder: "area de lazer e conforto club fest solaremax" },
+  { id: "lopes-eventos", nome: "LOPES EVENTOS", cidade: "Novo Horizonte - SP", preco: "Consultar", folder: "lopes eventos" }
 ];
 
 const frasesSensoriais = [
@@ -25,6 +30,14 @@ const frasesSensoriais = [
 export default function Home() {
   const navigate = useNavigate();
   const [indexFrase, setIndexFrase] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 8;
+
+  // Lógica de Paginação
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = areasReais.slice(indexOfFirstItem, indexOfLastItem);
+  const totalPages = Math.ceil(areasReais.length / itemsPerPage);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -61,7 +74,7 @@ export default function Home() {
         <h2 className="text-4xl lg:text-7xl font-black uppercase italic tracking-tighter mb-12 text-slate-900">CHÁCARAS E LAZER <span className="text-[#00BFA6]">EM NOVO HORIZONTE.</span></h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-          {areasReais.map(area => (
+          {currentItems.map(area => (
             <div key={area.id} onClick={() => navigate(`/space/${area.id}`)} className="group cursor-pointer">
               <div className="relative aspect-[4/5] rounded-[50px] overflow-hidden mb-5 bg-gray-100 border border-black/5 shadow-sm group-hover:shadow-2xl transition-all duration-700">
                 <img src={`/spaces/${area.folder}/foto1.webp`} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[2s]" alt={area.nome} />
@@ -74,6 +87,37 @@ export default function Home() {
               <p className="font-black text-2xl text-[#00BFA6] italic">{area.preco === "Consultar" ? "Consultar" : `R$ ${area.preco}`}</p>
             </div>
           ))}
+        </div>
+
+        {/* CONTROLES DE PAGINAÇÃO */}
+        <div className="mt-16 flex items-center justify-center gap-4">
+          <button 
+            onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+            disabled={currentPage === 1}
+            className="p-4 rounded-full border border-black/10 hover:bg-[#00BFA6] hover:text-white transition-all disabled:opacity-30"
+          >
+            <ChevronLeft size={24} />
+          </button>
+          
+          <div className="flex gap-2">
+            {[...Array(totalPages)].map((_, i) => (
+              <button 
+                key={i}
+                onClick={() => setCurrentPage(i + 1)}
+                className={`w-12 h-12 rounded-full font-black italic transition-all ${currentPage === i + 1 ? 'bg-[#00BFA6] text-white' : 'border border-black/10 hover:bg-slate-100'}`}
+              >
+                {i + 1}
+              </button>
+            ))}
+          </div>
+
+          <button 
+            onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+            disabled={currentPage === totalPages}
+            className="p-4 rounded-full border border-black/10 hover:bg-[#00BFA6] hover:text-white transition-all disabled:opacity-30"
+          >
+            <ChevronRight size={24} />
+          </button>
         </div>
       </main>
     </div>
