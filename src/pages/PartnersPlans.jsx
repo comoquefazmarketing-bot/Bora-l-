@@ -4,10 +4,10 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { 
-  Check, Zap, TrendingUp, ArrowLeft, Users, ShieldCheck, 
-  HelpCircle, Star, Scale, Calculator, Sparkles, MessageSquare,
+  Check, Zap, ArrowLeft, ShieldCheck, 
+  HelpCircle, Star, Scale, Calculator, MessageSquare,
   BarChart3, MousePointerClick, Crown, Target, LayoutDashboard, Rocket,
-  Shield, Flame, BadgeCheck, Utensils, Music, Truck, Users2, Package
+  Shield, Flame, Utensils, Music, Truck, Users2, Package
 } from 'lucide-react';
 
 export default function PartnersPlans() {
@@ -27,7 +27,8 @@ export default function PartnersPlans() {
   };
 
   const scrollToPlans = () => {
-    document.getElementById('plans-section').scrollIntoView({ behavior: 'smooth' });
+    const element = document.getElementById('plans-section');
+    if (element) element.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
@@ -104,7 +105,7 @@ export default function PartnersPlans() {
                           { text: "Tendas e Coberturas", icon: Shield },
                           { text: "Equipes de Apoio (Garçons, Limpeza)", icon: Users2 },
                           { text: "DJs, Bandas e Entretenimento", icon: Music },
-                          { text: "Segurança e Recepcionistas", icon: ShieldCheck }
+                          { text: "Logística e Frete", icon: Truck }
                         ].map((item, idx) => (
                           <li key={idx} className="flex items-center gap-5 font-black uppercase italic text-sm group">
                             <div className="bg-black rounded-full p-1.5 group-hover:bg-[#00BFA6] transition-colors">
@@ -213,7 +214,7 @@ export default function PartnersPlans() {
             </div>
         </section>
 
-        {/* 05. FAQ MATADORA - RESTAURADA E COMPLETA */}
+        {/* 05. FAQ MATADORA */}
         <section className="bg-white rounded-[80px] p-12 lg:p-28 shadow-2xl border border-slate-100 mb-20 text-left relative overflow-hidden">
           <div className="flex flex-col md:flex-row md:items-end gap-8 mb-24">
             <div className="bg-[#00BFA6] p-8 rounded-[3rem] shadow-xl text-black shadow-[#00BFA6]/20">
