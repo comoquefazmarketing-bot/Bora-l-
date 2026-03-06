@@ -40,7 +40,7 @@ export default function PartnersPlans() {
           <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform" /> VOLTAR PARA CATEGORIAS
         </button>
 
-        {/* 01. HERO SECTION */}
+        {/* HERO SECTION */}
         <header className="mb-28">
           <div className="inline-flex items-center gap-2 bg-[#00BFA6]/10 text-[#00BFA6] px-5 py-2.5 rounded-full text-xs font-black uppercase tracking-widest mb-8 border border-[#00BFA6]/20">
             <BarChart3 size={14} /> DADOS DE MARÇO/2026: GOOGLE ANALYTICS
@@ -61,12 +61,12 @@ export default function PartnersPlans() {
             </div>
             <div className="relative z-10 border-l-4 border-slate-700 pl-6">
               <div className="text-[#00BFA6] font-[1000] text-7xl mb-2 leading-none">1.2k</div>
-              <p className="text-slate-400 font-bold uppercase italic text-sm tracking-tight leading-tight">Cálculos de logística<br/>realizados no mês</p>
+              <p className="text-slate-400 font-bold uppercase italic text-sm tracking-tight leading-tight">Cálculos realizados na<br/>Calculadora de Churrasco</p>
             </div>
           </div>
         </header>
 
-        {/* 02. O DIFERENCIAL */}
+        {/* DIFERENCIAL */}
         <section className="mb-32">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 bg-[#00BFA6] rounded-[70px] p-10 lg:p-24 text-white shadow-2xl relative overflow-hidden">
                 <div className="lg:col-span-7 relative z-10 text-left">
@@ -119,7 +119,7 @@ export default function PartnersPlans() {
             </div>
         </section>
 
-        {/* 03. TABELA DE PLANOS */}
+        {/* PLANOS */}
         <section id="plans-section" className="mb-32 pt-20">
             <h2 className="text-center text-5xl lg:text-8xl font-[1000] uppercase italic tracking-tighter leading-[0.8] mb-20 text-black">
                 DÊ O PRÓXIMO <br/> <span className="text-[#00BFA6]">PASSO PROFISSIONAL.</span>
@@ -167,7 +167,7 @@ export default function PartnersPlans() {
             </div>
         </section>
 
-        {/* 04. A REGRA DOS 3 */}
+        {/* REGRA DOS 3 */}
         <section className="mb-40 bg-white rounded-[80px] p-12 lg:p-28 shadow-2xl border-2 border-black relative overflow-hidden text-left">
             <div className="absolute top-10 left-10 bg-black text-[#00BFA6] px-12 py-6 rounded-[2.5rem] font-[1000] uppercase italic text-3xl rotate-[-2deg] z-20 shadow-2xl">A REGRA DOS 3</div>
             
@@ -214,7 +214,7 @@ export default function PartnersPlans() {
             </div>
         </section>
 
-        {/* 05. FAQ MATADORA */}
+        {/* FAQ MATADORA - TEXTO GENÉRICO */}
         <section className="bg-white rounded-[80px] p-12 lg:p-28 shadow-2xl border border-slate-100 mb-20 text-left relative overflow-hidden">
           <div className="flex flex-col md:flex-row md:items-end gap-8 mb-24">
             <div className="bg-[#00BFA6] p-8 rounded-[3rem] shadow-xl text-black shadow-[#00BFA6]/20">
@@ -238,10 +238,10 @@ export default function PartnersPlans() {
             
             <div className="border-b border-slate-100 pb-10 group">
               <h4 className="font-[1000] uppercase italic text-2xl mb-5 text-black leading-tight flex gap-4 group-hover:text-[#00BFA6] transition-colors">
-                <span className="text-[#00BFA6]/30">02.</span> EU NÃO ENTENDO NADA DE TECNOLOGIA OU INTERNET. COMO FAÇO?
+                <span className="text-[#00BFA6]/30">02.</span> NÃO TENHO EXPERIÊNCIA COM TECNOLOGIA. COMO CRIO MEU PERFIL?
               </h4>
               <p className="text-slate-500 font-extrabold text-base leading-relaxed uppercase italic">
-                Fica em paz, Marcão! Se você assinar o plano <span className="text-black italic">Consumo Plus</span>, a nossa equipe (Karen) cuida de tudo. Você manda as fotos no zap e nós montamos seu perfil profissional.
+                Fique tranquilo! Ao assinar o plano <span className="text-black italic">Consumo Plus</span>, nossa equipe de suporte (Karen) auxilia em todo o processo. Você envia suas fotos e informações via WhatsApp e nós cuidamos da montagem do seu perfil profissional.
               </p>
             </div>
 
@@ -250,7 +250,7 @@ export default function PartnersPlans() {
                 <span className="text-[#00BFA6]/30">03.</span> COMO O CLIENTE CHEGA ATÉ MIM?
               </h4>
               <p className="text-slate-500 font-extrabold text-base leading-relaxed uppercase italic">
-                O cliente usa a <span className="text-black italic">Calculadora de Churrasco</span> para planejar a festa. No final, o sistema recomenda os parceiros da região. O cliente clica no seu perfil e abre o <span className="text-black underline">SEU WHATSAPP</span> na hora.
+                O cliente utiliza a <span className="text-black italic">Calculadora de Churrasco</span> para planejar o evento. Ao finalizar, o sistema recomenda os parceiros da região. O cliente visualiza seu perfil e entra em contato direto pelo <span className="text-black underline">SEU WHATSAPP</span>.
               </p>
             </div>
 
@@ -259,7 +259,7 @@ export default function PartnersPlans() {
                 <span className="text-[#00BFA6]/30">04.</span> TENHO QUE PAGAR MULTA SE QUISER SAIR?
               </h4>
               <p className="text-slate-500 font-extrabold text-base leading-relaxed uppercase italic">
-                Zero multas. Zero fidelidade. Não acreditamos em contratos que prendem. Se o Bora Lá não estiver trazendo resultados para você, basta cancelar com um clique a qualquer momento.
+                Zero multas e zero fidelidade. Não acreditamos em contratos que prendem o parceiro. Se o Bora Lá não fizer sentido para o seu momento, você pode cancelar a assinatura a qualquer momento com um clique.
               </p>
             </div>
 
@@ -268,22 +268,22 @@ export default function PartnersPlans() {
                 <span className="text-[#00BFA6]/30">05.</span> O PAGAMENTO É SEGURO? COMO FUNCIONA O PIX?
               </h4>
               <p className="text-slate-500 font-extrabold text-base leading-relaxed uppercase italic">
-                O pagamento é processado pelo <span className="text-black underline decoration-[#00BFA6] font-black italic">ASAAS</span>, a plataforma mais segura do mercado. Você pode pagar via Cartão ou Pix e recebe o comprovante na hora no seu e-mail.
+                Todo o pagamento é processado via <span className="text-black underline decoration-[#00BFA6] font-black italic">ASAAS</span>, referência nacional em segurança. Você pode optar por Cartão ou Pix, com liberação imediata e comprovante no seu e-mail.
               </p>
             </div>
 
             <div className="border-b border-slate-100 pb-10 group">
               <h4 className="font-[1000] uppercase italic text-2xl mb-5 text-black leading-tight flex gap-4 group-hover:text-[#00BFA6] transition-colors">
-                <span className="text-[#00BFA6]/30">06.</span> POSSO APARECER EM MAIS DE UMA CIDADE OU CATEGORIA?
+                <span className="text-[#00BFA6]/30">06.</span> POSSO APARECER EM MAIS DE UMA CATEGORIA?
               </h4>
               <p className="text-slate-500 font-extrabold text-base leading-relaxed uppercase italic">
-                Pode sim! Para cada categoria ou cidade extra, basta fazer uma nova assinatura. Assim garantimos que as vagas reais sejam sempre respeitadas e quem investe mais, domina mais a região.
+                Sim! Para atuar em múltiplas categorias ou cidades, basta realizar uma nova assinatura para cada vaga. Isso garante que a exclusividade da "Regra dos 3" seja sempre respeitada para todos.
               </p>
             </div>
           </div>
         </section>
 
-        {/* 06. RODAPÉ */}
+        {/* RODAPÉ */}
         <footer className="bg-[#0F172A] rounded-[100px] p-16 lg:p-32 text-white text-center shadow-3xl relative overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-transparent via-[#00BFA6] to-transparent"></div>
           <h3 className="text-5xl lg:text-[10rem] font-[1000] uppercase italic tracking-tighter leading-[0.8] mb-16">
