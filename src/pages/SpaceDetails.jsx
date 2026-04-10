@@ -5,7 +5,7 @@ import { MapPin, ArrowLeft, Calendar, MessageCircle, X, ChevronRight, ChevronLef
 
 const spacesData = {
   "top-burguer": { nome: "RECANTO TOP BURGUER", folder: "area de lazer top burguer", preco: "330", rua: "Rua Manoel Neves, 969, Novo Horizonte - SP", whats: "5517991178961", capacidade: "50", checkin: "08:00", checkout: "22:00" },
-  "rancho-paradise": { nome: "RANCHO PARADISE BORBOREMA", folder: "Rancho Paradise Borborema", preco: "380", rua: "Condomínio Village Tietê, Borborema - SP", whats: "5517992376515", capacidade: "25", checkin: "07:00", checkout: "22:00" },
+  "rancho-paradise": { nome: "RANCHO PARADISE BORBOREMA", folder: "Rancho Paradise Borborema", preco: "380", rua: "Condomínio Village Tietê, Borborema - SP", whats: "5516996338003", capacidade: "25", checkin: "07:00", checkout: "22:00" },
   "sao-sebastiao": { nome: "CHÁCARA SÃO SEBASTIÃO", folder: "chacara sao sebastiao", preco: "300", rua: "Zona Rural, Novo Horizonte - SP", whats: "5517992376515", capacidade: "120", checkin: "08:00", checkout: "20:00" },
   "carlos-zara": { nome: "ÁREA DE LAZER CARLOS ZARA", folder: "Área de lazer Carlos Zara", preco: "600", rua: "Av. Cônego Alfredo Reith, 1363, Novo Horizonte - SP", whats: "5517997179203", capacidade: "60", checkin: "09:00", checkout: "02:00" },
   "santa-clara": { nome: "ESPAÇO SANTA CLARA", folder: "espaco santa clara", preco: "300", rua: "Avenida Domingos Baraldo, 875, Santa Clara", whats: "5517991459046", capacidade: "50", checkin: "08:00", checkout: "22:00" },
